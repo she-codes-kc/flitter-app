@@ -2,6 +2,8 @@
 
 const mongoose = require('mongoose');
 
+mongoose.set('strictQuery', false);
+
 mongoose.connection.on('error', err => {
     console.log('MongoDB connection failed', err);
     process.exit(1);
