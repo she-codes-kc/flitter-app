@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 require('./lib/connectMongoose');
+require('./routes/api/flits')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,6 +23,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /**
+ * my API routes
+ */
+
+app.use('/api/flits', require('./routes/api/flits'));
+
+
+/**
  * my website routes
  */
 
@@ -35,6 +43,21 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+
+  // check if its a validation error
+  if (err.array) {
+    err.status = 422;
+    const errorInfo = err.array({ onlyFirstError: true}) [0]; 
+    err.message = `Error in ${errorInfo.location}, param "${errorInfo.param}" ${errorInfo.msg}`
+  }
+  
+  res.status(err.status || 500);
+
+  // if its an API request, answer with JSON
+  if (req.originalUrl.startsWith('/api/')) {
+    res.json({ error: err.message });
+    return;
+  }
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
