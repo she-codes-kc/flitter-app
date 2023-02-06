@@ -8,10 +8,32 @@ const router = express.Router();
 
 
 // GET /api/flits
-// return a flits array
+// return flits array
 router.get('/', async (req, res, next) => {
     try {
-        const flits = await Flit.find();
+
+        const text = req.query.text;
+        const author = req.query.author;
+        const date = req.query.date;
+
+        const skip = req.query.skip; // /api/flits?skip=0&limit=1
+        const limit = req.query.limit;
+
+        const filter = {};
+
+        if (text) { // /api/flits?text=<whatever>
+            filter.text = text;
+        };
+
+        if (author) { // /api/flits?author=<@username>
+            filter.author = author;
+        };
+
+        if (date) { // /api/flits?date=<00/00/0000>
+            filter.date = date;
+        }
+ 
+        const flits = await Flit.array(filter, skip, limit);
         res.json({ results: flits });
     } catch(err) {
         next(err);

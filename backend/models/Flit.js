@@ -8,8 +8,16 @@ const flitSchema = mongoose.Schema({
     image: String,
     author: String,
     date: Date,
-    kudos: Number
-})
+    kudos: [Number]
+});
+
+flitSchema.statics.array = function(filter, skip, limit) {
+    const query = Flit.find(filter); 
+    query.skip(skip);
+    query.limit(limit);
+    return query.exec() 
+};
+
 
 // create model
 const Flit = mongoose.model('Flit', flitSchema);
