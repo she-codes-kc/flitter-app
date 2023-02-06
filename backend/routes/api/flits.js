@@ -12,12 +12,18 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
     try {
 
+        // filters
         const text = req.query.text;
         const author = req.query.author;
         const date = req.query.date;
 
+        // pagination 
         const skip = req.query.skip; // /api/flits?skip=0&limit=1
         const limit = req.query.limit;
+
+        // selection fields 
+        const fields = req.query.fields; // /api/flits?fields=author -_id
+
 
         const filter = {};
 
@@ -33,7 +39,7 @@ router.get('/', async (req, res, next) => {
             filter.date = date;
         }
  
-        const flits = await Flit.array(filter, skip, limit);
+        const flits = await Flit.array(filter, skip, limit, fields);
         res.json({ results: flits });
     } catch(err) {
         next(err);
