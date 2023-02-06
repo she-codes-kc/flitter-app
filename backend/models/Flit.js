@@ -11,11 +11,12 @@ const flitSchema = mongoose.Schema({
     kudos: { type: [Number], default: 0, index: true }
 });
 
-flitSchema.statics.array = function(filter, skip, limit, fields) {
+flitSchema.statics.array = function(filter, skip, limit, fields, sort) {
     const query = Flit.find(filter); 
     query.skip(skip);
     query.limit(limit);
     query.select(fields);
+    query.sort(sort);
     return query.exec() 
 };
 

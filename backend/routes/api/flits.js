@@ -24,6 +24,9 @@ router.get('/', async (req, res, next) => {
         // selection fields 
         const fields = req.query.fields; // /api/flits?fields=author -_id
 
+        // sort
+        const sort = req.query.sort; // /api/flits?sort=-date (desc)
+
 
         const filter = {};
 
@@ -39,7 +42,7 @@ router.get('/', async (req, res, next) => {
             filter.date = date;
         }
  
-        const flits = await Flit.array(filter, skip, limit, fields);
+        const flits = await Flit.array(filter, skip, limit, fields, sort);
         res.json({ results: flits });
     } catch(err) {
         next(err);
