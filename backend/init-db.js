@@ -1,4 +1,4 @@
-// initializes database with the minimum of data needeed
+// initialize database with the minimum of data required
 
 const readline = require('readline');
 
