@@ -1,5 +1,7 @@
 // initializes database with the minimum of data needeed
 
+const readline = require('readline');
+
 // connect to database
 const connection = require('./lib/connectMongoose');
 
@@ -7,12 +9,21 @@ const connection = require('./lib/connectMongoose');
 const Flit = require('./models/Flit');
 
 async function main() {
+
+    // get user's consent before deleting
+    const confirm = await askQuestion('Are you sure you want to delete all content from the database? [n] (press "y" to confirm)')
+    if (!confirm) {
+        process.exit();
+    } 
+
     // initializes collections
     await initFlits();
     
     // disconnect from the database
     connection.close();
 }
+
+main().catch(err => console.log('There was an error', err));
 
 async function initFlits() {
     // delete all the documents from the flits collection
@@ -30,4 +41,19 @@ async function initFlits() {
     console.log(`${inserted.length} flits created`);
 }
 
-main().catch(err => console.log('There was an error', err));
+function askQuestion(text) {
+    return new Promise ((resolve, reject) => {
+        const interface = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        interface.question(text, answer => {
+            interface.close();
+            if (answer.toLowerCase() === 'y') {
+                resolve (true);
+                return;
+            }
+            resolve (false)
+        });
+    });
+}
