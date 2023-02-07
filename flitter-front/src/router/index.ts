@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import loginGuard from "./loginGuard";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,6 +22,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "login",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/LoginView.vue"),
+    beforeEnter: [loginGuard],
   },
   {
     path: "/flitt/:id",
@@ -36,6 +38,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile",
     name: "profile",
     component: () => import("@/views/ProfileView.vue"),
+    beforeEnter: [loginGuard],
   },
 ];
 

@@ -2,22 +2,22 @@ import { Flit } from "@/models/flit";
 import axios from "axios";
 
 class FlitService {
-  allProducts(): Promise<Flit[]> {
+  allFlits(): Promise<Flit[]> {
     return axios
-      .get<Flit[]>("https://api.escuelajs.co/api/v1/products")
+      .get<Flit[]>("https://api.escuelajs.co/api/v1/products") //cambiar por el real
       .then((response) => response.data);
   }
 
-  oneProduct(id: number): Promise<Flit> {
+  oneFlit(id: number): Promise<Flit> {
     return axios
-      .get<Flit>(`https://api.escuelajs.co/api/v1/products/${id}`)
+      .get<Flit>(`https://api.escuelajs.co/api/v1/products/${id}`) //cambiar por el real
       .then((response) => response.data);
   }
 
-  findProducts(search: string, offset: number, limit: number): Promise<Flit[]> {
+  findFlits(search: string, offset: number, limit: number): Promise<Flit[]> {
     return axios
       .get<Flit[]>(
-        `https://api.escuelajs.co/api/v1/products/?title=${search}&offset=${offset}&limit=${limit}`
+        `https://api.escuelajs.co/api/v1/products/?title=${search}&offset=${offset}&limit=${limit}` //cambiar por el real
       )
       .then((response) => response.data);
   }

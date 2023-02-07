@@ -6,4 +6,6 @@ export interface User {
   password: string;
   name: string;
   image: string;
+  followers: Array<number>;
+  following: Array<number>;
 }
