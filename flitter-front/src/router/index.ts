@@ -5,7 +5,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "home",
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/ListFlitt.vue"),
+      import(/* webpackChunkName: "about" */ "@/views/ListFlit.vue"),
   },
   {
     path: "/about-us",
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
       return { id };
     },
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/FlittView.vue"),
+      import(/* webpackChunkName: "about" */ "@/views/FlitView.vue"),
   },
   {
     path: "/profile",
