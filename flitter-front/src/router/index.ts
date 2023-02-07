@@ -1,58 +1,41 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import haveAuthGuard from "./auth-guard";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import loginGuard from "./loginGuard";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: () => import("@/views/ListFlit.vue"),
   },
   {
     path: "/login",
     name: "login",
-    component: () =>
-      import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
+    component: () => import("../views/LoginView.vue"),
   },
   {
     path: "/signup",
     name: "signup",
-    component: () =>
-      import(/* webpackChunkName: "signup" */ "../views/SignupView.vue"),
+    component: () => import("@/views/LoginView.vue"),
+    beforeEnter: [loginGuard],
   },
   {
     path: "/profile/:username",
     name: "user",
-    // beforeEnter: [haveAuthGuard],      Implementamos authGuard cuando tengamos el login
-    component: () => import("../views/ProfileView.vue"),
     props: (route) => {
       return { username: route.params.username };
     },
+    component: () => import("@/views/FlitView.vue"),
   },
   {
     path: "/profile",
-    name: "myprofile",
-    // beforeEnter: [haveAuthGuard],      Implementamos authGuard cuando tengamos el login
-    component: () => import("../views/MyProfileView.vue"),
-  },
-  {
-    path: "/password",
-    name: "password",
-    component: () =>
-      import(
-        /* webpackChunkName: "signup" */ "../views/PasswordRecoveryView.vue"
-      ),
-  },
-  {
-    path: "/settings",
-    name: "settings",
-    component: () =>
-      import(/* webpackChunkName: "settings" */ "../views/SettingsView.vue"),
+    name: "profile",
+    component: () => import("@/views/ProfileView.vue"),
+    beforeEnter: [loginGuard],
   },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 
