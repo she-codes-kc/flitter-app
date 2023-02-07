@@ -1,1 +1,7 @@
-<template><div>ProfileView</div></template>
+<script lang="ts" setup>
+import { ref } from "vue";
+</script>
+
+<template>
+  <div>Profile view</div>
+</template>
