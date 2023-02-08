@@ -1,20 +1,22 @@
 <template>
-    <UserProfile :user="user" />
+    <MyProfile :user="user" />
+     <CreateFlit/>
     <FlitFeed :posts="posts" />
 </template>
   
 <script lang="ts">
-import UserProfile from "@/components/UserProfile.vue";
-import FlitFeed from "@/components/FlitFeed.vue";
-import { User } from "@/models/user";
+import MyProfile from "../components/MyProfile.vue";
+import CreateFlit from "../components/CreateFlit.vue";
+import FlitFeed from "../components/FlitFeed.vue";
+import { User } from "../models/user";
 import { defineComponent } from "vue";
-import { Post } from "@/models/post";
-import user from "../store/user";
+import { Post } from "../models/post";
   
 export default defineComponent({
-    name: "ProfileView",
+    name: "MyProfileView",
     components: {
-      UserProfile,
+      MyProfile,
+      CreateFlit,
       FlitFeed,
     },
     props: {
@@ -28,8 +30,8 @@ export default defineComponent({
       const user: User = {
         id: 1,
         username: props.username,
-        email: "geor@gmail.com",
-        password: "geor123",
+        email: "loolitaa@gmail.com",
+        password: "holaSoyLola",
         avatar:
           "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
         followers: [3, 4],
@@ -73,5 +75,5 @@ export default defineComponent({
   });
 </script>
   
-<style scoped>
+ <style scoped>
 </style>
