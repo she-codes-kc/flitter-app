@@ -1,4 +1,5 @@
-import authService from "@/services/AuthService";
+
+import AuthService from "@/Services/AuthService";
 import type { Module } from "vuex";
 
 interface IUserState {
@@ -20,7 +21,7 @@ export const user: Module<IUserState, unknown> = {
       console.log({ email, password });
 
       try {
-        const token = await authService.login(email, password);
+        const token = await AuthService.login(email, password);
         commit("loginSucceed", token);
         return token;
       } catch (error) {

@@ -2,7 +2,7 @@
 export interface Flit {
   id: number;
   text: string;
-  author: { string };
+  author:string;
   images: string;
   creation: Date;
   kudos: Set<string>;
