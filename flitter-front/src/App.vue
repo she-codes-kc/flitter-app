@@ -1,102 +1,32 @@
 <template>
-  <HeaderBar />
-  <div class="wrapper"><router-view /></div>
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about-us">About Us</router-link> |
+    <router-link to="/login">LogIn</router-link> |
+    <router-link to="/">What's new?</router-link> |
+  </nav>
+  <router-view />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import HeaderBar from "@/components/HeaderBar.vue";
-
-export default defineComponent({
-  name: "App",
-  components: {
-    HeaderBar,
-  },
-});
-</script>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
 #app {
-  font-family:'Josefin Sans', sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-body {
-  margin: 0;
-}
-
-.wrapper {
-  padding: 10px;
-  max-width: 600px;
-  margin: auto;
-}
-
-button {
-  background-color: #5060a4;
-  font-family: 'Josefin Sans', sans-serif, cursive;
-  font-weight: lighter;
-  border: none;
-  color: white;
-  padding: 10px 30px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin-bottom: 40px;
-  transition: 0.25ms;
-  border-radius: 40px;
-  white-space: nowrap;
-}
-
-button:hover {
-  background-color:#44549c;
-  cursor: pointer;
-}
-
-input {
-  border-style: solid;
-  font-family: "Josefin Sans", sans-serif;
-  border-width: 2px;
-  border-color: #5060a4;
-  border-radius: 5px;
-  padding: 10px;
-  transition: 0.25s;
-  width: 100%;
-  font-size: 20px;
-}
-
-input:focus {
-  outline: none;
-}
-
-
-a {
-  text-decoration: none;
-  transition: 0.25ms;
-  font-size: 20px;
   color: #2c3e50;
 }
 
-a:hover {
-  color:#44549c;
+nav {
+  padding: 30px;
 }
 
-label {
-  font-size: 20px;
-  color:#5060a4;
-  font-family: 'Josefin Sans', sans-serif, cursive;
-  font-weight: lighter;
-  display: block;
-  margin-bottom: 10px;
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
 }
 
-.roundimg {
-  border-radius: 0%;
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

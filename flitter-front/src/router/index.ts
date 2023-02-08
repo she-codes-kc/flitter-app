@@ -22,7 +22,8 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile/:username",
     name: "user",
     props: (route) => {
-      return { username: route.params.username };
+      const id = Number(route.params.id);
+      return { id };
     },
     component: () => import("@/views/FlitView.vue"),
   },
