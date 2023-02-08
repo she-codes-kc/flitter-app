@@ -6,7 +6,8 @@ var logger = require('morgan');
 const authMiddleware = require('./lib/authMiddleware')
 
 require('./lib/connectMongoose');
-require('./routes/api/flits')
+require('./routes/api/flits');
+require('./routes/api/users');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 
 app.use('/api/flits', authMiddleware, require('./routes/api/flits'));
+app.use('/api/users', require('./routes/api/users'));
 
 
 /**

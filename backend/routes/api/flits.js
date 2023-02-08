@@ -31,7 +31,7 @@ router.get('/', async (req, res, next) => {
         const filter = {};
 
         if (text) { // /api/flits?text=<whatever>
-            filter.text = text;
+            filter.text = new RegExp('^' + text, 'i');
         };
 
         if (author) { // /api/flits?author=<@username>

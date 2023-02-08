@@ -7,6 +7,7 @@ const connection = require('./lib/connectMongoose');
 
 // upload models
 const Flit = require('./models/Flit');
+const User = require('./models/User');
 
 async function main() {
 
@@ -18,6 +19,7 @@ async function main() {
 
     // initializes collections
     await initFlits();
+    await initUsers();
     
     // disconnect from the database
     connection.close();
@@ -39,6 +41,16 @@ async function initFlits() {
         { text: 'Prueba', author: '@flaviaecheverria', date: 2023-02-02, kudos: [7] }
     ]);
     console.log(`${inserted.length} flits created`);
+}
+
+async function initUsers() {
+    const result = await User.deleteMany();
+    console.log(`${result.deletedCount} users deleted.`);
+
+    const inserted = await User.insertMany([
+        { firstName: 'Leon', lastName: 'Sukm', username: '@leonsukm', email: 'leon.sukm@mail.com', password: '1234' }
+    ]);
+    console.log(`${inserted.length} users created`);
 }
 
 function askQuestion(text) {
