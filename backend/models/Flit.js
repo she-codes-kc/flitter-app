@@ -8,9 +8,11 @@ const flitSchema = mongoose.Schema({
 
     text: { type: String, minlenght:1, maxlenght:256, trim: true, index: true },
     image: { type: String, index: true },
-    author: { type: Schema.Types.ObjectId, ref: 'User' }, //{ type: String, index: true },
+    // author: { type: Schema.Types.ObjectId, ref: 'User' }, 
+    author: { type: String, index: true },
     date: { type: Date, default: Date.now, index: true },
-    kudos: [{ type: Schema.Types.ObjectId, ref: 'User' }] //{ type: [Number], index: true }
+    // kudos: [{ type: Schema.Types.ObjectId, ref: 'User' }] 
+    kudos: { type: [Number], index: true }
 });
 
 flitSchema.statics.array = function(filter, skip, limit, fields, sort) {
