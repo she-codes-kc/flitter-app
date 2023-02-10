@@ -1,4 +1,4 @@
-<!--Template del tweet/post ya realizado-->
+<!--Template del flit ya realizado-->
 <template>
   <div class="profile">
     <div class="logo">
@@ -26,12 +26,12 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { Post } from "@/models/post";
+import { Flit } from "@/models/flit";
 
 export default defineComponent({
   props: {
     post: {
-      type: Object as PropType<Post>,
+      type: Object as PropType<Flit>,
       required: true,
     },
   },

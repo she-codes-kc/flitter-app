@@ -36,8 +36,8 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import FlitPost from "@/components/FlitPost.vue";
-import { Post } from "@/models/post";
-import posts from "@/store/posts";
+import { Flit } from "@/models/flit";
+import { ref } from "vue";
 
 export default defineComponent({
   components: {
@@ -45,7 +45,7 @@ export default defineComponent({
   },
   props: {
     posts: {
-      type: Object as PropType<Post[]>,
+      type: Object as PropType<Flit[]>,
       required: true
     }
   },

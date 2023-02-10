@@ -1,11 +1,10 @@
 // modelo de Usuario
-
+export type UserId = string;
 export interface User {
-  id: number;
+  id: UserId;
   email: string;
-  password: string;
   name: string;
   image: string;
-  followers: Array<number>;
-  following: Array<number>;
+  followers: number[];
+  following: number[];
 }

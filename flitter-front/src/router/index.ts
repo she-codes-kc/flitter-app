@@ -5,7 +5,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: () => import("@/views/ListFlit.vue"),
+    component: () => import("@/views/HomeView.vue"),
   },
   {
     path: "/login",
@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
       const id = Number(route.params.id);
       return { id };
     },
-    component: () => import("@/views/FlitView.vue"),
+    component: () => import("@/views/MyProfileView.vue"),
   },
   {
     path: "/profile",

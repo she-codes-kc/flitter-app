@@ -11,7 +11,7 @@ import CreateFlit from "../components/CreateFlit.vue";
 import FlitFeed from "../components/FlitFeed.vue";
 import { User } from "../models/user";
 import { defineComponent } from "vue";
-import { Post } from "../models/post";
+import { Flit } from "../models/flit";
 
 export default defineComponent({
   name: "MyProfileView",
@@ -20,50 +20,50 @@ export default defineComponent({
     CreateFlit,
     FlitFeed,
   },
- /*  props: {
+  props: {
     username: {
       type: String,
       required: true,
     },
-  }, */
+  }, 
+
   setup(props) {
     const isLoggedIn = true;
     const user: User = {
-      id: 1,
-      username: props.username,
+      id:"1",
+      name: props.username,
       email: "geor@gmail.com",
-      password: "holaGeor",
-      avatar:
+      image:
         "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
       followers: [3, 4],
       following: [1, 4],
     };
 
     // fetchPostsFilteredByUser()
-    const fakePosts: Post[] = [
+    const fakePosts: Flit[] = [
       {
-        id: 5,
-        user: {
-          id: 1,
-          username: props.username,
+        id: "1",
+        author: {
+          id: "1",
+          name: props.username,
         },
-        message:
+        text:
           "Estoy probando ésta nueva red social. Hasta ahora es muy fácil y divertida de usar. No puedo esperar a ver qué otras cosas geniales tiene guardadas. #RedesSociales #NuevaRed 💻💜",
-        image: null,
-        publishDate: "3/feb/23",
-        kudos: [5, 6, 4, 3],
+        images: null,
+        creation: "3/feb/23",
+        kudos: null,
       },
       {
-        id: 6,
-        user: {
-          id: 1,
-          username: props.username,
+        id: "6",
+        author: {
+          id: "6",
+          name: props.username,
         },
-        message:
+        text:
           "¡La pasé muy bien explorando la ciudad con mi familia hoy! #Aventura #Flitter",
-        image: null,
-        publishDate: "4/feb/23",
-        kudos: [1, 4, 8, 9, 10, 7],
+        images: null,
+        creation: "4/feb/23",
+        kudos: null,
       },
     ];
 

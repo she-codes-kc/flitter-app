@@ -12,10 +12,10 @@ import { defineComponent } from 'vue';
 import FlitFeed from '@/components/FlitFeed.vue'; 
 import SearchBar from '@/components/SearchBar.vue';
 import { Flit } from "../models/flit";
-import { get } from "@/api";
+import FlitService from '@/Services/FlitService';
 
 interface Data {
-  posts: Post[];
+  posts: Flit[];
   loading: boolean;
 }
 
@@ -36,7 +36,7 @@ export default defineComponent({
   },
   methods: {
     async fetchPosts() {
-      this.posts = await get<Post[]>("posts");
+      this.posts = await FlitService.allFlits();
       this.loading = false;
     },
   },
