@@ -1,4 +1,12 @@
 <template>
+    <div class="headerPictureName">
+    <h1>{{ user.username }}</h1>
+    <img
+      class="headerRocket"
+      alt="Header Rocket"
+      src=""
+    />
+    </div>
     <div class="wrapper">
         <div class="avatar">
             <img :src="user.avatar" :alt="user.username">
@@ -7,11 +15,11 @@
         <div class="follow">
             <div class="followers">
                 <div class="number">{{ user.followers.length }}</div>
-                Followers
+                Seguidores
             </div>
             <div class="following">
                 <div class="number">{{ user.following.length }}</div> 
-                Following
+                Seguidos
             </div>
         </div>
         <div class="buttons">

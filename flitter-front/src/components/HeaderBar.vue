@@ -1,68 +1,81 @@
+<!--Nav Bar con logo, bienvenidos a flitter, iniciar sesión y registrarse-->
 <template>
-    <nav class="bar">
-      <div class="logo">
-        <router-link to="/">
-          <img class="roundimg" alt="Flitter logo" src="../assets/logo.png" width="100" />
-        </router-link>
-      </div>
-      <div class="title">
-        <router-link to="/">
-          <h2>Bienvenidos a Flitter</h2>
-        </router-link>
-      </div>
-      <!-- <div v-if="loggedIn"> -->
-      <!-- <LoggedIn/> -->
-      <!-- </div> -->
-  
-      <!-- <div v-else> -->
-      <LoggedOut />
-      <!-- </div> -->
-    </nav>
+  <nav class="bar">
+    <div class="logo">
+      <router-link to="/">
+        <img class="roundimg" alt="Flitter logo" src="../assets/logo.png" width="100" />
+      </router-link>
+    </div>
+    <div class="title">
+      <router-link to="/">
+        <h2>Bienvenidos a Flitter</h2>
+      </router-link>
+    </div>
+    <div v-if="loggedIn"> 
+    <LoggedIn/> 
+    </div> 
+
+    <div v-else> 
+    <LoggedOut />
+    </div> 
+  </nav>
 </template>
-  
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import LoggedOut from "./LoggedOut.vue";
 import LoggedIn from "./LoggedIn.vue";
-  
+import router from "@/router";
+import { RouterLink } from "vue-router";
+
 export default defineComponent({
   name: "HeaderBar",
     components: {
       LoggedOut,
-      //LoggedIn,
+      LoggedIn,
     },
-  });
+    setup() {
+        let loggedIn = ref<boolean>(false) 
+        const token = localStorage.getItem('accessToken')
+        if(token) {
+            loggedIn = ref<boolean>(true)
+        }
+        return {
+            loggedIn,
+        }
+    },
+});
 </script>
-  
+
 <style scoped>
 .bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 5px;
-    margin: 5px 0;
-    box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px;
+  margin: 5px 0;
+  box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.3);
 }
-  
+
 .logo {
-    display: flex;
-    justify-self: left;
+  display: flex;
+  justify-self: left;
 }
-  
+
 .title {
-    justify-content: center;
-    font-size: 20px;
-    line-height: 0px;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 0px;
 }
-  
+
 h2 {
-    color:#5060a4;
-    font-family: 'Josefin Sans', sans-serif, cursive;
-    justify-content: center;
+  color:#5060a4;
+  font-family: 'Josefin Sans', sans-serif, cursive;
+  justify-content: center;
 }
-  
+
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 </style>
