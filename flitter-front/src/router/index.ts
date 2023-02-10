@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/signup",
     name: "signup",
-    component: () => import("@/views/LoginView.vue"),
+    component: () => import("@/views/SignupView.vue"),
     beforeEnter: [loginGuard],
   },
   {

@@ -1,11 +1,16 @@
 import { Flit } from "@/models/flit";
 import axios from "axios";
 
+type FlitsResponse = {
+  results: Flit[];
+}
+
 class FlitService {
   allFlits(): Promise<Flit[]> {
     return axios
-      .get<Flit[]>("/api/flits") 
-      .then((response) => response.data);
+      .get<FlitsResponse>("/api/flits") 
+      .then((response) => response.data)
+      .then(response => response.results);
   }
 
   oneFlit(id: number): Promise<Flit> {

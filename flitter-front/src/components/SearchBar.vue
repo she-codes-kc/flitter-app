@@ -3,14 +3,14 @@
     <div class="searchBar">
        <input type="text" placeholder="Buscar por @personas | #tags | texto" style="width: 100%" />
       <div class="searchBar-icon" >
-        <font-awesome-icon class="fa-sharp fa-solid fa-magnifying-glass" />
+        <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
       </div>
     </div>
 </template>
   
 <script lang="ts">
 import { defineComponent } from "vue";
-  
+
 export default defineComponent({});
 </script>
   
