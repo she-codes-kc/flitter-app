@@ -38,10 +38,7 @@ export default defineComponent({
     const fakePosts: Flit[] = [
       {
         id: "5",
-        author: {
-          id: "1",
-          name: props.username,
-        },
+        author: props.username,
         text:
           "Estoy probando ésta nueva red social. Hasta ahora es muy fácil y divertida de usar. No puedo esperar a ver qué otras cosas geniales tiene guardadas. #RedesSociales #NuevaRed 💻💜",
         images: null,
@@ -50,10 +47,7 @@ export default defineComponent({
       },
       {
         id: "6",
-        author: {
-          id: "1",
-          name: props.username,
-        },
+        author: props.username,
         text:
           "¡La pasé muy bien explorando la ciudad con mi familia hoy! #Aventura #Flitter",
         images: null,

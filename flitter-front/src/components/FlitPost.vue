@@ -10,15 +10,15 @@
       />
     </div>
     <div class="flit">
-      <router-link :to="`/profile/${post.user.username}`">
-        <div class="username">{{ post.user.username }}</div></router-link
+      <router-link :to="`/profile/${post.author}`">  
+        <div class="username">{{ post.author }}</div></router-link
       >
-      <div class="message">{{ post.message }}</div>
+      <div class="message">{{ post.text}}</div>
       <div class="meta">
-        <div class="kudos">{{ post.kudos.length }}
+        <div class="kudos">{{ post.kudos?.size }}
           <font-awesome-icon class="fa-solid fa-wand-magic-sparkles" />
         </div>
-        <div class="publishDate">{{ post.publishDate }}</div>
+        <div class="publishDate">{{ post.creation }}</div>
       </div>
     </div>
   </div>

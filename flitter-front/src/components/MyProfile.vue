@@ -1,7 +1,7 @@
 <!--Mi perfil-->
 <template>
   <div class="headerPictureName">
-    <h1>{{ user.username }}</h1>
+    <h1>{{ user.name }}</h1>
     <img
       class="headerRocket"
       alt="Header Rocket"
@@ -10,9 +10,9 @@
   </div>
   <div class="wrapper">
     <div class="avatar">
-      <img :src="user.avatar" :alt="user.username" />
+      <img :src="user.image" :alt="user.name" />
     </div>
-    <div class="username">{{ user.username }}</div>
+    <div class="username">{{ user.name }}</div>
     <div class="follow">
       <div class="followers">
         <div class="number">{{ user.followers.length }}</div>

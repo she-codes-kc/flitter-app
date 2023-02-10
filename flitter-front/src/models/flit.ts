@@ -4,7 +4,7 @@ import { UserId } from "./user";
 export interface Flit {
   id: string;
   text: string;
-  author: {id:string, name: string}
+  author: string;
   images: string | null;
   creation: string;
   kudos: Set<UserId> | null;

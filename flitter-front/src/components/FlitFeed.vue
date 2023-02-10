@@ -34,10 +34,9 @@
 </template>
   
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import FlitPost from "@/components/FlitPost.vue";
 import { Flit } from "@/models/flit";
-import { ref } from "vue";
 
 export default defineComponent({
   components: {
