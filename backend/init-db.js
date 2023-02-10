@@ -1,18 +1,31 @@
-// initializes database with the minimum of data needeed
+// initialize database with the minimum of data required
+
+const readline = require('readline');
 
 // connect to database
 const connection = require('./lib/connectMongoose');
 
 // upload models
 const Flit = require('./models/Flit');
+const User = require('./models/User');
 
 async function main() {
+
+    // get user's consent before deleting
+    const confirm = await askQuestion('Are you sure you want to delete all content from the database? [n] (press "y" to confirm)')
+    if (!confirm) {
+        process.exit();
+    } 
+
     // initializes collections
     await initFlits();
+    await initUsers();
     
     // disconnect from the database
     connection.close();
 }
+
+main().catch(err => console.log('There was an error', err));
 
 async function initFlits() {
     // delete all the documents from the flits collection
@@ -30,4 +43,29 @@ async function initFlits() {
     console.log(`${inserted.length} flits created`);
 }
 
-main().catch(err => console.log('There was an error', err));
+async function initUsers() {
+    const result = await User.deleteMany();
+    console.log(`${result.deletedCount} users deleted.`);
+
+    const inserted = await User.insertMany([
+        { firstName: 'Leon', lastName: 'Sukm', username: '@leonsukm', email: 'leon.sukm@mail.com', password: '1234' }
+    ]);
+    console.log(`${inserted.length} users created`);
+}
+
+function askQuestion(text) {
+    return new Promise ((resolve, reject) => {
+        const interface = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        interface.question(text, answer => {
+            interface.close();
+            if (answer.toLowerCase() === 'y') {
+                resolve (true);
+                return;
+            }
+            resolve (false)
+        });
+    });
+}
