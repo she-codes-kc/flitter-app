@@ -16,7 +16,7 @@
       <div class="message">{{ post.text}}</div>
       <div class="meta">
         <div class="kudos">{{ post.kudos?.size }}
-          <font-awesome-icon class="fa-solid fa-wand-magic-sparkles" />
+          <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
         </div>
         <div class="publishDate">{{ post.creation }}</div>
       </div>
