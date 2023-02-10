@@ -8,8 +8,8 @@ import UserProfile from "@/components/UserProfile.vue";
 import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
 import { defineComponent } from "vue";
-import { Post } from "@/models/post";
-import user from "../store/user";
+import { Flit } from "../models/flit";
+import { Users }  from "../store/users";
 
 export default defineComponent({
   name: "ProfileView",

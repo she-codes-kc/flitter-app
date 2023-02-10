@@ -1,3 +1,4 @@
+<!--Pantalla eliminar cuenta-->
 <template>
     <form class="settings">
       <div class="tagline"><h2>Configuración</h2></div>

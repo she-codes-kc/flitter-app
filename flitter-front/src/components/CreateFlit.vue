@@ -1,10 +1,8 @@
+<!--Crear post o tweet-->
 <template>
     <div class="createFlit">
       <input
-        type="text"
-        placeholder="¿Qué estás pensando?"
-        style="width: 100%"
-      />
+        type="text" placeholder="¿Qué estás pensando?" style="width: 100%"/>
       <button>¡Flit!</button>
     </div>
 </template>
