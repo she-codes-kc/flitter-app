@@ -9,7 +9,6 @@ import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
 import { defineComponent } from "vue";
 import { Flit } from "../models/flit";
-import { Users }  from "../store/users";
 
 export default defineComponent({
   name: "ProfileView",
@@ -26,41 +25,40 @@ export default defineComponent({
   setup(props) {
     const isLoggedIn = true;
     const user: User = {
-      id: 1,
-      username: props.username,
+      id: "1",
+      name: props.username,
       email: "juan@gmail.com",
-      password: "juan123",
-      avatar:
+      image:
         "https://www.freepik.es/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_13813927.htm#query=personas&position=2&from_view=keyword&track=sph",
       followers: [3, 4],
       following: [1, 4],
     };
 
     // fetchPostsFilteredByUser()
-    const fakePosts: Post[] = [
+    const fakePosts: Flit[] = [
       {
-        id: 5,
-        user: {
-          id: 1,
-          username: props.username,
+        id: "5",
+        author: {
+          id: "1",
+          name: props.username,
         },
-        message:
+        text:
           "Estoy probando ésta nueva red social. Hasta ahora es muy fácil y divertida de usar. No puedo esperar a ver qué otras cosas geniales tiene guardadas. #RedesSociales #NuevaRed 💻💜",
-        image: null,
-        publishDate: "3/feb/23",
-        kudos: [5, 6, 4, 3],
+        images: null,
+        creation: "3/feb/23",
+        kudos: new Set(["5", "4", "9"]),
       },
       {
-        id: 6,
-        user: {
-          id: 1,
-          username: props.username,
+        id: "6",
+        author: {
+          id: "1",
+          name: props.username,
         },
-        message:
+        text:
           "¡La pasé muy bien explorando la ciudad con mi familia hoy! #Aventura #Flitter",
-        image: null,
-        publishDate: "4/feb/23",
-        kudos: [1, 4, 8, 9, 10, 7],
+        images: null,
+        creation: "4/feb/23",
+        kudos: new Set(["7", "1", "8"]),
       },
     ];
 

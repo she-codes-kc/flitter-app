@@ -1,9 +1,11 @@
+import { UserId } from "./user";
+
 // Modelo de posteo / flit
 export interface Flit {
-  id: number;
+  id: string;
   text: string;
-  author:string;
-  images: string;
-  creation: Date;
-  kudos: Set<string>;
+  author: {id:string, name: string}
+  images: string | null;
+  creation: string;
+  kudos: Set<UserId> | null;
 }

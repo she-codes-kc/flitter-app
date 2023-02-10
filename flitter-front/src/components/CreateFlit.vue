@@ -1,4 +1,4 @@
-<!--Crear post o tweet-->
+<!--Crear flit-->
 <template>
     <div class="createFlit">
       <input
