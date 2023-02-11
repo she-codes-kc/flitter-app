@@ -8,7 +8,7 @@
     <div class="loadMore">
       <img alt="Load Rocket" src="../assets/logo.png" />
       <p>
-        <a href="#/login">Inicia sesión</a> o <a href="#/signup">registrate</a> ¡para enterarte de lo que la gente habla!
+        <a href="/login">Inicia sesión</a> o <a href="/signup">registrate</a> ¡para enterarte de lo que la gente habla!
       </p>
     </div>
 

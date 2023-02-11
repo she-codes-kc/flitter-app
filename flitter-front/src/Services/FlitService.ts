@@ -21,10 +21,11 @@ class FlitService {
 
   findFlits(search: string, offset: number, limit: number): Promise<Flit[]> {
     return axios
-      .get<Flit[]>(
-        `https://api.escuelajs.co/api/v1/products/?title=${search}&offset=${offset}&limit=${limit}` 
+      .get<FlitsResponse>(
+        `/api/flits?text=${search}&offset=${offset}&limit=${limit}` 
       )
-      .then((response) => response.data);
+      .then((response) => response.data)
+      .then((response) => response.results);
   }
 }
 

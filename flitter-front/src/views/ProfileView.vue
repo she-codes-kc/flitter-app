@@ -26,6 +26,8 @@ export default defineComponent({
     const isLoggedIn = true;
     const user: User = {
       id: "1",
+      firstName: "Juan",
+      lastName: "Perez",
       name: props.username,
       email: "juan@gmail.com",
       image:
