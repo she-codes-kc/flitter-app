@@ -9,7 +9,7 @@ import {
   faMagnifyingGlass,
   faWandMagicSparkles,
 } from "@fortawesome/free-solid-svg-icons";
-import VueSimpleAlert from "vue3-simple-alert";
+import VueSimpleAlert from "vue3-simple-alert-next";
 
 library.add(faMagnifyingGlass);
 library.add(faWandMagicSparkles);
