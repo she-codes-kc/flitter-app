@@ -7,8 +7,8 @@ const userSchema = mongoose.Schema({
 
     firstName: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },
-    username: { type: String, required: true, trim: true, unique: true },
-    email: { type: String, required: true, trim: true, unique: true },
+    username: { type: String, required: true, trim: true, index: true },
+    email: { type: String, required: true, trim: true, index: true },
     password: { type: String, required: true },
     profilePic: { type: String, default: 'avatar.jpg' },
     // following: [{ type: Schema.Types.ObjectId, ref: 'User' }],

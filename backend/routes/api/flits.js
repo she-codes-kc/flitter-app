@@ -85,13 +85,21 @@ router.put('/:id', async (req, res, next) => {
 // create a flit
 router.post('/', async (req, res, next) => {
     try {
-        const flitData = req.body;
+        const text = req.body.text;
+        // TODO Obtain author from token
+        const author = req.body.author;
 
-        const flit = new Flit(flitData);
+        const flit = new Flit({
+            text,
+            image: null,
+            author,
+            date: new Date(),
+            kudos: [],
+        });
 
         const flitSaved = await flit.save();
 
-        res.json({ results: flitSaved });
+        res.json(flitSaved);
     } catch(err) {
         next(err);
     }

@@ -23,10 +23,12 @@
         Seguidos
       </div>
     </div>
-  <div class="buttons">
-    <button class="edit-button">
-      <router-link to="/profile/me/settings">Editar perfil</router-link>
-    </button>
+  <div v-show="myProfile">
+      <div class="buttons">
+      <button class="edit-button">
+        <router-link to="/settings">Editar perfil</router-link>
+      </button>
+  </div>
   </div>
 </div>
 </template>
@@ -42,8 +44,11 @@ export default defineComponent({
       type: Object as PropType<User>,
       required: true,
     },
+    myProfile: {
+      type: Boolean,
+      required: true,
   },
-});
+}});
 </script>
 
 <style scoped>

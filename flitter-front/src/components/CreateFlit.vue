@@ -1,16 +1,31 @@
 <!--Crear flit-->
 <template>
     <div class="createFlit">
-      <input
+      <input v-model="newFlit"
         type="text" placeholder="¿Qué estás pensando?" style="width: 100%"/>
-      <button>¡Flit!</button>
+      <button @click="createFlit">¡Flit!</button>
     </div>
+    <div v-if="created">Flit Creado!</div>
 </template>
   
 <script lang="ts">
+import FlitService from "@/services/FlitService";
 import { defineComponent } from "vue";
   
-export default defineComponent({});
+export default defineComponent({
+   data() {
+    return {
+        newFlit: "",
+        created: false,
+    }
+   },
+   methods: {
+    async createFlit() {
+        const flit = await FlitService.createFlit(this.newFlit);
+        this.created = true;
+    }
+   }
+});
 </script>
   
 <style scoped>

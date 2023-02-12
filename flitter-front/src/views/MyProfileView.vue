@@ -1,12 +1,12 @@
 <!--Pantalla mi perfil-->
 <template>
-  <MyProfile :user="user" />
+  <ProfileComp :my-profile="true"  :user="user" />
   <CreateFlit/>
   <FlitFeed :posts="posts" />
 </template>
 
 <script lang="ts">
-import MyProfile from "../components/MyProfile.vue";
+import ProfileComp from "../components/ProfileComp.vue";
 import CreateFlit from "../components/CreateFlit.vue";
 import FlitFeed from "../components/FlitFeed.vue";
 import { User } from "../models/user";
@@ -16,9 +16,9 @@ import { Flit } from "../models/flit";
 export default defineComponent({
   name: "MyProfileView",
   components: {
-    MyProfile,
     CreateFlit,
     FlitFeed,
+    ProfileComp
   },
   props: {
     username: {
