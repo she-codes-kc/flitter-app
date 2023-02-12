@@ -25,13 +25,18 @@ const routes: Array<RouteRecordRaw> = [
       const id = Number(route.params.id);
       return { id };
     },
-    component: () => import("@/views/MyProfileView.vue"),
+    component: () => import("@/views/ProfileView.vue"),
   },
   {
     path: "/profile",
     name: "profile",
-    component: () => import("@/views/ProfileView.vue"),
-    beforeEnter: [loginGuard],
+    component: () => import("@/views/MyProfileView.vue"),
+    // beforeEnter: [loginGuard],
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: () => import("@/views/SettingsView.vue"),
   },
 ];
 

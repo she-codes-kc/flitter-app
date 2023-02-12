@@ -27,6 +27,7 @@ class FlitService {
       .then((response) => response.data)
       .then((response) => response.results);
   }
+
 }
 
 export default new FlitService();

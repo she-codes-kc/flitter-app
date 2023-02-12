@@ -8,7 +8,9 @@
           Al hacer clic en el botón a continuación, eliminará su cuenta de Flitter.
         </p>
       </div>
-      <button>Desactivar</button>
+      <button>
+        <router-link to="/">Desactivar</router-link>
+      </button>
     </form>
 </template>
   
