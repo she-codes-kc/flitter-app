@@ -31,7 +31,31 @@
       <a href="#/password">¿Olvidaste la contraseña?</a>
     </div>
   </form>
+  <LoggedIn/>
 </template>
+
+<script lang="ts">
+
+import { defineComponent, ref} from "vue";
+import VueSimpleAlert from "vue3-simple-alert-next";
+import LoggedIn from "@/components/LoggedIn.vue"
+
+// Código de: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+const validateEmail = (email: string) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+export default defineComponent({
+  
+});
+
+
+</script>
+
 
 <style scoped>
 .login {

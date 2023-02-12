@@ -5,7 +5,6 @@
         type="text" placeholder="¿Qué estás pensando?" style="width: 100%"/>
       <button @click="createFlit">¡Flit!</button>
     </div>
-    <div v-if="created">¡Flit Creado!</div>
 </template>
   
 <script lang="ts">
@@ -21,8 +20,13 @@ export default defineComponent({
    },
    methods: {
     async createFlit() {
-        const flit = await FlitService.createFlit(this.newFlit);
-        this.created = true;
+        // Success and error flits alerts
+        try {
+            await FlitService.createFlit(this.newFlit);
+        VueSimpleAlert.alert("Has fliteado correctamente",undefined, "success");
+        } catch (error) {
+            VueSimpleAlert.alert("NO has podido flitear",undefined, "error");
+        }        
     }
    }
 });

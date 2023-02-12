@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+// eslint-disable-next-line
 import loginGuard from "./loginGuard";
 
 const routes: Array<RouteRecordRaw> = [

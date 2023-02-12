@@ -2,14 +2,14 @@
 <template>
   <div class="links">
     <router-link to="/profile">Mi perfil</router-link> |
-    <router-link to="/home"   @click="logOut">Cerrar sesión</router-link>
+    <router-link to="/home" @click="logOut">Cerrar sesión</router-link>
   </div> 
 </template>
 
 <script lang="ts">
-import router from "../router";
+import router from "@/router";
 import { defineComponent } from 'vue';
-import { RouterLink } from 'vue-router';
+
 
 export default defineComponent({
   name: 'LoggedIn',

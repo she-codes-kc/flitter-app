@@ -25,8 +25,7 @@
 import { defineComponent, ref } from "vue";
 import LoggedOut from "./LoggedOut.vue";
 import LoggedIn from "./LoggedIn.vue";
-import router from "@/router";
-import { RouterLink } from "vue-router";
+
 
 export default defineComponent({
   name: "HeaderBar",
