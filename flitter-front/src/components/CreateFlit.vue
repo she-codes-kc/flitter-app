@@ -9,7 +9,7 @@
 </template>
   
 <script lang="ts">
-import FlitService from "@/Services/FlitService";
+import FlitService from "@/services/FlitService";
 import { defineComponent } from "vue";
   
 export default defineComponent({

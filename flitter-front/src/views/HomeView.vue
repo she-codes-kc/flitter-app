@@ -15,6 +15,8 @@
     <h2>Últimas tendencias</h2>
     <h2 v-if="loading">Cargando...</h2>
     <FlitFeed v-if="!loading" :posts="flits"/>
+    
+    <CreateFlit/>
     </div>
   </div>
 </template>
@@ -25,7 +27,8 @@
 import { defineComponent, ref } from 'vue';
 import FlitFeed from '@/components/FlitFeed.vue';
 import { Flit } from "../models/flit";
-import FlitService from '@/Services/FlitService';
+import FlitService from '@/services/FlitService';
+import CreateFlit from '@/components/CreateFlit.vue';
 
 interface Data {
   flits: Flit[];
@@ -38,7 +41,8 @@ export default defineComponent({
   name: 'HomeView',
   components: {
     FlitFeed,
-  },
+    CreateFlit
+},
   setup() {
     return {
       page: ref(1),
