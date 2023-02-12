@@ -2,6 +2,14 @@
 <template>
   <form class="signup">
     <div class="tagline"><h2>¿Nuevo en Flitter?</h2></div>
+    <div class="inputName">
+      <label for="name">Nombre</label>
+      <input id="name" type="text" placeholder="Juan" required/>
+    </div>
+    <div class="inputLastName">
+      <label for="lastName">Apellido</label>
+      <input id="lastName" type="text" placeholder="Gonzalez" required/>
+    </div>
     <div class="inputUsername">
       <label for="username">Usuario</label>
       <input id="username" type="text" placeholder="JuanGonzalez" pattern="[A-Za-z]{}" required/>
@@ -15,9 +23,9 @@
       <input id="password" type="password" placeholder="*********" required/>
     </div>
     <button type="submit">Registrarme</button>
-    <div class="validate">
+    <!-- <div class="validate">
       <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">(Revisa tu bandeja de entrada y haz clic en el enlace para validar tu cuenta).</a>
-    </div>
+    </div> -->
   </form>
 </template>
 
@@ -37,6 +45,8 @@ h2 {
 
 .inputUsername,
 .inputEmail,
+.inputName,
+.inputLastName,
 .inputPassword {
   width: 100%;
   margin-bottom: 40px;
@@ -44,6 +54,8 @@ h2 {
 
 .inputEmail input,
 .inputUsername input,
+.inputName input,
+.inputLastName input,
 .inputPassword input{
   width: 100%;
   border: 0.1rem solid #e2e2e2e4;
@@ -56,6 +68,8 @@ h2 {
 
 .inputEmail input:focus,
 .inputUsername input:focus,
+.inputLastName input:focus,
+.inputName input:focus,
 .inputPassword input:focus{
   background-color: white;
   border-color: #472967;
