@@ -33,7 +33,7 @@ justify-self: right;
 
 a {
 text-decoration: none;
-color: #44549c;
+color: #EC6324;
 font-family: 'Josefin Sans', sans-serif, cursive;
 transition: 0.25ms;
 }

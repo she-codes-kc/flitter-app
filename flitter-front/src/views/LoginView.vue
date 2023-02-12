@@ -36,7 +36,7 @@
 <style scoped>
 .login {
   padding: 10px;
-  max-width: 600px;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -53,8 +53,35 @@ h2 {
   margin-bottom: 40px;
 }
 
+.inputEmail input ,
+.inputPassword input{
+  width: 100%;
+  border: 0.1rem solid #e2e2e2e4;
+  border-radius: 3rem;
+  background-color: #e2e2e2e4;
+  padding-left: 1.5rem;
+  transition: all 0.3s;
+  align-items: center;
+}
+
+.inputEmail input:focus ,
+.inputPassword input:focus{
+  background-color: white;
+  border-color: #472967;
+}
+
+
 img {
   margin: 20px;
+}
+
+a{
+  font-family: "Josefin Sans", sans-serif,cursive;
+  font-size: 20px;
+}
+
+.tagline{
+  color:#EC6324;
 }
 </style>
 

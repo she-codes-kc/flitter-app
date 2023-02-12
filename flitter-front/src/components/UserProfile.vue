@@ -1,11 +1,11 @@
 <template>
     <div class="headerPictureName">
     <h1>{{ user.username }}</h1>
-    <img
+    <!-- <img
       class="headerRocket"
       alt="Header Rocket"
       src=""
-    />
+    /> -->
     </div>
     <div class="wrapper">
         <div class="avatar">

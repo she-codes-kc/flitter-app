@@ -1,5 +1,5 @@
 
-import AuthService from "@/services/AuthService";
+import AuthService from "@/Services/AuthService";
 import type { Module } from "vuex";
 
 interface IUserState {

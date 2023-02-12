@@ -1,5 +1,5 @@
 <template>
-  <HeaderBar />
+  <HeaderBar /> 
   <div class="wrapper"><router-view /></div>
 </template>
 
@@ -24,7 +24,7 @@ export default defineComponent({
   font-family:'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #000;
 }
 
 body {
@@ -33,12 +33,12 @@ body {
 
 .wrapper {
   padding: 10px;
-  max-width: 600px;
+  max-width: 650px;
   margin: auto;
 }
 
 button {
-  background-color: #5060a4;
+  background-color: #472967;
   font-family: 'Josefin Sans', sans-serif, cursive;
   font-weight: lighter;
   border: none;
@@ -55,7 +55,7 @@ button {
 }
 
 button:hover {
-  background-color:#44549c;
+  background-color:#573877;
   cursor: pointer;
 }
 
@@ -63,7 +63,7 @@ input {
   border-style: solid;
   font-family: "Josefin Sans", sans-serif;
   border-width: 2px;
-  border-color: #5060a4;
+  border-color: #472967;
   border-radius: 5px;
   padding: 10px;
   transition: 0.25s;
@@ -79,16 +79,16 @@ a {
   text-decoration: none;
   transition: 0.25ms;
   font-size: 20px;
-  color: #2c3e50;
+  color: #000;
 }
 
 a:hover {
-  color:#44549c;
+  color:#573877;
 }
 
 label {
   font-size: 20px;
-  color:#5060a4;
+  color:#472967;
   font-family: 'Josefin Sans', sans-serif, cursive;
   font-weight: lighter;
   display: block;

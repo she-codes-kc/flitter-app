@@ -1,16 +1,17 @@
 <!--Página principal/feed-->
 <template>
-    <h2>Últimas tendencias</h2>
+    <!-- <h2>Últimas tendencias</h2> -->
     <div v-for="post in posts" :key="post.id">
       <FlitPost :post="post" />
     </div>
 <!--Pie de página con inicio de seión o registro-->
-    <div class="loadMore">
-      <img alt="Load Rocket" src="../assets/logo.png" />
+ <footer class="loadMore">
+      <!-- <img alt="Load Rocket" src="../assets/logo.png" /> -->
       <p>
-        <a href="/login">Inicia sesión</a> o <a href="/signup">registrate</a> ¡para enterarte de lo que la gente habla!
+        <a href="/login">Inicia sesión</a> o <a href="/signup">regístrate</a> ¡para poder crear tus propios flits!
       </p>
-    </div>
+    
+ </footer>
 
 <!-- Si estás logueado, salen botones de página -->
     <div class="pages" v-if="loggedIn">
@@ -21,14 +22,6 @@
       <div class="next-page">
         <!-- AGREGAR ÍCONO FLECHA DERECHA // <svg class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16"></svg> -->
       </div>
-    </div>
-
-<!-- Si no estas logueado, sale un mensaje de login -->
-    <div class="loadMore" v-else>
-      <img alt="Load Rocket" src="" />
-        <p>
-          <a href="#/login">Inicia sesión</a> o <a href="#/signup">registrate</a> ¡para enterarte de lo que la gente habla!
-        </p>  
     </div>
 
 </template>
@@ -64,15 +57,18 @@ export default defineComponent({
 <style scoped>
 
 h2 {
-    color: #5060a4;
+    color: #EC6324;
     font-family: 'Josefin Sans', sans-serif, cursive;
     font-weight: lighter;
     margin-bottom: 40px;
+    display: flex;
+    justify-content: left;
+    margin-left: 1rem;
 }
   
 p {
     font-size: 20px;
-    color: #2c3e50;
+    color: #472967;
     text-align: center;
 }
   
@@ -82,10 +78,12 @@ img {
   
 .loadMore {
     text-align: center;
+    margin-top: 12rem;
 }
   
 a {
-    text-decoration: underline;
+  color: #EC6324;
+  text-decoration: underline;
 }
 
 </style>
