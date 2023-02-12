@@ -5,7 +5,7 @@
         type="text" placeholder="¿Qué estás pensando?" style="width: 100%"/>
       <button @click="createFlit">¡Flit!</button>
     </div>
-    <div v-if="created">Flit Creado!</div>
+    <div v-if="created">¡Flit Creado!</div>
 </template>
   
 <script lang="ts">
