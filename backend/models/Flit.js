@@ -22,7 +22,7 @@ flitSchema.statics.array = function(filter, skip, limit, fields, sort) {
 
 
 // create model
-const Flit = mongoose.model('Flit', flitSchema);
+const Flit = mongoose.model('PublicFlits', flitSchema);
 
 // export model
 module.exports = Flit;
