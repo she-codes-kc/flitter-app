@@ -6,13 +6,13 @@ const User = require('../models/User');
 // define the schema of flits
 const flitSchema = mongoose.Schema({
 
-    text: { type: String, minlenght:1, maxlenght:256, trim: true, index: true },
-    image: { type: String, index: true },
+    text: { type: String, minlenght:1, maxlenght:256, trim: true, sparse: true },
+    image: { type: String },
     // author: { type: Schema.Types.ObjectId, ref: 'User' }, 
-    author: { type: String, index: true },
-    date: { type: Date, default: Date.now, index: true },
+    author: { type: String, sparse: true },
+    date: { type: Date, default: Date.now, sparse: true },
     // kudos: [{ type: Schema.Types.ObjectId, ref: 'User' }] 
-    kudos: { type: [Number], index: true }
+    kudos: { type: [Number] }
 });
 
 flitSchema.statics.array = function(filter, skip, limit, fields, sort) {

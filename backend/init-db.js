@@ -30,6 +30,7 @@ main().catch(err => console.log('There was an error', err));
 async function initFlits() {
     // delete all the documents from the flits collection
     const result = await Flit.deleteMany();
+    await Flit.syncIndexes();
     console.log(`${result.deletedCount} flits deleted.`);
 
     // create initial flits
@@ -45,6 +46,7 @@ async function initFlits() {
 
 async function initUsers() {
     const result = await User.deleteMany();
+    await User.syncIndexes();
     console.log(`${result.deletedCount} users deleted.`);
 
     const inserted = await User.insertMany([
