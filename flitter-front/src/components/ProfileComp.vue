@@ -2,16 +2,18 @@
 <template>
   <div class="headerPictureName">
     <h1>{{ user.name }}</h1>
-    <img
+    <!-- <img
       class="headerRocket"
       alt="Header Rocket"
       src=""
-    />
+    />  -->
   </div>
   <div class="wrapper">
+    
     <div class="avatar">
       <img :src="user.image" :alt="user.name" />
     </div>
+    
     <div class="username">{{ user.name }}</div>
     <div class="follow">
       <div class="followers">
@@ -97,20 +99,18 @@ img {
 }
 
 .buttons {
-  grid-area: d;
+  padding: 10px 2px;
   display: flex;
-  justify-content: left;
+  grid-area: d;
   column-gap: 5px;
 }
 
 .edit-button,
 .newFlit-button {
-  /* display: none; */
-  width: 100px;
+  display: flex;
   color: white;
-  background-color: #5060a4;
+  background-color: #472967;
   border: none;
-  border-radius: 5px;
 }
 
 a {

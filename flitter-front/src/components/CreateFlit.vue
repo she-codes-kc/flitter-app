@@ -9,7 +9,7 @@
 </template>
   
 <script lang="ts">
-import FlitService from "@/services/FlitService";
+import FlitService from "@/Services/FlitService";
 import { defineComponent } from "vue";
   
 export default defineComponent({
@@ -35,11 +35,11 @@ export default defineComponent({
     align-items: center;
     border-style: solid;
     border-width: 2px;
-    border-color: #5060a4;
-    border-radius: 5px;
-    box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.3);  
+    border-color: #472967;
+    border-radius: 3rem; 
+    background-color:#e2e2e2e4 ;
 }
-  
+
 input {
     padding: 5px;
     padding-left: 20px;
@@ -53,11 +53,11 @@ input:focus {
 }
   
 button {
-    margin-bottom: 0;
-    font-size: 20px;
+    margin-bottom: 2;
+    font-size: 18px;
     padding: 5px 10px;
     margin: 5px 10px;
-    border-radius: 5px;
+    border-radius: 50px;
     justify-content: flex-end;
 }
 </style>

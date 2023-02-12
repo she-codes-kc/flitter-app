@@ -5,7 +5,7 @@
       <img
         class="roundimg"
         alt="Flitter logo"
-        src="../assets/logo.png"
+        src="../assets/usuario1.jpg"
         width="40"
       />
     </div>
@@ -15,10 +15,11 @@
       >
       <div class="message">{{ post.text}}</div>
       <div class="meta">
+        
+        <div class="publishDate">{{ post.creation }}</div>
         <div class="kudos">{{ post.kudos?.size }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
         </div>
-        <div class="publishDate">{{ post.creation }}</div>
       </div>
     </div>
   </div>
@@ -39,18 +40,33 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.logo {
+  width: 4rem;
+  height: 3rem;
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .flit {
   width: 100%;
   margin-bottom: 20px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-color: #5060a4;
+  border-color: #EC6324;
   margin: 0 10px 10px 10px;
   font-size: 18px;
 }
 
 .username {
-  color: #5060a4;
+  color: #472967;
   font-family: 'Josefin Sans', sans-serif, cursive;
   font-weight: lighter;
 }
@@ -58,11 +74,13 @@ export default defineComponent({
 .meta {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 5px;
+  padding-top: 12px;
+  margin-bottom: 10px;
 }
 
 .kudos {
   margin: 0 10px;
+  color:#472967;
 }
 
 .message {
@@ -70,7 +88,7 @@ export default defineComponent({
 }
 
 .publishDate {
-  color:#5060a4;
+  color:#EC6324;
   font-style: italic;
 }
 

@@ -42,8 +42,36 @@ h2 {
   margin-bottom: 40px;
 }
 
+.inputEmail input,
+.inputUsername input,
+.inputPassword input{
+  width: 100%;
+  border: 0.1rem solid #e2e2e2e4;
+  border-radius: 3rem;
+  background-color: #e2e2e2e4;
+  padding-left: 1.5rem;
+  transition: all 0.3s;
+  align-items: center;
+}
+
+.inputEmail input:focus,
+.inputUsername input:focus,
+.inputPassword input:focus{
+  background-color: white;
+  border-color: #472967;
+}
+
 img {
 float: right;
 margin: 0 10px 10px 10px;
+}
+
+.tagline{
+  color:#EC6324;
+}
+
+a{
+  font-family: "Josefin Sans", sans-serif,cursive;
+  font-size: 20px;
 }
 </style>

@@ -3,12 +3,12 @@
   <nav class="bar">
     <div class="logo">
       <router-link to="/">
-        <img class="roundimg" alt="Flitter logo" src="../assets/logo.png" width="100" />
+        <img class="roundimg" alt="Flitter logo" src="../assets/logo-texto.png" width="100" />
       </router-link>
     </div>
     <div class="title">
       <router-link to="/">
-        <h2>Bienvenidos a Flitter</h2>
+        <h2>Bienvenidos ¡Entérate de lo que la gente habla!</h2>
       </router-link>
     </div>
     <div v-if="loggedIn"> 
@@ -49,6 +49,9 @@ export default defineComponent({
 
 <style scoped>
 .bar {
+  grid-template-columns: minmax(5rem, 1fr) 2fr minmax(5rem, 1fr);
+  grid-template-rows: repeat(2,min-content) 1fr;
+  grid-row-gap: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,7 +73,7 @@ export default defineComponent({
 }
 
 h2 {
-  color:#5060a4;
+  color:#472967;
   font-family: 'Josefin Sans', sans-serif, cursive;
   justify-content: center;
 }

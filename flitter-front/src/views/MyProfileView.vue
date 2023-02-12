@@ -2,6 +2,7 @@
 <template>
   <ProfileComp :my-profile="true"  :user="user" />
   <CreateFlit/>
+  <h2>Mis flits</h2>
   <FlitFeed :posts="posts" />
 </template>
 
@@ -36,7 +37,7 @@ export default defineComponent({
       name: props.username,
       email: "geor@gmail.com",
       image:
-        "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
+        "",
       followers: [3, 4],
       following: [1, 4],
     };
@@ -73,4 +74,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+h2{
+  font-family: "Josefin Sans", sans-serif, cursive;
+  font-size: 25px;
+  color:#EC6324;
+}
 </style>
