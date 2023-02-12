@@ -1,16 +1,30 @@
 <!--Crear flit-->
 <template>
     <div class="createFlit">
-      <input
+      <input v-model="newFlit"
         type="text" placeholder="¿Qué estás pensando?" style="width: 100%"/>
       <button>¡Flit!</button>
+      
     </div>
 </template>
   
 <script lang="ts">
 import { defineComponent } from "vue";
   
-export default defineComponent({});
+export default defineComponent({
+   data() {
+    return {
+        newFlit: ""
+   }
+},
+    created() {
+        let postFlit: Flit[] = {
+            
+
+        };
+        },
+        
+});
 </script>
   
 <style scoped>
