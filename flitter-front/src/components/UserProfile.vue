@@ -1,11 +1,11 @@
 <template>
     <div class="headerPictureName">
     <h1>{{ user.username }}</h1>
-    <!-- <img
+    <img
       class="headerRocket"
       alt="Header Rocket"
-      src=""
-    /> -->
+      src="../assets/usuario1.jpg"
+    />
     </div>
     <div class="wrapper">
         <div class="avatar">
@@ -22,9 +22,9 @@
                 Seguidos
             </div>
         </div>
-        <div class="buttons">
+        <!-- <div class="buttons">
             <button><a href="#/login">Inicia sesión para seguir</a></button>
-        </div>
+        </div> -->
     </div>
 </template>
 

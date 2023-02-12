@@ -1,15 +1,15 @@
 <!--Pantalla eliminar cuenta-->
 <template>
     <form class="settings">
-      <div class="tagline"><h2>Configuración</h2></div>
-      <div class="inputEmail">
-        <label for="username">Desactiva tu cuenta</label>
-        <p>
-          Al hacer clic en el botón a continuación, eliminará su cuenta de Flitter.
-        </p>
-      </div>
+      <div class="tagline"><h2>Configuración de la cuenta</h2></div>
       <button>
-        <router-link to="/">Desactivar</router-link>
+        <router-link to="/" class="labelName">Modificar mis datos</router-link>
+      </button>
+      <button>
+        <router-link to="/" class="labelName">Modificar contraseña</router-link>
+      </button>
+      <button>
+        <router-link to="/" class="labelName">Desactivar mi cuenta</router-link>
       </button>
     </form>
 </template>
@@ -26,6 +26,7 @@
   
 h2 {
     margin-bottom: 40px;
+    color:#EC6324;
 }
   
 .inputEmail,
@@ -36,11 +37,13 @@ h2 {
   
 p {
     font-size: 20px;
-    color: #2c3e50;
+    color: #000;
 }
   
 button {
-    background-color: red;
+    background-color: #472967;
+    color: white;
+    width: 15rem;
 }
   
 button:hover {
@@ -49,5 +52,10 @@ button:hover {
   
 img {
     margin: 20px;
+}
+
+.labelName{
+  color:white;
+  font-size: 18px;
 }
 </style>

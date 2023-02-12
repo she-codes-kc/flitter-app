@@ -19,6 +19,7 @@
         <div class="publishDate">{{ post.creation }}</div>
         <div class="kudos">{{ post.kudos?.size }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
       </div>
     </div>
@@ -81,6 +82,7 @@ export default defineComponent({
 .kudos {
   margin: 0 10px;
   color:#472967;
+  size: 18px;
 }
 
 .message {
@@ -96,5 +98,11 @@ export default defineComponent({
   display: flex;
   align-items: start;
   margin-bottom: 10px;
+}
+
+i {
+  color:#472967;
+  size: 18px;
+  margin: 0 5px;
 }
 </style>
