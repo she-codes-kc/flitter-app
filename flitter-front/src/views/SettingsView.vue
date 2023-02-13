@@ -1,5 +1,6 @@
-<!--Pantalla eliminar cuenta-->
+<!--Pantalla configuración de cuenta-->
 <template>
+  <div class="card">
     <form class="settings">
       <div class="tagline"><h2>Configuración de la cuenta</h2></div>
       <button>
@@ -12,6 +13,7 @@
         <router-link to="/" class="labelName">Desactivar mi cuenta</router-link>
       </button>
     </form>
+  </div>
 </template>
   
 <style scoped>
@@ -22,6 +24,14 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+}
+
+.card {
+  width: 30rem;
+  min-height:200px;
+  border:1px solid rgb(243, 239, 239);
+  border-radius: 1rem;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
 }
   
 h2 {

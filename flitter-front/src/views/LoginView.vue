@@ -68,7 +68,6 @@ export default defineComponent({
     },
   },
 });
-
 </script>
 
 
@@ -109,17 +108,16 @@ h2 {
   border-color: #472967;
 }
 
-
 img {
   margin: 20px;
 }
 
-a{
+a {
   font-family: "Josefin Sans", sans-serif,cursive;
   font-size: 20px;
 }
 
-.tagline{
+.tagline {
   color:#EC6324;
 }
 </style>

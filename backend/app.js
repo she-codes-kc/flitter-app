@@ -6,11 +6,6 @@ var logger = require('morgan');
 const authMiddleware = require('./lib/authMiddleware')
 
 require('./lib/connectMongoose');
-require('./routes/api/flits');
-require('./routes/api/users');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -28,16 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
  * my API routes
  */
 
-app.use('/api/flits', authMiddleware, require('./routes/api/flits'));
-app.use('/api/users', require('./routes/api/users'));
-
-
-/**
- * my website routes
- */
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/auth', require('./apps/auth/routes'));
+app.use('/api/users', authMiddleware, require('./apps/users/routes'));
+app.use('/api/flits', require('./apps/flits/routes'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,10 +38,10 @@ app.use(function(err, req, res, next) {
   // check if its a validation error
   if (err.array) {
     err.status = 422;
-    const errorInfo = err.array({ onlyFirstError: true}) [0]; 
+    const errorInfo = err.array({ onlyFirstError: true}) [0];
     err.message = `Error in ${errorInfo.location}, param "${errorInfo.param}" ${errorInfo.msg}`
   }
-  
+
   res.status(err.status || 500);
 
   // if its an API request, answer with JSON

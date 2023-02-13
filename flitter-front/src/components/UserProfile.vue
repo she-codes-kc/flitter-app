@@ -1,15 +1,7 @@
 <template>
-    <div class="headerPictureName">
-    <h1>{{ user.username }}</h1>
-    <img
-      class="headerRocket"
-      alt="Header Rocket"
-      src="../assets/usuario1.jpg"
-    />
-    </div>
     <div class="wrapper">
         <div class="avatar">
-            <img :src="user.avatar" :alt="user.username">
+            <img :src="user.profilePic" :alt="user.username">
         </div>
         <div class="username">{{ user.username }}</div>
         <div class="follow">
@@ -22,9 +14,6 @@
                 Seguidos
             </div>
         </div>
-        <!-- <div class="buttons">
-            <button><a href="#/login">Inicia sesión para seguir</a></button>
-        </div> -->
     </div>
 </template>
 
@@ -66,7 +55,7 @@ img {
     grid-area: c;
     font-weight: bold;
     font-size: larger;
-    color: #5060a4;
+    color: #472967;
     padding-top: 5px;
 }
 
@@ -93,10 +82,9 @@ img {
     column-gap: 5px;
 }
 .edit-button, .newFlit-button {
-    /* display: none; */
     width: 100px;
     color: white;
-    background-color:#5060a4;
+    background-color:#472967;
     border: none;
     border-radius: 5px;
 }

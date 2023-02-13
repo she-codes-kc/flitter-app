@@ -9,14 +9,15 @@
   
 <script lang="ts">
 import FlitService from "@/services/FlitService";
-import { defineComponent } from "vue";
 import VueSimpleAlert from "vue3-simple-alert-next";
+import { defineComponent } from "vue";
   
 export default defineComponent({
    data() {
     return {
         newFlit: "",
         created: false,
+        // date: Date.getday() // ????
     }
    },
    methods: {
@@ -24,9 +25,9 @@ export default defineComponent({
         // Success and error flits alerts
         try {
             await FlitService.createFlit(this.newFlit);
-        VueSimpleAlert.alert("Has fliteado correctamente",undefined, "success");
+            VueSimpleAlert.alert("Tu flit ha sido publicado",undefined, "success");
         } catch (error) {
-            VueSimpleAlert.alert("NO has podido flitear",undefined, "error");
+            VueSimpleAlert.alert("No has podido flittear, inténtalo de nuevo",undefined, "error");
         }        
     }
    }

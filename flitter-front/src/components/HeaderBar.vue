@@ -12,11 +12,10 @@
       </router-link>
     </div>
     <div v-if="loggedIn"> 
-    <LoggedIn/> 
+      <LoggedIn/> 
     </div> 
-
     <div v-else> 
-    <LoggedOut />
+      <LoggedOut />
     </div> 
   </nav>
 </template>
@@ -57,7 +56,8 @@ export default defineComponent({
   gap: 10px;
   padding: 5px;
   margin: 5px 0;
-  box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #d2d2d2;
 }
 
 .logo {
