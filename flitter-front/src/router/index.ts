@@ -17,7 +17,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/signup",
     name: "signup",
     component: () => import("@/views/SignupView.vue"),
-    // beforeEnter: [loginGuard],
   },
   {
     path: "/profile/:username",
@@ -32,12 +31,13 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile",
     name: "profile",
     component: () => import("@/views/MyProfileView.vue"),
-    // beforeEnter: [loginGuard],
+    beforeEnter: [loginGuard],
   },
   {
     path: "/settings",
     name: "settings",
     component: () => import("@/views/SettingsView.vue"),
+    beforeEnter: [loginGuard],
   },
   {
     path: "/password-recovery",

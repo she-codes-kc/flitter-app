@@ -2,12 +2,13 @@
 <template>
   <div class="links">
     <router-link to="/profile">Mi perfil</router-link> |
-    <router-link to="/home" @click="logout">Cerrar sesión</router-link>
+    <router-link to="/" @click="logout">Cerrar sesión</router-link>
   </div> 
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import VueSimpleAlert from 'vue3-simple-alert-next';
 
 
 export default defineComponent({
@@ -15,6 +16,9 @@ export default defineComponent({
   methods: {
     logout() {
       this.$store.dispatch('user/logout');
+      VueSimpleAlert.alert('Nos vemos pronto!', undefined, 'info').then(() => {
+        this.$router.push({})
+      })
     }
   }
 })
