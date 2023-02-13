@@ -37,12 +37,12 @@ async function initFlits() {
 
     // create initial flits
     var flits = [];
-    await users.forEach(async (user) => {
-        flits.push({ text: 'Hola Mundo', image: 'hola-mundo.jpg', author: user, date: 2023-01-27, kudos: [5] })
-        flits.push({ text: 'Hello World', author: user, date: 2023-02-06, kudos: [3] })
-        flits.push({ text: '1,2,3 probando', image: '123.jpg', author: user, date: 2023-01-18, kudos: [11] })
-        flits.push({ text: 'Test', image: 'test.jpg', author: user, date: 2023-01-04, kudos: [8] })
-        flits.push({ text: 'Prueba', author: user, date: 2023-02-02, kudos: [7] })
+    users.forEach((user) => {
+        flits.push({ text: 'Hola Mundo', image: 'hola-mundo.jpg', author: user, date: new Date('2023-01-27'), kudos: [5] })
+        flits.push({ text: 'Hello World', author: user, date: new Date('2023-02-06'), kudos: [3] })
+        flits.push({ text: '1,2,3 probando', image: '123.jpg', author: user, date: new Date('2023-01-18'), kudos: [11] })
+        flits.push({ text: 'Test', image: 'test.jpg', author: user, date: new Date('2023-01-04'), kudos: [8] })
+        flits.push({ text: 'Prueba', author: user, date: new Date('2023-02-02'), kudos: [7] })
     });
 
     const inserted = await Flit.insertMany(flits)

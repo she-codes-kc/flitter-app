@@ -1,6 +1,6 @@
 <!--Página principal/feed-->
 <template>
-    <div v-for="post in posts" :key="post.id">
+    <div v-for="post in posts" :key="post._id">
       <FlitPost :post="post"/>
     </div>
     <div class="pages" v-if="loggedIn">
