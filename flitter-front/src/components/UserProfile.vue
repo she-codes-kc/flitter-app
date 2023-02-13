@@ -14,9 +14,6 @@
                 Seguidos
             </div>
         </div>
-        <!-- <div class="buttons">
-            <button><a href="#/login">Inicia sesión para seguir</a></button>
-        </div> -->
     </div>
 </template>
 
@@ -85,7 +82,6 @@ img {
     column-gap: 5px;
 }
 .edit-button, .newFlit-button {
-    /* display: none; */
     width: 100px;
     color: white;
     background-color:#472967;

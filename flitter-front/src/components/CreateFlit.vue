@@ -65,6 +65,4 @@ button {
     border-radius: 50px;
     justify-content: flex-end;
 }
-
-
 </style>

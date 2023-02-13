@@ -40,7 +40,6 @@
   align-items: center;
 }
 
-
 h2 {
   margin-bottom: 40px;
 }
@@ -67,7 +66,6 @@ h2 {
   transition: all 0.3s;
   align-items: center;
 }
-
 .inputEmail input:focus,
 .inputUsername input:focus,
 .inputLastName input:focus,
@@ -82,11 +80,11 @@ float: right;
 margin: 0 10px 10px 10px;
 }
 
-.tagline{
+.tagline {
   color:#EC6324;
 }
 
-a{
+a {
   font-family: "Josefin Sans", sans-serif,cursive;
   font-size: 20px;
 }

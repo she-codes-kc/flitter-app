@@ -12,11 +12,10 @@
       </router-link>
     </div>
     <div v-if="loggedIn"> 
-    <LoggedIn/> 
+      <LoggedIn/> 
     </div> 
-
     <div v-else> 
-    <LoggedOut />
+      <LoggedOut />
     </div> 
   </nav>
 </template>

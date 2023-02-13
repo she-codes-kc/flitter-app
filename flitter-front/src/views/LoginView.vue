@@ -1,20 +1,4 @@
-<!--Pantalla Iniciar sesión-->
-<!-- <script lang="ts"></script>
-
-<template>
-  <div>
-    <form>
-      <label for="user">Usuario:</label>
-      <input type="text" id="user" name="user" /><br /><br />
-      <label for="password">Contraseña:</label>
-      <input type="text" id="password" name="password" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-
-  <button>LogIn</button>
-</template> -->
-
+<!--Iniciar sesión-->
 <template>
   <form class="login">
     <div class="tagline"><h2>¿Ya tienes una cuenta en Flitter?</h2></div>
@@ -52,8 +36,6 @@ const validateEmail = (email: string) => {
 export default defineComponent({
   
 });
-
-
 </script>
 
 
@@ -94,17 +76,16 @@ h2 {
   border-color: #472967;
 }
 
-
 img {
   margin: 20px;
 }
 
-a{
+a {
   font-family: "Josefin Sans", sans-serif,cursive;
   font-size: 20px;
 }
 
-.tagline{
+.tagline {
   color:#EC6324;
 }
 </style>
