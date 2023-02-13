@@ -1,41 +1,43 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+// eslint-disable-next-line
+import loginGuard from "./loginGuard";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/ListFlitt.vue"),
-  },
-  {
-    path: "/about-us",
-    name: "about-us",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.../views/Nosotras.vue
-    component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/AboutUs.vue"),
+    component: () => import("@/views/HomeView.vue"),
   },
   {
     path: "/login",
     name: "login",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/LoginView.vue"),
+    component: () => import("../views/LoginView.vue"),
   },
   {
-    path: "/flitt/:id",
-    name: "flitt",
+    path: "/signup",
+    name: "signup",
+    component: () => import("@/views/SignupView.vue"),
+    // beforeEnter: [loginGuard],
+  },
+  {
+    path: "/profile/:username",
+    name: "user",
     props: (route) => {
       const id = Number(route.params.id);
       return { id };
     },
-    component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/FlittView.vue"),
+    component: () => import("@/views/ProfileView.vue"),
   },
   {
     path: "/profile",
     name: "profile",
-    component: () => import("@/views/ProfileView.vue"),
+    component: () => import("@/views/MyProfileView.vue"),
+    // beforeEnter: [loginGuard],
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: () => import("@/views/SettingsView.vue"),
   },
 ];
 
