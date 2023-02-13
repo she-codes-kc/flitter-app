@@ -7,20 +7,17 @@
         @keyup.enter="onSearch"
         :status="searchStatus">
     </div>
-      
-      <!-- <alert v-if="searchStatus === 'error'" title="Error" type="error">
-      Se requiere un mínimo de 3 caracteres para la búsqueda -->
-    <!-- </alert> -->
+<!--Se muestra el crear flit cuando ya está logueado, sino no
     <div>
-    <h2>Últimas tendencias</h2>
-    <h2 v-if="loading">Cargando...</h2>
-    <FlitFeed v-if="!loading" :posts="flits"/>
-    
-    <CreateFlit/>
+      <CreateFlit/>
+    </div>-->
+    <div>
+      <h2>Últimas tendencias</h2>
+      <h2 v-if="loading">Cargando...</h2>
+      <FlitFeed v-if="!loading" :posts="flits"/>
     </div>
   </div>
 </template>
-
 
 
 <script lang="ts">
@@ -28,7 +25,8 @@ import { defineComponent, ref } from 'vue';
 import FlitFeed from '@/components/FlitFeed.vue';
 import { Flit } from "../models/flit";
 import FlitService from '@/services/FlitService';
-import CreateFlit from '@/components/CreateFlit.vue';
+//import CreateFlit from '@/components/CreateFlit.vue';
+
 
 interface Data {
   flits: Flit[];
@@ -41,7 +39,7 @@ export default defineComponent({
   name: 'HomeView',
   components: {
     FlitFeed,
-    CreateFlit
+    //CreateFlit
 },
   setup() {
     return {
@@ -90,13 +88,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 .home {
   width: 100%;
   height: 100vh;
   padding-top: 1rem;
 }
-
 .searchBar {
     display: flex;
     align-items: center;

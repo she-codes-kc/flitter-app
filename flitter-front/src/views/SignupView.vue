@@ -27,6 +27,7 @@
       <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">(Revisa tu bandeja de entrada y haz clic en el enlace para validar tu cuenta).</a>
     </div> -->
   </form>
+
 </template>
 
 <style scoped>
@@ -65,7 +66,6 @@ h2 {
   transition: all 0.3s;
   align-items: center;
 }
-
 .inputEmail input:focus,
 .inputUsername input:focus,
 .inputLastName input:focus,
@@ -80,11 +80,11 @@ float: right;
 margin: 0 10px 10px 10px;
 }
 
-.tagline{
+.tagline {
   color:#EC6324;
 }
 
-a{
+a {
   font-family: "Josefin Sans", sans-serif,cursive;
   font-size: 20px;
 }
