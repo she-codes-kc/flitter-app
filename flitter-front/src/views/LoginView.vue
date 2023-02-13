@@ -2,7 +2,7 @@
 
 
 <template>
-  <form class="login">
+  <form class="login" on>
     <div class="tagline"><h2>¿Ya tienes una cuenta en Flitter?</h2></div>
     <div class="inputEmail">
       <label for="username">Usuario/email</label>
@@ -13,7 +13,7 @@
       <input v-model="password" id="password" type="password" placeholder="Password" @keyup.enter="handleLogin"
             :maxlength="15"/>
     </div>
-    <button @click="handleLogin">Iniciar sesión</button>
+    <button @click="handleLogin" type="button">Iniciar sesión</button>
     <div class="forgotPassword">
       <router-link to="/PasswordRecovery">¿Olvidaste la contraseña?</router-link>
     </div>
@@ -21,6 +21,7 @@
 </template>
 
 <script lang="ts">
+import VueSimpleAlert from "vue3-simple-alert-next";
 import { defineComponent} from "vue";
 
 
@@ -46,22 +47,23 @@ export default defineComponent({
     handleLogin() {
       this.error = "";
       if (!this.email || !validateEmail(this.email)) {
-        this.error = "Email Inválido";
+        VueSimpleAlert.alert("Email Inválido", undefined, 'error');
         return;
       }
       if (!this.password) {
-        this.error = "Contraseña Inválida";
+        VueSimpleAlert.alert("Contraseña Inválida", undefined, 'error');
         return;
       }
       this.loading = true;
       this.$store
         .dispatch("user/login", { email: this.email, password: this.password }) // llama a la accion login de user
+        .then(() => VueSimpleAlert.alert("Bienvenido/a nuevamente!", undefined, 'success'))
         .then(() => this.$router.push({ name: "home" }))
         .catch((error: any) => {
           if (error.response?.status === 401) {
-            this.error = "Email o contraseña inválida";
+            VueSimpleAlert.alert("Email o contraseña inválida", undefined, 'error');
           } else {
-            this.error = error.message;
+            VueSimpleAlert.alert(error.message, undefined, 'error');
           }
         })
         .finally(() => (this.loading = false));
