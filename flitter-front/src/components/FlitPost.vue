@@ -15,9 +15,8 @@
       >
       <div class="message">{{ post.text}}</div>
       <div class="meta">
-        
-        <div class="publishDate">{{ post.creation }}</div>
-        <div class="kudos">{{ post.kudos?.size }}
+        <div class="publishDate" :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')">{{ moment(post.date).fromNow() }}</div>
+        <div class="kudos">{{ post.kudos.length }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
           <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
@@ -29,6 +28,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { Flit } from "@/models/flit";
+import moment from 'moment';
 
 export default defineComponent({
   props: {
@@ -37,6 +37,7 @@ export default defineComponent({
       required: true,
     },
   },
+  methods: {moment}
 });
 </script>
 
