@@ -93,6 +93,7 @@ export default defineComponent({
 .publishDate {
   color:#EC6324;
   font-style: italic;
+  padding-top: 12px;
 }
 
 .profile {
@@ -104,6 +105,6 @@ export default defineComponent({
 i {
   color:#472967;
   size: 18px;
-  margin: 0 5px;
+  margin: 10px 10px;
 }
 </style>

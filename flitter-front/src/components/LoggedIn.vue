@@ -1,7 +1,7 @@
 <!--Mi perfil - Cerrar sesión-->
 <template>
   <div class="links">
-    <router-link to="/profile">Mi perfil</router-link> |
+    <router-link to="/profile/me">Mi perfil</router-link> |
     <router-link to="/home" @click="logOut">Cerrar sesión</router-link>
   </div> 
 </template>
