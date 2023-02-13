@@ -37,7 +37,7 @@ async function initFlits() {
 
     // create initial flits
     var flits = [];
-    await users.forEach(async (user) => {
+    users.forEach((user) => {
         flits.push({ text: 'Hola Mundo', image: 'hola-mundo.jpg', author: user, date: new Date('2023-01-27'), kudos: [5] })
         flits.push({ text: 'Hello World', author: user, date: new Date('2023-02-06'), kudos: [3] })
         flits.push({ text: '1,2,3 probando', image: '123.jpg', author: user, date: new Date('2023-01-18'), kudos: [11] })
