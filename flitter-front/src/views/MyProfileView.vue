@@ -79,5 +79,7 @@ h2{
   font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 25px;
   color:#EC6324;
+  padding-top: 2rem;
+  padding-right: 2rem;
 }
 </style>

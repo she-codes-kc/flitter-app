@@ -27,6 +27,7 @@
       <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">(Revisa tu bandeja de entrada y haz clic en el enlace para validar tu cuenta).</a>
     </div> -->
   </form>
+
 </template>
 
 <style scoped>
@@ -38,6 +39,7 @@
   flex-wrap: wrap;
   align-items: center;
 }
+
 
 h2 {
   margin-bottom: 40px;

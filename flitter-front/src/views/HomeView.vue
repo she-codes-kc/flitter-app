@@ -7,6 +7,10 @@
         @keyup.enter="onSearch"
         :status="searchStatus">
     </div>
+    <!--Se muestra el crear flit cuando ya está logueado, sino no
+    <div>
+      <CreateFlit/>
+    </div>-->
       
       <!-- <alert v-if="searchStatus === 'error'" title="Error" type="error">
       Se requiere un mínimo de 3 caracteres para la búsqueda -->
@@ -16,7 +20,7 @@
     <h2 v-if="loading">Cargando...</h2>
     <FlitFeed v-if="!loading" :posts="flits"/>
     
-    <CreateFlit/>
+    
     </div>
   </div>
 </template>
@@ -28,7 +32,7 @@ import { defineComponent, ref } from 'vue';
 import FlitFeed from '@/components/FlitFeed.vue';
 import { Flit } from "../models/flit";
 import FlitService from '@/services/FlitService';
-import CreateFlit from '@/components/CreateFlit.vue';
+//import CreateFlit from '@/components/CreateFlit.vue';
 
 interface Data {
   flits: Flit[];
@@ -41,7 +45,7 @@ export default defineComponent({
   name: 'HomeView',
   components: {
     FlitFeed,
-    CreateFlit
+    //CreateFlit
 },
   setup() {
     return {

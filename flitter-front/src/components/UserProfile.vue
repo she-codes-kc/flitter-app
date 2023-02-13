@@ -1,12 +1,4 @@
 <template>
-    <div class="headerPictureName">
-    <h1>{{ user.username }}</h1>
-    <img
-      class="headerRocket"
-      alt="Header Rocket"
-      src="../assets/usuario1.jpg"
-    />
-    </div>
     <div class="wrapper">
         <div class="avatar">
             <img :src="user.avatar" :alt="user.username">
@@ -66,7 +58,7 @@ img {
     grid-area: c;
     font-weight: bold;
     font-size: larger;
-    color: #5060a4;
+    color: #472967;
     padding-top: 5px;
 }
 
@@ -96,7 +88,7 @@ img {
     /* display: none; */
     width: 100px;
     color: white;
-    background-color:#5060a4;
+    background-color:#472967;
     border: none;
     border-radius: 5px;
 }
