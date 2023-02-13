@@ -6,6 +6,6 @@ export interface Flit {
   text: string;
   author: string;
   images: string | null;
-  creation: string;
+  date: Date;
   kudos: Set<UserId> | null;
 }

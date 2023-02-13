@@ -18,6 +18,7 @@ export default defineComponent({
     return {
         newFlit: "",
         created: false,
+        // date: Date.getday() // ????
     }
    },
    methods: {

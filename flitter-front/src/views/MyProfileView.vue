@@ -50,7 +50,7 @@ export default defineComponent({
         text:
           "Estoy probando ésta nueva red social. Hasta ahora es muy fácil y divertida de usar. No puedo esperar a ver qué otras cosas geniales tiene guardadas. #RedesSociales #NuevaRed 💻💜",
         images: null,
-        creation: "3/feb/23",
+        date: new Date("2019-01-16"),
         kudos: null,
       },
       {
@@ -59,7 +59,7 @@ export default defineComponent({
         text:
           "¡La pasé muy bien explorando la ciudad con mi familia hoy! #Aventura #Flitter",
         images: null,
-        creation: "4/feb/23",
+        date: new Date("2019-01-16"),
         kudos: null,
       },
     ];
