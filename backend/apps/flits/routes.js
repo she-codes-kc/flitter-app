@@ -9,6 +9,9 @@ const Flit = require('../../models/Flit');
 const authMiddleware = require('../../lib/authMiddleware')
 
 const getFlits = require('./controllers/getFlits')
+const getFlit = require('./controllers/getFlit');
+const updateFlit = require('./controllers/updateFlit');
+const createFlit = require('./controllers/createFlit');
 
 // GET /api/flits
 // return flits array
@@ -26,13 +29,9 @@ router.get('/', async (req, res, next) => {
 // return one flit
 router.get('/:id', async (req, res, next) => {
     try {
-        const id = req.params.id;
-
-        // search for a flit at the DB
-        const flit = await Flit.findById(id);
+        const flit = await getFlit(req.params.id);
 
         res.json({ result: flit })
-
     } catch (err) {
         next(err);
     }
@@ -42,10 +41,7 @@ router.get('/:id', async (req, res, next) => {
 // update a flit
 router.put('/:id', async (req, res, next) => {
     try {
-        const id = req.params.id;
-        const flitData = req.body;
-
-        const flitUpdated = await Flit.findOneAndUpdate({ _id: id}, flitData, { new: true });
+        const flitUpdated = await updateFlit(req.params.id, req.body)
 
         res.json({ result: flitUpdated });
 
@@ -78,6 +74,17 @@ router.post('/', authMiddleware, async (req, res, next) => {
     }
 });
 
+// router.post('/', authMiddleware, async (req, res, next) => {
+//     try {
+//         const flitSaved = await createFlit(req.body.text, req.currentUser);
+
+//         res.json(flitSaved);
+
+//     } catch(err) {
+//         next(err);
+//     }
+// });
+
 // DELETE /api/flits/(id)
 // delete a flit
 router.delete('/:id', async (req, res, next) => {
@@ -98,5 +105,16 @@ router.delete('/:id', async (req, res, next) => {
         next(err);
     }
 });
+
+// router.delete('/:id', async (req, res, next) => {
+//     try {
+//        await deleteFlit(req.params.id);
+
+//         res.json();
+
+//     } catch (err) {
+//         next(err);
+//     }
+// });
 
 module.exports = router;

@@ -20,7 +20,7 @@ router.post('/login', async (req, res, next) => {
 });
 
 // POST /api/auth/register (body=userData)
-// return auth for user
+// return registered user
 router.post('/register', async (req, res, next) => {
     try {
         const userSaved = await createUser(req.body)
