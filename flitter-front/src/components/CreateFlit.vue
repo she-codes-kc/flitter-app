@@ -10,6 +10,7 @@
 <script lang="ts">
 import FlitService from "@/services/FlitService";
 import { defineComponent } from "vue";
+import VueSimpleAlert from "vue3-simple-alert-next";
   
 export default defineComponent({
    data() {
