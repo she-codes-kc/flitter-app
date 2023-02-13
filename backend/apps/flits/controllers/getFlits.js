@@ -26,7 +26,7 @@ const getFlits = async (query) => {
     };
 
     if (author) { // /api/flits?author=<@username>
-        filter.author = author;
+        filter.author = new RegExp('^' + author, 'i');
     };
 
     if (date) { // /api/flits?date=<00/00/0000>

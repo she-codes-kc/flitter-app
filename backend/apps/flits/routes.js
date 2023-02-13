@@ -4,14 +4,17 @@ const express = require('express');
 const createError = require('http-errors');
 const router = express.Router();
 
-const Flit = require('../../models/Flit');
-
 const authMiddleware = require('../../lib/authMiddleware')
 
+// Models
+const Flit = require('../../models/Flit');
+
+// Controllers
 const getFlits = require('./controllers/getFlits')
 const getFlit = require('./controllers/getFlit');
 const updateFlit = require('./controllers/updateFlit');
 const createFlit = require('./controllers/createFlit');
+const deleteFlit = require('./controllers/deleteFlit')
 
 // GET /api/flits
 // return flits array
@@ -39,7 +42,7 @@ router.get('/:id', async (req, res, next) => {
 
 // PUT /api/flits/(id) (body=flitData)
 // update a flit
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', authMiddleware, async (req, res, next) => {
     try {
         const flitUpdated = await updateFlit(req.params.id, req.body)
 
@@ -87,7 +90,7 @@ router.post('/', authMiddleware, async (req, res, next) => {
 
 // DELETE /api/flits/(id)
 // delete a flit
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', authMiddleware, async (req, res, next) => {
     try {
         const id = req.params.id;
 
