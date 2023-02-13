@@ -15,12 +15,12 @@ async function main() {
     const confirm = await askQuestion('Are you sure you want to delete all content from the database? [n] (press "y" to confirm)')
     if (!confirm) {
         process.exit();
-    } 
+    }
 
     // initializes collections
-    await initFlits();
     await initUsers();
-    
+    await initFlits();
+
     // disconnect from the database
     connection.close();
 }
@@ -33,14 +33,20 @@ async function initFlits() {
     await Flit.syncIndexes();
     console.log(`${result.deletedCount} flits deleted.`);
 
+    const users = await User.find({})
+
     // create initial flits
-    const inserted = await Flit.insertMany([
-        { text: 'Hola Mundo', image: 'hola-mundo.jpg', author: '@sabrialgaze', date: 2023-01-27, kudos: [5] },
-        { text: 'Hello World', author: '@giginni', date: 2023-02-06, kudos: [3] },
-        { text: '1,2,3 probando', image: '123.jpg', author: '@gsanahi', date: 2023-01-18, kudos: [11] },
-        { text: 'Test', image: 'test.jpg', author: '@geor-castellani', date: 2023-01-04, kudos: [8] },
-        { text: 'Prueba', author: '@flaviaecheverria', date: 2023-02-02, kudos: [7] }
-    ]);
+    var flits = [];
+    await users.forEach(async (user) => {
+        flits.push({ text: 'Hola Mundo', image: 'hola-mundo.jpg', author: user, date: 2023-01-27, kudos: [5] })
+        flits.push({ text: 'Hello World', author: user, date: 2023-02-06, kudos: [3] })
+        flits.push({ text: '1,2,3 probando', image: '123.jpg', author: user, date: 2023-01-18, kudos: [11] })
+        flits.push({ text: 'Test', image: 'test.jpg', author: user, date: 2023-01-04, kudos: [8] })
+        flits.push({ text: 'Prueba', author: user, date: 2023-02-02, kudos: [7] })
+    });
+
+    const inserted = await Flit.insertMany(flits)
+
     console.log(`${inserted.length} flits created`);
 }
 
@@ -49,9 +55,20 @@ async function initUsers() {
     await User.syncIndexes();
     console.log(`${result.deletedCount} users deleted.`);
 
-    const inserted = await User.insertMany([
-        { firstName: 'Leon', lastName: 'Sukm', username: '@leonsukm', email: 'leon.sukm@mail.com', password: '1234' }
-    ]);
+    var users = [];
+
+    for (var i = 1; i <= 10; i++) {
+        users.push({
+            firstName: 'Fake',
+            lastName: `User ${i}`,
+            username: `fake${i}`,
+            email: `fake${i}@mail.com`,
+            password: 'password'
+        });
+    }
+
+    const inserted = await User.insertMany(users);
+
     console.log(`${inserted.length} users created`);
 }
 

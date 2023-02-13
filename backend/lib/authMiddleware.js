@@ -1,16 +1,34 @@
-const basicAuth = require('basic-auth');
+const jwt = require('jsonwebtoken');
 
-module.exports = (req, res, next) => {
+const Config = require('../config');
 
-    const user = basicAuth(req);
+const User = require('../models/User');
 
-    // search on the database the user and check its credentials
+module.exports = async (req, res, next) => {
+    const authorization = req.headers.authorization
 
-    if (!user || user.name !== 'admin' || user.pass !== '1234') {
-        res.set('WWW-Authenticate', 'Basic realm=Authorization required');
+    if(authorization) {
+        const token = req.headers.authorization.split(' ')[1];
+
+        try {
+            const decodedToken = jwt.verify(token, Config.jwtSecret);
+
+            const user = await User.findById(decodedToken.userId);
+
+            if(!user && user.email !== decodedToken.email) {
+                res.sendStatus(401);
+                return;
+            }
+
+            req.currentUser = user;
+
+            next();
+        } catch {
+            res.sendStatus(401);
+            return;
+        }
+    } else {
         res.sendStatus(401);
         return;
     }
-
-    next();
 }
