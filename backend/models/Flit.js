@@ -7,7 +7,7 @@ const User = require('../models/User');
 // define the schema of flits
 const flitSchema = mongoose.Schema({
 
-    text: { type: String, minlenght:1, maxlenght:256, trim: true, sparse: true },
+    text: { type: String, minlenght:1, maxlenght:256, required: true, trim: true, sparse: true },
     image: { type: String },
     author: { type: mongoose.Schema.Types.ObjectId, ref: User, sparse: true },
     date: { type: Date, default: Date.now, sparse: true },
