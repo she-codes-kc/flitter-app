@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import LoggedOut from "./LoggedOut.vue";
 import LoggedIn from "./LoggedIn.vue";
 
@@ -32,16 +32,11 @@ export default defineComponent({
       LoggedOut,
       LoggedIn,
     },
-    setup() {
-        let loggedIn = ref<boolean>(false) 
-        const token = localStorage.getItem('accessToken')
-        if(token) {
-            loggedIn = ref<boolean>(true)
-        }
-        return {
-            loggedIn,
-        }
-    },
+    computed: {
+      loggedIn() {
+        return this.$store.getters["user/isLoggedIn"];
+      }
+    }
 });
 </script>
 
