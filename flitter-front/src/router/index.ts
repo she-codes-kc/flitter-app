@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/SettingsView.vue"),
   },
   {
-    path: "/PasswordRecoveryView",
+    path: "/password-recovery",
     name: "PasswordRecovery",
     component: () => import("@/views/PasswordRecoveryView.vue"),
   },

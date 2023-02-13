@@ -15,7 +15,7 @@
     </div>
     <button @click="handleLogin" type="button">Iniciar sesión</button>
     <div class="forgotPassword">
-      <router-link to="/PasswordRecovery">¿Olvidaste la contraseña?</router-link>
+      <router-link to="/password-recovery">¿Olvidaste la contraseña?</router-link>
     </div>
   </form>
 </template>
