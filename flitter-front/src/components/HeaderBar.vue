@@ -14,7 +14,7 @@
     <div v-if="loggedIn"> 
       <LoggedIn/> 
     </div> 
-    <div v-else> 
+    <div v-else> "Log Out"
       <LoggedOut />
     </div> 
   </nav>
@@ -42,6 +42,13 @@ export default defineComponent({
             loggedIn,
         }
     },
+    methods: {
+      logout() {
+        localStorage.clear();
+        this.$router.push({name: 'login'})
+        console.warn("Logged Out")
+      }
+    }
 });
 </script>
 
