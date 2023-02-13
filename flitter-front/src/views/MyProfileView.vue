@@ -1,4 +1,4 @@
-<!--Pantalla mi perfil-->
+<!--Pantalla mi perfil privado-->
 <template>
   <ProfileComp :my-profile="true"  :user="user" />
   <CreateFlit/>
@@ -82,4 +82,5 @@ h2{
   padding-top: 2rem;
   padding-right: 2rem;
 }
+
 </style>

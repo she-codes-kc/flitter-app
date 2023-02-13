@@ -1,4 +1,4 @@
-<!--Pantalla eliminar cuenta-->
+<!--Pantalla configuración de cuenta-->
 <template>
   <div class="card">
     <form class="settings">
