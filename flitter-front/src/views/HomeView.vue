@@ -14,9 +14,13 @@
     <div>
       <h2>Últimas tendencias</h2>
       <h2 v-if="loading">Cargando...</h2>
-      <FlitFeed v-if="!loading" :posts="flits"/>
+      <FlitFeed v-else :posts="flits"/>
+      <!-- @previousPage="previousPage"
+      @nextPage="nextPage" -->
     </div>
-  </div>
+    </div>
+    <footer class="footer">
+    </footer>
 </template>
 
 
@@ -127,6 +131,12 @@ h2 {
   font-size: 25px;
   color:#EC6324;
   padding: 20px;
+}
+
+.footer {
+    padding-left: 10rem;
+    display: flex;
+    margin-top: 20rem;
 }
 
 </style>

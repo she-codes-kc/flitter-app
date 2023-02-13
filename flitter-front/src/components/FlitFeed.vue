@@ -3,12 +3,14 @@
     <div v-for="post in posts" :key="post.id">
       <FlitPost :post="post"/>
     </div>
-<!--Pie de página con inicio de seión o registro-->
-    <footer class="loadMore">
-      <p>
-        <a href="/login">Inicia sesión</a> o <a href="/signup">regístrate</a> ¡para poder crear tus propios flits!
-      </p>
-    </footer>
+    <div class="pages" v-if="loggedIn">
+      <div class="previous-page" @click="$emit('previousPage')">
+      </div>
+      <img alt="Load Rocket"/>
+      <div class="next-page" @click="$emit('nextPage')">
+      </div>
+  </div>
+   
 </template>
   
 <script lang="ts">

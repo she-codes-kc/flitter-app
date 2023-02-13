@@ -1,5 +1,7 @@
 <template>
+  
   <UserProfile :user="user" />
+  <h2>Flits</h2>
   <FlitFeed :posts="posts" />
 </template>
 
@@ -68,4 +70,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+h2 {
+  color:#EC6324;
+  font-size: 24px;
+  display: flex;
+  margin-left: 1rem;
+}
 </style>
