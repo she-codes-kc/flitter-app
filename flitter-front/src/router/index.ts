@@ -39,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "settings",
     component: () => import("@/views/SettingsView.vue"),
   },
+  {
+    path: "/PasswordRecoveryView",
+    name: "PasswordRecovery",
+    component: () => import("@/views/PasswordRecoveryView.vue"),
+  },
 ];
 
 const router = createRouter({

@@ -1,46 +1,30 @@
 <!--Pantalla Iniciar sesión-->
-<!-- <script lang="ts"></script>
 
-<template>
-  <div>
-    <form>
-      <label for="user">Usuario:</label>
-      <input type="text" id="user" name="user" /><br /><br />
-      <label for="password">Contraseña:</label>
-      <input type="text" id="password" name="password" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-
-  <button>LogIn</button>
-</template> -->
 
 <template>
   <form class="login">
     <div class="tagline"><h2>¿Ya tienes una cuenta en Flitter?</h2></div>
     <div class="inputEmail">
       <label for="username">Usuario/email</label>
-      <input id="username" type="text" placeholder="juan@mail.com" />
+      <input v-model="email" id="username" type="text" placeholder="juan@mail.com" />
     </div>
     <div class="inputPassword">
       <label for="password">Contraseña</label>
-      <input id="password" type="password" placeholder="********" />
+      <input v-model="password" id="password" type="password" placeholder="Password" @keyup.enter="handleLogin"
+            :maxlength="15"/>
     </div>
-    <button>Iniciar sesión</button>
+    <button @click="handleLogin">Iniciar sesión</button>
     <div class="forgotPassword">
-      <a href="#/password">¿Olvidaste la contraseña?</a>
+      <router-link to="/PasswordRecovery">¿Olvidaste la contraseña?</router-link>
     </div>
   </form>
-  <LoggedIn/>
 </template>
 
 <script lang="ts">
+import { defineComponent} from "vue";
 
-import { defineComponent, ref} from "vue";
-import VueSimpleAlert from "vue3-simple-alert-next";
-import LoggedIn from "@/components/LoggedIn.vue"
 
-// Código de: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+//Código de: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
 const validateEmail = (email: string) => {
   return String(email)
     .toLowerCase()
@@ -50,9 +34,40 @@ const validateEmail = (email: string) => {
 };
 
 export default defineComponent({
-  
+  data() {
+    return {
+      email: '',
+      password: '',
+      loading: false,
+      error: '',
+    }
+  },
+  methods: {
+    handleLogin() {
+      this.error = "";
+      if (!this.email || !validateEmail(this.email)) {
+        this.error = "Email Inválido";
+        return;
+      }
+      if (!this.password) {
+        this.error = "Contraseña Inválida";
+        return;
+      }
+      this.loading = true;
+      this.$store
+        .dispatch("user/login", { email: this.email, password: this.password }) // llama a la accion login de user
+        .then(() => this.$router.push({ name: "home" }))
+        .catch((error: any) => {
+          if (error.response?.status === 401) {
+            this.error = "Email o contraseña inválida";
+          } else {
+            this.error = error.message;
+          }
+        })
+        .finally(() => (this.loading = false));
+    },
+  },
 });
-
 
 </script>
 
