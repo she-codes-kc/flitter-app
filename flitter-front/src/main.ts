@@ -10,6 +10,7 @@ import {
   faWandMagicSparkles,
 } from "@fortawesome/free-solid-svg-icons";
 import VueSimpleAlert from "vue3-simple-alert-next";
+import moment from "moment";
 
 library.add(faMagnifyingGlass);
 library.add(faWandMagicSparkles);
@@ -20,3 +21,5 @@ createApp(App)
   .use(VueSimpleAlert, {})
   .use(router)
   .mount("#app");
+
+moment.locale("es");

@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <div class="avatar">
-            <img :src="user.avatar" :alt="user.username">
+            <img :src="user.profilePic" :alt="user.username">
         </div>
         <div class="username">{{ user.username }}</div>
         <div class="follow">
