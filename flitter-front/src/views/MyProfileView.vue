@@ -31,36 +31,36 @@ export default defineComponent({
   setup(props) {
     const isLoggedIn = true;
     const user: User = {
-      id:"1",
+      _id:"1",
       firstName: "georgina",
       lastName: "Castellni",
-      name: props.username,
+      username: props.username,
       email: "geor@gmail.com",
-      image:
+      profilePic:
         "",
-      followers: [3, 4],
-      following: [1, 4],
+      followers: ['3', '4'],
+      following: ['1', '4'],
     };
 
     // fetchPostsFilteredByUser()
     const fakePosts: Flit[] = [
       {
-        id: "1",
+        _id: "1",
         author: props.username,
         text:
           "Estoy probando ésta nueva red social. Hasta ahora es muy fácil y divertida de usar. No puedo esperar a ver qué otras cosas geniales tiene guardadas. #RedesSociales #NuevaRed 💻💜",
         images: null,
-        date: new Date("2019-01-16"),
-        kudos: null,
+        date: new Date("2019-01-16").toString(),
+        kudos: [],
       },
       {
-        id: "6",
+        _id: "6",
         author: props.username,
         text:
           "¡La pasé muy bien explorando la ciudad con mi familia hoy! #Aventura #Flitter",
         images: null,
-        date: new Date("2019-01-16"),
-        kudos: null,
+        date: new Date("2019-01-16").toString(),
+        kudos: [],
       },
     ];
 

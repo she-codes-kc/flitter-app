@@ -11,7 +11,6 @@
 import FlitService from "@/services/FlitService";
 import VueSimpleAlert from "vue3-simple-alert-next";
 import { defineComponent } from "vue";
-import VueSimpleAlert from "vue3-simple-alert-next";
   
 export default defineComponent({
    data() {
