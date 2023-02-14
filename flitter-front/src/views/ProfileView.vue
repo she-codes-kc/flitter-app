@@ -1,5 +1,4 @@
 <template>
-  
   <UserProfile :user="user" />
   <h2>Flits</h2>
   <FlitFeed :posts="posts" />

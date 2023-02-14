@@ -55,16 +55,18 @@ export default defineComponent({
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    margin-top: 2rem;
 }
 
 .flit {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-color: #EC6324;
   margin: 0 10px 10px 10px;
   font-size: 18px;
+  margin-top: 2rem;
 }
 
 .username {
