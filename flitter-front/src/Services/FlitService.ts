@@ -27,9 +27,13 @@ class FlitService {
       .then((response) => response.results);
   }
 
-  createFlit(text: string): Promise<Flit> {
+  createFlit(text: string, token: string): Promise<Flit> {
     return axios
-      .post<Flit>("/api/flits", { text, author: "@gsanahi" })
+      .post<Flit>(
+        "/api/flits",
+        { text, author: "@gsanahi" },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
       .then((response) => response.data);
   }
 }
