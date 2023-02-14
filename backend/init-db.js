@@ -30,180 +30,171 @@ main().catch(err => console.log('There was an error', err));
 async function initFlits() {
     // delete all the documents from the flits collection
     const result = await Flit.deleteMany();
-    // await Flit.syncIndexes();
+    await Flit.syncIndexes();
     console.log(`${result.deletedCount} flits deleted.`);
 
     const users = await User.find({})
 
     const randomUsers = (users, n) => users.sort(() => Math.random() - Math.random()).slice(0, n)
 
+    const findUser = async (username) => await User.findOne({username: username}).exec()
+
     // create initial flits
     const inserted = await Flit.insertMany([
         {
             text: "Terremotos en Turquia y Siria. Rescatados un bebé y otras 6 personas.",
             image: "terremoto.jpg",
-            author: "telecinco",
+            author: await findUser("francisca_yague"),
             date: new Date("2023-02-1"),
             kudos: randomUsers(users, 5)
         },
         {
-            text: "Idea tu hogar con las mejores ofertas ya disponibles en hipermercados y carrefour.es",
-            image: "ofertas2x1.jpg",
-            author: "CarrefourES",
-            date: new Date("2023-02-10"),
+            text: "¡Feliz día del amor y la amistad!😍",
+            image: "san-valentin.jpg",
+            author: await findUser("sofia_ruano"),
+            date: new Date("2023-02-14"),
             kudos: randomUsers(users, 4)
         },
         {
-            text: "I can love me better than you can... FLOWERS SINGLE + VIDEO OUT NOW",
-            image: "flowers.jpg",
-            author: "MileyCyrus",
+            text: "No tengo ropa para salir pero si me compro ropa para salir me quedo sin plata para salir es como cuando conseguí trabajo para poder salir y después ya no podía salir porque tenía que ir a trabajar",
+            author: await findUser("ofelia_monteagudo"),
             date: new Date("2023-01-13"),
             kudos: randomUsers(users, 9)
         },
         {
-            text: "Who's gonna win this year?",
-            image: "futbol.jpg",
-            author: "ChampionsLeague",
+            text: "Me encontré 8 lucas en un pantalón que no usaba desde el año pasado, le cuento a un amigo y me dice 'en realidad perdiste plata'",
+            image: "la-existencia-es-una-tragedia.jpg",
+            author: await findUser("javier_zaragoza"),
             date: new Date("2023-02-06"),
             kudos: randomUsers(users, 7)
         },
         {
-            text: "El 12 de febrero de 1949 nació en Úbeda (Jaén) una raíz de mandrágora, un cronopio cortazariano. ¡Hoy Joaquín Sabina cumple 74 años! Y sin embargo...",
-            image: "joaquinSabina.jpg",
-            author: "JoaquinSabinaFans",
+            text: "A un amigo le pidieron que le ponga nombre a los útiles escolares de su hija y el muy quemado le puso etiqueta a los lápices con la palabra 'lápiz', etiqueta con la palabra 'regla' a la regla, 'tijera' a la tijera y así con toda la cartuchera.",
+            author: await findUser("oliver_valdivia"),
             date: new Date("2023-02-12"),
             kudos: randomUsers(users, 5)
         },
         {
-            text: "NO a la guerra #stopTheWar",
-            image: "ukrania.jpg",
-            author: "UnidosPorLaPaz",
+            text: "Fui a tramitar el DNI por pérdida. En la recepción: -Te pido tu DNI",
+            image: "estupefactada.jpg",
+            author: await findUser("sebastian_padron"),
             date: new Date("2023-01-27"),
             kudos: randomUsers(users, 10)
         },
         {
             text: "Ladrón entró a robar y se llevó la pastrafrola.",
             image: "pastafrola.jpg",
-            author: "Cronica",
+            author: await findUser("benito_maestre"),
             date: new Date("2023-01-29"),
             kudos: randomUsers(users, 3)
         },
         {
             text: "Rescatan gato vestido con esmoquin robado del interior de un coche.",
             image: "gatoEsmoquin.jpg",
-            author: "@veinteminutos",
-            date: new Date("2023-31-01"),
+            author: await findUser("irina_galindo"),
+            date: new Date("2023-01-31"),
             kudos: randomUsers(users, 8)
         },
         {
-            text: "Controla todo lo relacionado con tus finanzas desde nuestra superapp. Pruébala gratis!",
-            image: "tarjeta.jpg",
-            author: "RevolutApp",
+            text: "El taxi que te tomás después de esperar el bondi que no llegó es más caro porque sabe a derrota",
+            author: await findUser("rosalia_cifuentes"),
             date: new Date("2023-02-10"),
             kudos: randomUsers(users, 2)
         },
         {
-            text: "Nuevo single || BZRP Music Session #53! Ya disponible!!",
+            text: "El equipo de marketing de Casio y Twingo después de escuchar la session de Shakira con Bizarrap: 😮",
             image: "claramente.jpg",
-            author: "Shakira",
+            author: await findUser("alba_zapata"),
             date: new Date("2023-01-12"),
             kudos: randomUsers(users, 6)
         },
         {
-            text: "bb regalame una noche que no termine nuncaaaaaAAaa",
-            image: "",
-            author: "karolg",
+            text: "Cuidar un sobrino, leer un libro, regar una planta. Yo ya bajé mis expectativas",
+            author: await findUser("merce_murcia"),
             date: new Date("2023-02-03"),
-            kudos: randomUsers(users, 3)
+            kudos: randomUsers(users, 11)
         },
         {
-            text: "CuCú #ElVeranoQueVivimos (12 de febrero disponible en plataformas digitales) en Jerez, Spain",
-            image: "cucu.jpg",
-            author: "blancasuarezweb",
+            text: "Entre una religión que convierte el agua en vino y otra que prohíbe la cerveza, cero dudas",
+            author: await findUser("ofelia_monteagudo"),
             date: new Date("2022-02-06"),
             kudos: randomUsers(users, 1)
         },
         {
-            text: "A veces se matarian, otras en cambio se quieren comer. Estas a punto de verlo. #TodasLasVecesQueNosEnamoramos llega pronto",
-            image: "trailer.jpg",
-            author: "NetflixES",
+            text: "Un coche se desmaya al ver el precio de la gasolina",
+            image: "coche-desmayado.jpg",
+            author: await findUser("sebastian_padron"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 9)
         },
         {
-            text: "El nuevo camuflaje de Joe en Londres",
-            image: "joecamuflado.jpg",
-            author: "NetflixES",
-            date: new Date("2023-02-09"),
+            text: "Carlos III nació jubilado y morirá trabajando. El Benjamin Button de Inglaterra.",
+            author: await findUser("benito_maestre"),
+            date: new Date("2022-09-18"),
             kudos: randomUsers(users, 2)
         },
         {
-            text: "EN DIRECTO | Torneo de El Algarve Sub-17 | Alemania - España",
-            image: "futbolsub17.jpg",
-            author: "SEFutbol",
+            text: "Los videojuegos son una pasada. Te dejan vivir las fantasías más salvajes. En Los Sims, por ejemplo, puedes tener casa y trabajo.",
+            author: await findUser("sebastian_padron"),
             date: new Date("2023-02-12"),
             kudos: randomUsers(users, 5)
         },
         {
-            text: "Unas botas Dr. Martens y 23 looks que querrás copiar.",
-            image: "botas.jpg",
-            author: "VogueSpain",
+            text: "Me quedé a dormir en la casa de mi hermana y me desperté en pinterest.",
+            image: "desayuno-pinterest.jpg",
+            author: await findUser("rosalia_cifuentes"),
             date: new Date("2023-02-08"),
             kudos: randomUsers(users, 7)
         },
         {
-            text: "Pantalones vaqueros, tan favorecedores como versátiles. Que opinais?",
-            image: "pantalones.jpg",
-            author: "VogueSpain",
+            text: "Vosotras os quejaréis de vuestros maridos, pero el mío, cada vez que nos despedimos en un sitio público (por ejemplo, un supermercado) me dice bien alto:'¡Un día tu marido nos va a pillar!'",
+            author: await findUser("rosalia_cifuentes"),
             date: new Date("2023-01-25"),
             kudos: randomUsers(users, 3)
         },
         {
-            text: "Sara Sampaio es nuestra portada de febrero. El próximo viernes 20 disponible en todos los quioscos!",
-            image: "SaraSampaio.jpg",
-            author: "elleEs",
+            text: "yo con 13 años: no me digas que hacer. Yo con 23 años: podría alguien decirme exactamente, en orden cronológico y con una gran cantidad de detalles lo que tengo que hacer???",
+            author: await findUser("javier_zaragoza"),
             date: new Date("2023-01-19"),
             kudos: randomUsers(users, 6)
         },
         {
-            text: "Muchos famosos disfrutaron del partido y la actuación de la cantante de Barbados pero, Cara Delevigne con el mensaje de su camiseta.",
-            image: "cara.jpg",
-            author: "elleEs",
+            text: "Los niños que sacábamos 9 y nos pedían un 10 y luego sacábamos 10 pero nos decían que era nuestra obligación, deberíamos tener descuento fijo en terapia",
+            author: await findUser("alba_zapata"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 2)
         },
         {
-            text: "Recordem que des de l'1 de febrer es restringeix l'accés de patinets i monocicles elèctrics al transport públic per motius de #seguretat.",
-            image: "patinets-monocicles.jpg",
-            author: "ATMbcn",
+            text: "Por alguna razón mi viejo decidió que era una buena idea de decoración poner todos los celulares viejos que tenemos en una repisa y re que parece un allanamiento",
+            image: "celulares.jpg",
+            author: await findUser("benito_maestre"),
             date: new Date("2023-02-06"),
             kudos: randomUsers(users, 2)
         },
         {
             text: "Descarriló un tren en Ohio con 100.000 galones de cloruro de vinilo, explotando en una enorme bola de lluvia tóxica que envenenó todo el agua, terra y aire",
             image: "tren-ohio.jpg",
-            author: "Explicandotte",
+            author: await findUser("francisca_yague"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 1)
         },
         {
             text: "Celebramos el #DíaMundialDeLaRadio. Es uno de los medios de comunicación más accesibles del mundo, lo que la hace esencial para promover la diversidad, el diálogo, la solidaridad y la paz.",
             image: "radio.jpg",
-            author: "ONUes",
+            author: await findUser("francisca_yague"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 8)
         },
         {
-            text: "Del tercer objeto, el derribado este domingo sobre el lago Hurón, el Pentágono informó de que volaba a unos 20.000 metros de altitud y tenía aparentemente forma octogonal",
-            image: "ovni.jpg",
-            author: "@elpaismexico",
+            text: "No puedo creer que haya gente que trate con los mozos de otra forma que no sea decir gracias una cantidad exagerada de veces",
+            author: await findUser("sofia_ruano"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 3)
         },
         {
-            text: "No quiero trabajar mañana",
-            author: "@juandelospalotes",
-            date: "2023-01-2022",
+            text: "Lo seductor que es boludear cuando tenés cosas que hacer y lo insípido que se vuelve cuando tenes tiempo libre",
+            author: await findUser("oliver_valdivia"),
+            date: new Date("2023-01-22"),
             kudos: randomUsers(users, 10)
         }
     ]);

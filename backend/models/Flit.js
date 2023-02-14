@@ -8,7 +8,7 @@ const flitSchema = mongoose.Schema({
 
     text: { type: String, minlenght:1, maxlenght:256, required: true, trim: true, sparse: true },
     image: { type: String },
-    author: { type: mongoose.Schema.Types.ObjectId, ref: User, sparse: true },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: User, sparse: true, required: true },
     date: { type: Date, default: Date.now(), sparse: true },
     kudos: [{ type: mongoose.Schema.Types.ObjectId, ref: User }]
 });
