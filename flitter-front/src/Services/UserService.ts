@@ -17,6 +17,14 @@ class UserService {
         return data.result;
       });
   }
+
+  getCurrentUser(token: string): Promise<User> {
+    return axios
+      .get<User>(`/api/users/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => response.data);
+  }
 }
 
 export default new UserService();

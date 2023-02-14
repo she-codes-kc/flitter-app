@@ -1,83 +1,82 @@
-<template>
-  <ProfileComp :my-profile="true" :user="user" />
-  <CreateFlit />
-  <h2>Mis flits</h2>
-  <FlitFeed :posts="posts" />
-</template>
+<script lang="ts" setup>
+import { Flit } from "@/models/flit";
+import { User } from "@/models/user";
+import { ref, onMounted, watch } from "vue";
+import { useStore } from "vuex";
+import UserService from "@/services/UserService";
+import FlitService from "@/services/FlitService";
+import FlitFeed from "@/components/FlitFeed.vue";
+import ProfileComp from "@/components/ProfileComp.vue";
+import CreateFlit from "@/components/CreateFlit.vue";
 
-<script lang="ts">
-import ProfileComp from "../components/ProfileComp.vue";
-import CreateFlit from "../components/CreateFlit.vue";
-import FlitFeed from "../components/FlitFeed.vue";
-import { User } from "../models/user";
-import { defineComponent } from "vue";
-import { Flit } from "../models/flit";
+const LIMIT = 8;
 
-export default defineComponent({
-  name: "MyProfileView",
-  components: {
-    CreateFlit,
-    FlitFeed,
-    ProfileComp
-  },
-  props: {
-    username: {
-      type: String,
-      required: true,
-    },
-  },
+const store = useStore();
 
-  setup(props) {
-    const isLoggedIn = true;
-    const user: User = {
-      _id: "1",
-      firstName: "georgina",
-      lastName: "Castellni",
-      username: props.username,
-      email: "geor@gmail.com",
-      profilePic:
-        "",
-      followers: ['3', '4'],
-      following: ['1', '4'],
-    };
+const flits = ref<Flit[]>([]);
+const flitsLoading = ref(true);
+const user = ref<User | null>(null);
+const userLoading = ref(true);
+const page = ref(1);
 
-    // fetchPostsFilteredByUser()
-    const fakePosts: Flit[] = [
-      {
-        _id: "1",
-        author: props.username,
-        text:
-          "Estoy probando ésta nueva red social. Hasta ahora es muy fácil y divertida de usar. No puedo esperar a ver qué otras cosas geniales tiene guardadas. #RedesSociales #NuevaRed 💻💜",
-        images: null,
-        date: new Date("2019-01-16").toString(),
-        kudos: [],
-      },
-      {
-        _id: "6",
-        author: props.username,
-        text:
-          "¡La pasé muy bien explorando la ciudad con mi familia hoy! #Aventura #Flitter",
-        images: null,
-        date: new Date("2019-01-16").toString(),
-        kudos: [],
-      },
-    ];
+const fetchUser = () => {
+  return UserService.getCurrentUser(store.getters["user/accessToken"])
+    .then((result) => {
+      user.value = result;
+      return result;
+    })
+    .finally(() => (userLoading.value = false));
+};
 
-    return {
-      user,
-      posts: fakePosts,
-      isLoggedIn,
-    };
-  },
+const fetchFlits = (userId: string) => {
+  FlitService.findFlits({
+    skip: (page.value - 1) * LIMIT,
+    limit: LIMIT,
+    sort: "-date",
+    author: userId,
+  })
+    .then((results) => (flits.value = results))
+    .finally(() => (flitsLoading.value = false));
+};
+
+watch(page, () => {
+  if (user.value?._id) {
+    fetchFlits(user.value?._id);
+  }
+});
+
+onMounted(async () => {
+  const user = await fetchUser();
+  await fetchFlits(user._id);
 });
 </script>
+
+<template>
+  <ProfileComp v-if="user != null" :my-profile="true" :user="user" />
+  <CreateFlit />
+  <h2>Mis flits</h2>
+  <FlitFeed :posts="flits" />
+  <h2 v-if="!flitsLoading && flits.length === 0">No se encontraron flits</h2>
+  <div class="pagination">
+    <button @click="page++">Siguiente</button>
+    <button v-show="page > 1" @click="page--">Anterior</button>
+  </div>
+</template>
 
 <style scoped>
 h2 {
   font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 25px;
-  color: #EC6324;
+  color: #ec6324;
   padding-top: 2rem;
   padding-right: 2rem;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3rem;
 }
 </style>

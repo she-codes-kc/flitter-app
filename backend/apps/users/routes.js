@@ -13,6 +13,9 @@ const deleteUser = require('./controllers/deleteUser');
 
 const router = express.Router();
 
+router.get('/me', authMiddleware, async (req, res, next) => {
+    res.json(req.currentUser);
+});
 
 // GET /api/users/(username)
 // return one user
