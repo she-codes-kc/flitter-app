@@ -8,12 +8,14 @@ Para ello, tuvimos que poner en práctica lo aprendido durante el bootcamp, simu
 
 Esta estructurado y ejecutado a traves de las siguientes herramientas:
 
-- [Mongoose] (https://mongoosejs.com/)
+- [Mongoose](https://mongoosejs.com/)
 - [Mongo DB Atlas](https://www.mongodb.com/es/atlas/database)
 - [Node JS](https://nodejs.org)
 - [Express](https://expressjs.com)
 - [Jwt](https://jwt.io)
-- [Vue.js](https://vuejs.org)
+- [Vue](https://vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- [Axios](https://www.npmjs.com/package/axios)
 
 ## Backend
 ### Ejecución y configuración:
@@ -32,7 +34,7 @@ se ejecutara en `http://localhost:3000/`
 
 #### APIs
 
-# Usuario
+##### Usuario
 
 POST `/apps/auth/login`: para hacer log in
 
@@ -44,7 +46,7 @@ PUT `/apps/users/:id`: para actualizar un perfil de usuario
 
 DELETE `/apps/users/:id`: para eliminar un perfil de usuario
 
-# Flits
+##### Flits
 
 GET `/apps/flits/`: para obtener el listado de flits
 
@@ -72,7 +74,126 @@ POST `/apps/flits/`: para creat un flit
 ```    
 
 ## Frontend
+### Instalación de dependencias
 
+```
+npm install
+```
+
+### Ejecución del proyecto en modo desarrollo
+
+```
+npm run serve
+```
+
+## Usuarios de prueba
+
+```
+{
+            firstName: 'Francisca',
+            lastName:  'Yague',
+            username: 'francisca_yague',
+            email: 'francisca.yague@mail.com',
+            password: 'password',
+            profilePic: 'public/images/francisca-yague.jpg'
+        },
+        {
+            firstName: 'Sofia',
+            lastName:  'Ruano',
+            username: 'sofia_ruano',
+            email: 'sofia.ruano@mail.com',
+            password: 'password',
+            profilePic: 'public/images/sofia-ruano.jpg'
+        },
+        {
+            firstName: 'Ofelia',
+            lastName:  'Monteagudo',
+            username: 'ofelia_monteagudo',
+            email: 'ofelia.monteagudo@mail.com',
+            password: 'password',
+            profilePic: 'public/images/ofelia-monteagudo.jpg'
+        },
+        {
+            firstName: 'Javier',
+            lastName:  'Zaragoza',
+            username: 'javier_zaragoza',
+            email: 'javier.zaragoza@mail.com',
+            password: 'password',
+            profilePic: 'public/images/javier-zaragoza.jpg'
+        },
+        {
+            firstName: 'Oliver',
+            lastName:  'Valdivia',
+            username: 'oliver_valdivia',
+            email: 'oliver.valdivia@mail.com',
+            password: 'password',
+            profilePic: 'public/images/oliver-valdivia.jpg'
+        },
+        {
+            firstName: 'Sebastián',
+            lastName:  'Padrón',
+            username: 'sebastian_padron',
+            email: 'sebastian.padron@mail.com',
+            password: 'password',
+            profilePic: 'public/images/sebastian-padron.jpg'
+        },
+        {
+            firstName: 'Rosalía',
+            lastName:  'Cifuentes',
+            username: 'rosalia_cifuentes',
+            email: 'rosalia.cifuentes@mail.com',
+            password: 'password',
+            profilePic: 'public/images/rosalia-cifuentes.jpg'
+        },
+        {
+            firstName: 'Benito',
+            lastName:  'Maestre',
+            username: 'benito_maestre',
+            email: 'benito.maestre@mail.com',
+            password: 'password',
+            profilePic: 'public/images/benito-maestre.jpg'
+        },
+        {
+            firstName: 'Irina',
+            lastName:  'Galindo',
+            username: 'irina_galindo',
+            email: 'irina.galindo@mail.com',
+            password: 'password',
+            profilePic: 'public/images/irina-galindo.jpg'
+        },
+        {
+            firstName: 'Alba',
+            lastName:  'Zapata',
+            username: 'alba_zapata',
+            email: 'alba.zapata@mail.com',
+            password: 'password',
+            profilePic: 'public/images/alba-zapata.jpg'
+        },
+        {
+            firstName: 'Merce',
+            lastName:  'Murcia',
+            username: 'merce_murcia',
+            email: 'merce.murcia@mail.com',
+            password: 'password',
+            profilePic: 'public/images/merce-murcia.jpg'
+        }
+```
+
+### Compilación del proyecto para producción
+
+```
+npm run build
+```
+
+### Lint
+
+```
+npm run lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ## Autores
@@ -80,4 +201,4 @@ POST `/apps/flits/`: para creat un flit
 - [Algaze Abraham, Sabrina](https://github.com/sabrialgaze)
 - [Castellani, Georgina Aylén](https://github.com/geor-castellani)
 - [García, Silvia Anahí](https://github.com/gsanahi)
-- [Manfredi, Gina Noeliakee](https://github.com/giginni)
+- [Manfredi, Gina Noelia](https://github.com/giginni)
