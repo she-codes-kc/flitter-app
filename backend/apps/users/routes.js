@@ -1,14 +1,15 @@
 'use strict';
 
 const express = require('express');
-const createError = require('http-errors');
+const authMiddleware = require('../../lib/authMiddleware')
 
 // Models
 const User = require('../../models/User');
 
 // Controllers
 const getUser = require('./controllers/getUser');
-const updateUser = require('./controllers/updateUser')
+const updateUser = require('./controllers/updateUser');
+const deleteUser = require('./controllers/deleteUser');
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.get('/:id', async (req, res, next) => {
         const user = await getUser(req.params.id)
 
         res.json({ result: user })
+
     } catch (err) {
         next(err);
     }
@@ -42,15 +44,7 @@ router.put('/:id', async (req, res, next) => {
 // delete a user
 router.delete('/:id', async (req, res, next) => {
     try {
-        const id = req.params.id;
-
-        const user = await User.findById(id);
-
-        if (!user) {
-            return next(createError(404));
-        }
-
-        await User.deleteOne({ _id: id, });
+        await deleteUser(req.params.id, next);
 
         res.json();
 

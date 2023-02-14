@@ -1,8 +1,10 @@
 'use strict';
 
+const createError = require('http-errors');
+
 const Flit = require('../../../models/Flit');
 
-const deleteFlit = async (id) => {
+const deleteFlit = async (id, next) => {
 
     const flit = await Flit.findById(id);
 
