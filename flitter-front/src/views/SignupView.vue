@@ -51,6 +51,7 @@ h2 {
 .inputPassword {
   width: 100%;
   margin-bottom: 40px;
+
 }
 
 .inputEmail input,
@@ -65,6 +66,7 @@ h2 {
   padding-left: 1.5rem;
   transition: all 0.3s;
   align-items: center;
+  display: flex;
 }
 .inputEmail input:focus,
 .inputUsername input:focus,

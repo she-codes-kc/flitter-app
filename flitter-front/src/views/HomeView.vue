@@ -10,7 +10,7 @@
       ></i>
       <input
         type="text"
-        placeholder="Buscar por @personas | #tags | texto"
+        placeholder="Buscá en Flitter lo que quieras"
         style="width: 100%"
         v-model="search"
         @keyup.enter="onSearch"
@@ -20,22 +20,26 @@
     <CreateFlit v-if="isLoggedIn" />
     <div>
       <h2>Últimas tendencias</h2>
-      <h2 v-if="loading">Cargando...</h2>
-      <h2 v-if="!loading && flits.length === 0 && page != 1">
+      <h3 v-if="loading">Cargando...</h3>
+      <h3 v-if="!loading && flits.length === 0 && page != 1">
         No se encontraron más flits
-      </h2>
-      <h2 v-if="!loading && flits.length === 0 && page == 1">
+      </h3>
+      <h3 v-if="!loading && flits.length === 0 && page == 1">
         No se encontraron flits
-      </h2>
+      </h3>
       <FlitFeed v-if="!loading" :posts="flits" />
     </div>
     <div class="pagination">
       <button @click="page++">Siguiente</button>
       <button v-show="page > 1" @click="page--">Anterior</button>
     </div>
-    </div>
     <footer class="footer">
+      <div class="footer-img-text">
+        <h3 class="text-footer">¡Para comenzar, regístrate o inicia sesión!</h3>
+        <img src="../assets/logo2.png">
+      </div>
     </footer>
+  </div>
 </template>
 
 <script lang="ts">
@@ -122,6 +126,16 @@ export default defineComponent({
   position: relative;
 }
 
+img{
+  width: 10%;
+  display: flex;
+}
+
+.footer-img-text{
+  display: flex;
+  align-items: center;
+ 
+}
 .searchBar input {
   width: 60rem;
   height: 3rem;
@@ -146,9 +160,9 @@ export default defineComponent({
 
 h2 {
   font-family: "Josefin Sans", sans-serif, cursive;
-  font-weight: 50;
   font-size: 25px;
   color: #ec6324;
+  font-weight: 20;
   padding: 20px;
 }
 
@@ -157,12 +171,29 @@ h2 {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
+  margin-top: 3rem;
+}
+
+h3 {
+  font-family: "Josefin Sans", sans-serif, cursive;
+  font-size: 20px;
+  color:#ec6324;
+  padding: 15px;
+  font-weight: 40;
 }
 
 .footer {
-    padding-left: 10rem;
+    padding-left:6rem;
     display: flex;
-    margin-top: 20rem;
+    margin-top: 10rem;
+}
+
+.text-footer {
+  font-family: "Josefin Sans", sans-serif, cursive;
+  font-size: 20px;
+  color:#472967;
+  padding: 15px;
+  font-weight: 40;
 }
 
 </style>

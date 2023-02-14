@@ -1,6 +1,4 @@
 <!--Pantalla Iniciar sesión-->
-
-
 <template>
   <form class="login" on>
     <div class="tagline"><h2>¿Ya tienes una cuenta en Flitter?</h2></div>
@@ -10,7 +8,7 @@
     </div>
     <div class="inputPassword">
       <label for="password">Contraseña</label>
-      <input v-model="password" id="password" type="password" placeholder="Password" @keyup.enter="handleLogin"
+      <input v-model="password" id="password" type="password" placeholder="*********" @keyup.enter="handleLogin"
             :maxlength="15"/>
     </div>
     <button @click="handleLogin" type="button">Iniciar sesión</button>
@@ -117,6 +115,12 @@ img {
 a {
   font-family: "Josefin Sans", sans-serif,cursive;
   font-size: 20px;
+  
+}
+
+.forgotPassword {
+  margin-bottom: 1px;
+  color:#472967;
 }
 
 .tagline {
