@@ -1,16 +1,21 @@
 import { User } from "@/models/user";
 import axios from "axios";
 
+type UserResponse = {
+  result: User | null;
+};
+
 class UserService {
-  getUser(accessToken: string): Promise<User> {
+  getUser(username: string): Promise<User> {
     return axios
-      .get<User>("https://api.escuelajs.co/api/v1/auth/profile", {
-        //cambiar por el real
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then((response) => response.data);
+      .get<UserResponse>(`/api/users/${username}`)
+      .then((response) => response.data)
+      .then((data) => {
+        if (!data.result) {
+          throw new Error("Usuario no encontrado");
+        }
+        return data.result;
+      });
   }
 }
 

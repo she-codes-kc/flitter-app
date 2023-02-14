@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 
 app.use('/api/auth', require('./apps/auth/routes'));
-app.use('/api/users', authMiddleware, require('./apps/users/routes'));
+app.use('/api/users', require('./apps/users/routes'));
 app.use('/api/flits', require('./apps/flits/routes'));
 
 // catch 404 and forward to error handler

@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-const User = require('../../../models/User');
+const User = require("../../../models/User");
 
-const getUser = async (id) => {
-    // search for a user at the DB
-    return await User.findById(id);
+const getUser = async (username) => {
+  // search for a user at the DB
+  return await User.findOne({ username });
 };
 
 module.exports = getUser;

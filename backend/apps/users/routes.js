@@ -14,11 +14,11 @@ const deleteUser = require('./controllers/deleteUser');
 const router = express.Router();
 
 
-// GET /api/users/(id)
+// GET /api/users/(username)
 // return one user
-router.get('/:id', async (req, res, next) => {
+router.get('/:username', async (req, res, next) => {
     try {
-        const user = await getUser(req.params.id)
+        const user = await getUser(req.params.username)
 
         res.json({ result: user })
 
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res, next) => {
 
 // PUT /api/users/(id) (body=userData)
 // update a user
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', authMiddleware, async (req, res, next) => {
     try {
         const updatedUser = await updateUser(req.params.id, req.body)
 
@@ -42,7 +42,7 @@ router.put('/:id', async (req, res, next) => {
 
 // DELETE /api/users/(id)
 // delete a user
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', authMiddleware, async (req, res, next) => {
     try {
         await deleteUser(req.params.id, next);
 

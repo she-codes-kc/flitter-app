@@ -10,6 +10,7 @@ type FindFlitsParams = {
   sort?: string;
   skip?: number;
   limit?: number;
+  author?: string;
 };
 
 class FlitService {

@@ -22,8 +22,8 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile/:username",
     name: "user",
     props: (route) => {
-      const id = Number(route.params.id);
-      return { id };
+      const username = route.params.username;
+      return { username };
     },
     component: () => import("@/views/ProfileView.vue"),
   },
