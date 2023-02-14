@@ -36,6 +36,12 @@ class FlitService {
       )
       .then((response) => response.data);
   }
+
+  deleteFlit(id: string, token: string): Promise<void> {
+    return axios.delete(`/api/flits/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
 }
 
 export default new FlitService();

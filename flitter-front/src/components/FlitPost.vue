@@ -23,7 +23,12 @@
         <div class="kudos">
           {{ post.kudos.length }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
-          <i class="fa fa-trash" aria-hidden="true"></i>
+          <i
+            v-show="myUsername === post.author.username"
+            class="fa fa-trash delete"
+            aria-hidden="true"
+            @click="deleteFlit"
+          ></i>
         </div>
       </div>
     </div>
@@ -34,6 +39,8 @@
 import { defineComponent, PropType } from "vue";
 import { Flit } from "@/models/flit";
 import moment from "moment";
+import VueSimpleAlert from "vue3-simple-alert-next";
+import FlitService from "@/services/FlitService";
 
 export default defineComponent({
   props: {
@@ -42,7 +49,31 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: { moment },
+  methods: {
+    moment,
+    deleteFlit() {
+      VueSimpleAlert.confirm(
+        `"${this.post.text}"`,
+        "Seguro que desea borrar este flit?",
+        "question"
+      )
+        .then(() =>
+          FlitService.deleteFlit(
+            this.post._id,
+            this.$store.getters["user/accessToken"]
+          )
+        )
+        .then(() =>
+          VueSimpleAlert.alert("Flit eliminado", undefined, "success")
+        )
+        .then(() => window.location.reload());
+    },
+  },
+  computed: {
+    myUsername() {
+      return this.$store.getters["user/username"];
+    },
+  },
 });
 </script>
 
@@ -112,5 +143,9 @@ i {
   color: #472967;
   size: 18px;
   margin: 10px 10px;
+}
+
+.delete {
+  cursor: pointer;
 }
 </style>
