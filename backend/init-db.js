@@ -44,14 +44,12 @@ async function initFlits() {
     const inserted = await Flit.insertMany([
         {
             text: "Terremotos en Turquia y Siria. Rescatados un bebé y otras 6 personas.",
-            image: "terremoto.jpg",
             author: await findUser("francisca_yague"),
             date: new Date("2023-02-1"),
             kudos: randomUsers(users, 5)
         },
         {
             text: "¡Feliz día del amor y la amistad!😍",
-            image: "san-valentin.jpg",
             author: await findUser("sofia_ruano"),
             date: new Date("2023-02-14"),
             kudos: randomUsers(users, 4)
@@ -64,7 +62,7 @@ async function initFlits() {
         },
         {
             text: "Me encontré 8 lucas en un pantalón que no usaba desde el año pasado, le cuento a un amigo y me dice 'en realidad perdiste plata'",
-            image: "la-existencia-es-una-tragedia.jpg",
+            image: "public/images/tragedia.jpeg",
             author: await findUser("javier_zaragoza"),
             date: new Date("2023-02-06"),
             kudos: randomUsers(users, 7)
@@ -77,21 +75,21 @@ async function initFlits() {
         },
         {
             text: "Fui a tramitar el DNI por pérdida. En la recepción: -Te pido tu DNI",
-            image: "estupefactada.jpg",
+            image: "public/images/pepe.jpeg",
             author: await findUser("sebastian_padron"),
             date: new Date("2023-01-27"),
             kudos: randomUsers(users, 10)
         },
         {
             text: "Ladrón entró a robar y se llevó la pastrafrola.",
-            image: "pastafrola.jpg",
+            image: "public/images/pastafrola.jpeg",
             author: await findUser("benito_maestre"),
             date: new Date("2023-01-29"),
             kudos: randomUsers(users, 3)
         },
         {
             text: "Rescatan gato vestido con esmoquin robado del interior de un coche.",
-            image: "gatoEsmoquin.jpg",
+            image: "public/images/gato-esmoquin.jpeg",
             author: await findUser("irina_galindo"),
             date: new Date("2023-01-31"),
             kudos: randomUsers(users, 8)
@@ -103,8 +101,8 @@ async function initFlits() {
             kudos: randomUsers(users, 2)
         },
         {
-            text: "El equipo de marketing de Casio y Twingo después de escuchar la session de Shakira con Bizarrap: 😮",
-            image: "claramente.jpg",
+            text: "El equipo de marketing de Casio y Twingo después de escuchar la session de Shakira con Bizarrap",
+            image: "public/images/pikachu.jpeg",
             author: await findUser("alba_zapata"),
             date: new Date("2023-01-12"),
             kudos: randomUsers(users, 6)
@@ -123,7 +121,7 @@ async function initFlits() {
         },
         {
             text: "Un coche se desmaya al ver el precio de la gasolina",
-            image: "coche-desmayado.jpg",
+            image: "public/images/coche-desmayado.jpeg",
             author: await findUser("sebastian_padron"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 9)
@@ -142,7 +140,7 @@ async function initFlits() {
         },
         {
             text: "Me quedé a dormir en la casa de mi hermana y me desperté en pinterest.",
-            image: "desayuno-pinterest.jpg",
+            image: "public/images/desayuno-pinterest.jpeg",
             author: await findUser("rosalia_cifuentes"),
             date: new Date("2023-02-08"),
             kudos: randomUsers(users, 7)
@@ -167,21 +165,21 @@ async function initFlits() {
         },
         {
             text: "Por alguna razón mi viejo decidió que era una buena idea de decoración poner todos los celulares viejos que tenemos en una repisa y re que parece un allanamiento",
-            image: "celulares.jpg",
+            image: "public/images/celulares.jpeg",
             author: await findUser("benito_maestre"),
             date: new Date("2023-02-06"),
             kudos: randomUsers(users, 2)
         },
         {
             text: "Descarriló un tren en Ohio con 100.000 galones de cloruro de vinilo, explotando en una enorme bola de lluvia tóxica que envenenó todo el agua, terra y aire",
-            image: "tren-ohio.jpg",
+            image: "public/images/tren-ohio.jpeg",
             author: await findUser("francisca_yague"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 1)
         },
         {
             text: "Celebramos el #DíaMundialDeLaRadio. Es uno de los medios de comunicación más accesibles del mundo, lo que la hace esencial para promover la diversidad, el diálogo, la solidaridad y la paz.",
-            image: "radio.jpg",
+            image: "public/images/radio.jpg",
             author: await findUser("francisca_yague"),
             date: new Date("2023-02-13"),
             kudos: randomUsers(users, 8)
@@ -214,77 +212,88 @@ async function initUsers() {
             lastName:  'Yague',
             username: 'francisca_yague',
             email: 'francisca.yague@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/francisca-yague.jpg'
         },
         {
             firstName: 'Sofia',
             lastName:  'Ruano',
             username: 'sofia_ruano',
             email: 'sofia.ruano@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/sofia-ruano.jpg'
         },
         {
             firstName: 'Ofelia',
             lastName:  'Monteagudo',
             username: 'ofelia_monteagudo',
             email: 'ofelia.monteagudo@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/ofelia-monteagudo.jpg'
         },
         {
             firstName: 'Javier',
             lastName:  'Zaragoza',
             username: 'javier_zaragoza',
             email: 'javier.zaragoza@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/javier-zaragoza.jpg'
         },
         {
             firstName: 'Oliver',
             lastName:  'Valdivia',
             username: 'oliver_valdivia',
             email: 'oliver.valdivia@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/oliver-valdivia.jpg'
         },
         {
             firstName: 'Sebastián',
             lastName:  'Padrón',
             username: 'sebastian_padron',
             email: 'sebastian.padron@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/sebastian-padron.jpg'
         },
         {
             firstName: 'Rosalía',
             lastName:  'Cifuentes',
             username: 'rosalia_cifuentes',
             email: 'rosalia.cifuentes@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/rosalia-cifuentes.jpg'
         },
         {
             firstName: 'Benito',
             lastName:  'Maestre',
             username: 'benito_maestre',
             email: 'benito.maestre@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/benito-maestre.jpg'
         },
         {
             firstName: 'Irina',
             lastName:  'Galindo',
             username: 'irina_galindo',
             email: 'irina.galindo@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/irina-galindo.jpg'
         },
         {
             firstName: 'Alba',
             lastName:  'Zapata',
             username: 'alba_zapata',
             email: 'alba.zapata@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/alba-zapata.jpg'
         },
         {
             firstName: 'Merce',
             lastName:  'Murcia',
             username: 'merce_murcia',
             email: 'merce.murcia@mail.com',
-            password: 'password'
+            password: 'password',
+            profilePic: 'public/images/merce-murcia.jpg'
         }
     ]);
 

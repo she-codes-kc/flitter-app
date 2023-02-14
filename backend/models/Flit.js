@@ -23,7 +23,7 @@ flitSchema.statics.array = function(filter, skip, limit, fields, sort) {
             path:  'kudos',
             select: '_id username'
         })
-        .select('text author date');
+        .select('text image author date');
     query.skip(skip);
     query.limit(limit);
     query.select(fields);
