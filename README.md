@@ -11,11 +11,13 @@ Esta estructurado y ejecutado a traves de las siguientes herramientas:
 - [Mongoose](https://mongoosejs.com/)
 - [Mongo DB Atlas](https://www.mongodb.com/es/atlas/database)
 - [Node JS](https://nodejs.org)
+- [Nodemon](https://www.npmjs.com/package/nodemon)
 - [Express](https://expressjs.com)
 - [Jwt](https://jwt.io)
 - [Vue](https://vuejs.org/)
 - [Vuex](https://vuex.vuejs.org/)
 - [Axios](https://www.npmjs.com/package/axios)
+
 
 ## Backend
 ### Ejecución y configuración:
