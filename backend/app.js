@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const multer = require('multer')
 const authMiddleware = require('./lib/authMiddleware')
 
 require('./lib/connectMongoose');
@@ -26,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/auth', require('./apps/auth/routes'));
 app.use('/api/users', require('./apps/users/routes'));
 app.use('/api/flits', require('./apps/flits/routes'));
+app.use('/api/upload', require('./apps/upload/routes'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
