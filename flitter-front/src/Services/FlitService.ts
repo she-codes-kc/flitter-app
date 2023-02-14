@@ -5,25 +5,23 @@ type FlitsResponse = {
   results: Flit[];
 };
 
-class FlitService {
-  allFlits(): Promise<Flit[]> {
-    return axios
-      .get<FlitsResponse>("/api/flits")
-      .then((response) => response.data)
-      .then((response) => response.results);
-  }
+type FindFlitsParams = {
+  text?: string;
+  sort?: string;
+  skip?: number;
+  limit?: number;
+};
 
+class FlitService {
   oneFlit(id: number): Promise<Flit> {
     return axios
       .get<Flit>(`/api/flits/${id}`)
       .then((response) => response.data);
   }
 
-  findFlits(search: string, offset: number, limit: number): Promise<Flit[]> {
+  findFlits(params: FindFlitsParams): Promise<Flit[]> {
     return axios
-      .get<FlitsResponse>(
-        `/api/flits?text=${search}&offset=${offset}&limit=${limit}`
-      )
+      .get<FlitsResponse>(`/api/flits`, { params })
       .then((response) => response.data)
       .then((response) => response.results);
   }
