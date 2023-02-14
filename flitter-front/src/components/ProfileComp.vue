@@ -1,16 +1,20 @@
 <template>
   <div class="wrapper">
     <div>
-      <img class="headerRocket" alt="Header Rocket" src="../assets/usuario1.jpg" />
+      <img
+        class="headerRocket"
+        alt="Header Rocket"
+        src="../assets/usuario1.jpg"
+      />
     </div>
-    <div class="username">{{ user.name }}</div>
+    <div class="username">{{ user.username }}</div>
     <div class="follow">
       <div class="followers">
-        <div class="number">{{ user.followers.length }}</div>
+        <div class="number">{{ 0 }}</div>
         Seguidores
       </div>
       <div class="following">
-        <div class="number">{{ user.following.length }}</div>
+        <div class="number">{{ 0 }}</div>
         Seguidos
       </div>
     </div>
@@ -39,7 +43,7 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
-  }
+  },
 });
 </script>
 
