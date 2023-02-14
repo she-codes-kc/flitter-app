@@ -28,6 +28,9 @@ const getFlits = async (query) => {
     if (date) { // /api/flits?date=<00/00/0000>
         filter.date = date;
     }
+    if (author) {
+        filter.author = author;
+    }
 
     // const filterAuthor = {};
 

@@ -1,18 +1,27 @@
 <template>
   <div class="profile">
     <div class="logo">
-      <img class="roundimg" alt="Flitter logo" src="../assets/usuario1.jpg" width="40" />
+      <img
+        class="roundimg"
+        alt="Flitter logo"
+        src="../assets/usuario1.jpg"
+        width="40"
+      />
     </div>
     <div class="flit">
-      <router-link :to="`/profile/${post.author}`">
-        <div class="username">{{ post.author }}</div>
+      <router-link :to="`/profile/${post.author.username}`">
+        <div class="username">{{ post.author.username }}</div>
       </router-link>
       <div class="message">{{ post.text }}</div>
       <div class="meta">
-        <div class="publishDate" :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')">{{
-          moment(post.date).fromNow()
-        }}</div>
-        <div class="kudos">{{ post.kudos.length }}
+        <div
+          class="publishDate"
+          :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')"
+        >
+          {{ moment(post.date).fromNow() }}
+        </div>
+        <div class="kudos">
+          {{ post.kudos.length }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
           <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
@@ -24,7 +33,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { Flit } from "@/models/flit";
-import moment from 'moment';
+import moment from "moment";
 
 export default defineComponent({
   props: {
@@ -33,7 +42,7 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: { moment }
+  methods: { moment },
 });
 </script>
 
@@ -58,7 +67,7 @@ export default defineComponent({
   margin-bottom: 30px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-color: #EC6324;
+  border-color: #ec6324;
   margin: 0 10px 10px 10px;
   font-size: 18px;
   margin-top: 2rem;
@@ -66,7 +75,7 @@ export default defineComponent({
 
 .username {
   color: #472967;
-  font-family: 'Josefin Sans', sans-serif, cursive;
+  font-family: "Josefin Sans", sans-serif, cursive;
   font-weight: lighter;
 }
 
@@ -88,7 +97,7 @@ export default defineComponent({
 }
 
 .publishDate {
-  color: #EC6324;
+  color: #ec6324;
   font-style: italic;
   padding-top: 12px;
 }
