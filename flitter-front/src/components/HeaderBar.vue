@@ -1,4 +1,3 @@
-<!--Nav Bar con logo, bienvenidos a flitter, iniciar sesión y registrarse-->
 <template>
   <nav class="bar">
     <div class="logo">
@@ -11,12 +10,12 @@
         <h2>Bienvenidos ¡Entérate de lo que la gente habla!</h2>
       </router-link>
     </div>
-    <div v-if="loggedIn"> 
-      <LoggedIn/> 
-    </div> 
-    <div v-else> 
+    <div v-if="loggedIn">
+      <LoggedIn />
+    </div>
+    <div v-else>
       <LoggedOut />
-    </div> 
+    </div>
   </nav>
 </template>
 
@@ -28,22 +27,22 @@ import LoggedIn from "./LoggedIn.vue";
 
 export default defineComponent({
   name: "HeaderBar",
-    components: {
-      LoggedOut,
-      LoggedIn,
-    },
-    computed: {
-      loggedIn() {
-        return this.$store.getters["user/isLoggedIn"];
-      }
+  components: {
+    LoggedOut,
+    LoggedIn,
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.getters["user/isLoggedIn"];
     }
+  }
 });
 </script>
 
 <style scoped>
 .bar {
   grid-template-columns: minmax(5rem, 1fr) 2fr minmax(5rem, 1fr);
-  grid-template-rows: repeat(2,min-content) 1fr;
+  grid-template-rows: repeat(2, min-content) 1fr;
   grid-row-gap: 1.5rem;
   display: flex;
   align-items: center;
@@ -68,7 +67,7 @@ export default defineComponent({
 }
 
 h2 {
-  color:#472967;
+  color: #472967;
   font-family: 'Josefin Sans', sans-serif, cursive;
   justify-content: center;
 }

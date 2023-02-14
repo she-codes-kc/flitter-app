@@ -2,20 +2,9 @@
 <template>
   <div class="home">
     <div class="searchBar">
-      <i
-        font-awesome-icon
-        class="fa-solid fa-magnifying-glass"
-        @click="onSearch"
-        :type="searchStatus"
-      ></i>
-      <input
-        type="text"
-        placeholder="Buscá en Flitter lo que quieras"
-        style="width: 100%"
-        v-model="search"
-        @keyup.enter="onSearch"
-        :status="searchStatus"
-      />
+      <i font-awesome-icon class="fa-solid fa-magnifying-glass" @click="onSearch" :type="searchStatus"></i>
+      <input type="text" placeholder="Buscá en Flitter lo que quieras" style="width: 100%" v-model="search"
+        @keyup.enter="onSearch" :status="searchStatus" />
     </div>
     <CreateFlit v-if="isLoggedIn" />
     <div>
@@ -120,22 +109,24 @@ export default defineComponent({
   height: 100vh;
   padding-top: 1rem;
 }
+
 .searchBar {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-img{
+img {
   width: 10%;
   display: flex;
 }
 
-.footer-img-text{
+.footer-img-text {
   display: flex;
   align-items: center;
- 
+
 }
+
 .searchBar input {
   width: 60rem;
   height: 3rem;
@@ -177,23 +168,22 @@ h2 {
 h3 {
   font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 20px;
-  color:#ec6324;
+  color: #ec6324;
   padding: 15px;
   font-weight: 40;
 }
 
 .footer {
-    padding-left:6rem;
-    display: flex;
-    margin-top: 10rem;
+  padding-left: 6rem;
+  display: flex;
+  margin-top: 10rem;
 }
 
 .text-footer {
   font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 20px;
-  color:#472967;
+  color: #472967;
   padding: 15px;
   font-weight: 40;
 }
-
 </style>

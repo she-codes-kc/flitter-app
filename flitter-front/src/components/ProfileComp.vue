@@ -1,12 +1,7 @@
-<!--Perfil privado-->
 <template>
   <div class="wrapper">
     <div>
-      <img
-        class="headerRocket"
-        alt="Header Rocket"
-        src="../assets/usuario1.jpg"
-      />
+      <img class="headerRocket" alt="Header Rocket" src="../assets/usuario1.jpg" />
     </div>
     <div class="username">{{ user.name }}</div>
     <div class="follow">
@@ -21,11 +16,11 @@
     </div>
     <div v-show="myProfile">
       <div class="buttons">
-      <button class="edit-button">
-        <router-link to="/settings">Editar perfil</router-link>
-      </button>
+        <button class="edit-button">
+          <router-link to="/settings">Editar perfil</router-link>
+        </button>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -43,8 +38,9 @@ export default defineComponent({
     myProfile: {
       type: Boolean,
       required: true,
-  },
-}});
+    },
+  }
+});
 </script>
 
 <style scoped>
@@ -62,9 +58,11 @@ img {
   width: 100px;
   border-radius: 100%;
 }
+
 .headerRocket {
   grid-area: a;
 }
+
 .username {
   grid-area: c;
   font-weight: bold;
@@ -87,6 +85,7 @@ img {
   flex-direction: column;
   align-items: center;
 }
+
 .number {
   font-weight: bold;
 }

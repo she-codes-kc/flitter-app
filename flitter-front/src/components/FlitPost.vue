@@ -1,21 +1,17 @@
-<!--Template del flit ya realizado-->
 <template>
   <div class="profile">
     <div class="logo">
-      <img
-        class="roundimg"
-        alt="Flitter logo"
-        src="../assets/usuario1.jpg"
-        width="40"
-      />
+      <img class="roundimg" alt="Flitter logo" src="../assets/usuario1.jpg" width="40" />
     </div>
     <div class="flit">
-      <router-link :to="`/profile/${post.author}`">  
-        <div class="username">{{ post.author }}</div></router-link
-      >
-      <div class="message">{{ post.text}}</div>
+      <router-link :to="`/profile/${post.author}`">
+        <div class="username">{{ post.author }}</div>
+      </router-link>
+      <div class="message">{{ post.text }}</div>
       <div class="meta">
-        <div class="publishDate" :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')">{{ moment(post.date).fromNow() }}</div>
+        <div class="publishDate" :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')">{{
+          moment(post.date).fromNow()
+        }}</div>
         <div class="kudos">{{ post.kudos.length }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
           <i class="fa fa-trash" aria-hidden="true"></i>
@@ -37,12 +33,11 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: {moment}
+  methods: { moment }
 });
 </script>
 
 <style scoped>
-
 .logo {
   width: 4rem;
   height: 3rem;
@@ -51,11 +46,11 @@ export default defineComponent({
 }
 
 .logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-top: 2rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 2rem;
 }
 
 .flit {
@@ -84,7 +79,7 @@ export default defineComponent({
 
 .kudos {
   margin: 0 10px;
-  color:#472967;
+  color: #472967;
   size: 18px;
 }
 
@@ -93,7 +88,7 @@ export default defineComponent({
 }
 
 .publishDate {
-  color:#EC6324;
+  color: #EC6324;
   font-style: italic;
   padding-top: 12px;
 }
@@ -105,7 +100,7 @@ export default defineComponent({
 }
 
 i {
-  color:#472967;
+  color: #472967;
   size: 18px;
   margin: 10px 10px;
 }

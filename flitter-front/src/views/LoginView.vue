@@ -1,7 +1,8 @@
-<!--Pantalla Iniciar sesión-->
 <template>
   <form class="login" on>
-    <div class="tagline"><h2>¿Ya tienes una cuenta en Flitter?</h2></div>
+    <div class="tagline">
+      <h2>¿Ya tienes una cuenta en Flitter?</h2>
+    </div>
     <div class="inputEmail">
       <label for="username">Usuario/email</label>
       <input v-model="email" id="username" type="text" placeholder="juan@mail.com" />
@@ -9,7 +10,7 @@
     <div class="inputPassword">
       <label for="password">Contraseña</label>
       <input v-model="password" id="password" type="password" placeholder="*********" @keyup.enter="handleLogin"
-            :maxlength="15"/>
+        :maxlength="15" />
     </div>
     <button @click="handleLogin" type="button">Iniciar sesión</button>
     <div class="forgotPassword">
@@ -20,7 +21,7 @@
 
 <script lang="ts">
 import VueSimpleAlert from "vue3-simple-alert-next";
-import { defineComponent} from "vue";
+import { defineComponent } from "vue";
 
 
 //Código de: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
@@ -91,8 +92,8 @@ h2 {
   margin-bottom: 40px;
 }
 
-.inputEmail input ,
-.inputPassword input{
+.inputEmail input,
+.inputPassword input {
   width: 100%;
   border: 0.1rem solid #e2e2e2e4;
   border-radius: 3rem;
@@ -102,8 +103,8 @@ h2 {
   align-items: center;
 }
 
-.inputEmail input:focus ,
-.inputPassword input:focus{
+.inputEmail input:focus,
+.inputPassword input:focus {
   background-color: white;
   border-color: #472967;
 }
@@ -113,18 +114,17 @@ img {
 }
 
 a {
-  font-family: "Josefin Sans", sans-serif,cursive;
+  font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 20px;
-  
 }
 
 .forgotPassword {
   margin-bottom: 1px;
-  color:#472967;
+  color: #472967;
 }
 
 .tagline {
-  color:#EC6324;
+  color: #EC6324;
 }
 </style>
 

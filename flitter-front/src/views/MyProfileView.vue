@@ -1,7 +1,6 @@
-<!--Pantalla mi perfil privado-->
 <template>
-  <ProfileComp :my-profile="true"  :user="user" />
-  <CreateFlit/>
+  <ProfileComp :my-profile="true" :user="user" />
+  <CreateFlit />
   <h2>Mis flits</h2>
   <FlitFeed :posts="posts" />
 </template>
@@ -26,12 +25,12 @@ export default defineComponent({
       type: String,
       required: true,
     },
-  }, 
+  },
 
   setup(props) {
     const isLoggedIn = true;
     const user: User = {
-      _id:"1",
+      _id: "1",
       firstName: "georgina",
       lastName: "Castellni",
       username: props.username,
@@ -74,13 +73,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
-h2{
+h2 {
   font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 25px;
-  color:#EC6324;
+  color: #EC6324;
   padding-top: 2rem;
   padding-right: 2rem;
 }
-
 </style>

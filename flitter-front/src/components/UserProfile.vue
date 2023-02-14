@@ -1,12 +1,8 @@
 <template>
     <div class="wrapper">
         <div>
-      <img
-        class="headerRocket"
-        alt="Header Rocket"
-        src="../assets/usuario1.jpg"
-      />
-    </div>
+            <img class="headerRocket" alt="Header Rocket" src="../assets/usuario1.jpg" />
+        </div>
         <div class="username">@CatalinaCastellanos</div>
         <div class="follow">
             <div class="followers">
@@ -14,7 +10,7 @@
                 Seguidores
             </div>
             <div class="following">
-                <div class="number">{{ user.following.length }}</div> 
+                <div class="number">{{ user.following.length }}</div>
                 Seguidos
             </div>
         </div>
@@ -39,9 +35,9 @@ export default defineComponent({
 <style scoped>
 .wrapper {
     display: grid;
-    grid-template-areas: 
-    "a b"
-    "c d";
+    grid-template-areas:
+        "a b"
+        "c d";
     grid-template-columns: minmax(100px, max-content) 1fr;
     column-gap: 40px;
 }
@@ -52,12 +48,13 @@ export default defineComponent({
 }
 
 img {
-  grid-area: a;
-  width: 100px;
-  border-radius: 100%;
+    grid-area: a;
+    width: 8rem;
+    border-radius: 50%;
 }
+
 .headerRocket {
-  grid-area: a;
+    grid-area: a;
 }
 
 .username {
@@ -65,7 +62,7 @@ img {
     font-weight: bold;
     font-size: larger;
     color: #472967;
-    padding-top: 5px;
+    padding-top: 10px;
     margin-bottom: 5rem;
 }
 
@@ -75,12 +72,16 @@ img {
     align-items: center;
     column-gap: 5px;
 }
-.followers, .following {
+
+.followers,
+.following {
+    margin-top: 2rem;
     width: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .number {
     font-weight: bold;
 }
@@ -91,10 +92,12 @@ img {
     justify-content: left;
     column-gap: 5px;
 }
-.edit-button, .newFlit-button {
+
+.edit-button,
+.newFlit-button {
     width: 100px;
     color: white;
-    background-color:#472967;
+    background-color: #472967;
     border: none;
     border-radius: 5px;
 }
