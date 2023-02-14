@@ -16,6 +16,21 @@ class AuthService {
         return response.data.accessToken;
       });
   }
+  register(
+    firstName: string,
+    lastName: string,
+    username: string,
+    email: string,
+    password: string
+  ) {
+    return axios.post<void>("/api/auth/register", {
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+    });
+  }
 }
 
 export default new AuthService();

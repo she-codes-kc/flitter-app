@@ -1,3 +1,82 @@
+<script lang="ts" setup>
+import AuthService from "@/services/AuthService";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import VueSimpleAlert from "vue3-simple-alert-next";
+
+const router = useRouter();
+const name = ref("");
+const lastName = ref("");
+const username = ref("@");
+const email = ref("");
+const password = ref("");
+
+const validateEmail = (email: string) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+function onClick() {
+  if (name.value === "") {
+    VueSimpleAlert.alert("Debe incluir un nombree", undefined, "warning");
+    return;
+  }
+  if (lastName.value === "") {
+    VueSimpleAlert.alert("Debe incluir un apellido", undefined, "warning");
+    return;
+  }
+  if (username.value === "" || username.value === "@") {
+    VueSimpleAlert.alert(
+      "Debe incluir un nombre de usuario",
+      undefined,
+      "warning"
+    );
+    return;
+  }
+  if (email.value === "" || !validateEmail(email.value)) {
+    VueSimpleAlert.alert("Debe incluir un email", undefined, "warning");
+    return;
+  }
+  if (password.value === "") {
+    VueSimpleAlert.alert("Debe incluir un password", undefined, "warning");
+    return;
+  }
+
+  const usernamewithat = username.value.startsWith("@")
+    ? username.value
+    : `@${username.value}`;
+
+  AuthService.register(
+    name.value,
+    lastName.value,
+    usernamewithat,
+    email.value,
+    password.value
+  )
+    .then(() =>
+      VueSimpleAlert.alert(
+        "Te registraste con exito!",
+        "Ya podes logearte",
+        "success"
+      ).then(() => router.push({ name: "login" }))
+    )
+    .catch((err: any) => {
+      if (err.response?.data?.error) {
+        VueSimpleAlert.alert(err.response?.data?.error, undefined, "error");
+      } else {
+        VueSimpleAlert.alert(
+          err.message || "Ha ocurrido un error",
+          undefined,
+          "error"
+        );
+      }
+    });
+}
+</script>
+
 <template>
   <form class="signup">
     <div class="tagline">
@@ -5,30 +84,51 @@
     </div>
     <div class="inputName">
       <label for="name">Nombre</label>
-      <input id="name" type="text" placeholder="Juan" required />
+      <input v-model="name" id="name" type="text" placeholder="Juan" required />
     </div>
     <div class="inputLastName">
       <label for="lastName">Apellido</label>
-      <input id="lastName" type="text" placeholder="Gonzalez" required />
+      <input
+        v-model="lastName"
+        id="lastName"
+        type="text"
+        placeholder="Gonzalez"
+        required
+      />
     </div>
     <div class="inputUsername">
       <label for="username">Usuario</label>
-      <input id="username" type="text" placeholder="JuanGonzalez" pattern="[A-Za-z]{}" required />
+      <input
+        v-model="username"
+        id="username"
+        type="text"
+        placeholder="JuanGonzalez"
+        pattern="[A-Za-z]{}"
+        required
+      />
     </div>
     <div class="inputEmail">
       <label for="email">Email</label>
-      <input id="email" type="text" placeholder="juan@mail.com" required />
+      <input
+        v-model="email"
+        id="email"
+        type="text"
+        placeholder="juan@mail.com"
+        required
+      />
     </div>
     <div class="inputPassword">
       <label for="password">Contraseña</label>
-      <input id="password" type="password" placeholder="*********" required />
+      <input
+        v-model="password"
+        id="password"
+        type="password"
+        placeholder="*********"
+        required
+      />
     </div>
-    <button type="submit">Registrarme</button>
-    <!-- <div class="validate">
-      <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">(Revisa tu bandeja de entrada y haz clic en el enlace para validar tu cuenta).</a>
-    </div> -->
+    <button type="button" @click="onClick">Registrarme</button>
   </form>
-
 </template>
 
 <style scoped>
@@ -52,7 +152,6 @@ h2 {
 .inputPassword {
   width: 100%;
   margin-bottom: 40px;
-
 }
 .inputEmail input,
 .inputUsername input,
@@ -84,7 +183,7 @@ img {
 }
 
 .tagline {
-  color: #EC6324;
+  color: #ec6324;
 }
 
 a {
