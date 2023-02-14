@@ -7,7 +7,7 @@ const loginGuard = (_to: RouteLocation, _from: RouteLocation, next: any) => {
   if (isLoggedIn) {
     next();
   } else {
-    next({ name: "home" });
+    next({ name: "login" });
   }
 };
 

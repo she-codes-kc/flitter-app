@@ -2,65 +2,84 @@
 <template>
   <div class="home">
     <div class="searchBar">
-      <i font-awesome-icon class="fa-solid fa-magnifying-glass" @click="onSearch" :type="searchStatus"></i>
-      <input type="text" placeholder="Buscar por @personas | #tags | texto" style="width: 100%" v-model="search"
+      <i
+        font-awesome-icon
+        class="fa-solid fa-magnifying-glass"
+        @click="onSearch"
+        :type="searchStatus"
+      ></i>
+      <input
+        type="text"
+        placeholder="Buscar por @personas | #tags | texto"
+        style="width: 100%"
+        v-model="search"
         @keyup.enter="onSearch"
-        :status="searchStatus">
+        :status="searchStatus"
+      />
     </div>
-      
-      <!-- <alert v-if="searchStatus === 'error'" title="Error" type="error">
-      Se requiere un mínimo de 3 caracteres para la búsqueda -->
-    <!-- </alert> -->
+    <CreateFlit v-if="isLoggedIn" />
     <div>
-    <h2>Últimas tendencias</h2>
-    <h2 v-if="loading">Cargando...</h2>
-    <FlitFeed v-if="!loading" :posts="flits"/>
+      <h2>Últimas tendencias</h2>
+      <h2 v-if="loading">Cargando...</h2>
+      <h2 v-if="!loading && flits.length === 0 && page != 1">
+        No se encontraron más flits
+      </h2>
+      <h2 v-if="!loading && flits.length === 0 && page == 1">
+        No se encontraron flits
+      </h2>
+      <FlitFeed v-if="!loading" :posts="flits" />
     </div>
-  </div>
+    <div class="pagination">
+      <button @click="page++">Siguiente</button>
+      <button v-show="page > 1" @click="page--">Anterior</button>
+    </div>
+    </div>
+    <footer class="footer">
+    </footer>
 </template>
 
-
-
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import FlitFeed from '@/components/FlitFeed.vue';
+import { defineComponent } from "vue";
+import FlitFeed from "@/components/FlitFeed.vue";
+import CreateFlit from "@/components/CreateFlit.vue";
 import { Flit } from "../models/flit";
-import FlitService from '@/Services/FlitService';
+import FlitService from "@/services/FlitService";
+//import CreateFlit from '@/components/CreateFlit.vue';
 
 interface Data {
+  search: string;
+  page: number;
   flits: Flit[];
   loading: boolean;
+  searchStatus: "success" | "error";
 }
 
 const LIMIT = 8;
 
 export default defineComponent({
-  name: 'HomeView',
+  name: "HomeView",
   components: {
+    CreateFlit,
     FlitFeed,
   },
-  setup() {
-    return {
-      page: ref(1),
-      search: ref(""),
-      searchStatus: ref<"success" | "error">("success"),
-      
-    };
-  },
   data(): Data {
-  return {
-    flits: [],
-    loading: true,
+    return {
+      search: "",
+      page: 1,
+      flits: [],
+      loading: true,
+      searchStatus: "success",
     };
   },
   methods: {
     async fetchFlits() {
       this.loading = true;
-      const flits = await FlitService.findFlits(
-        this.search,
-        (this.page - 1) * LIMIT,
-        LIMIT
-      );
+      const flits = await FlitService.findFlits({
+        text: this.search,
+        skip: (this.page - 1) * LIMIT,
+        limit: LIMIT,
+        sort: "-date",
+      });
       this.flits = flits;
       this.loading = false;
     },
@@ -80,53 +99,70 @@ export default defineComponent({
   watch: {
     page() {
       this.fetchFlits();
+      window.scrollTo(0, 0);
+    },
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["user/isLoggedIn"];
     },
   },
 });
 </script>
 
 <style scoped>
-
 .home {
   width: 100%;
   height: 100vh;
   padding-top: 1rem;
 }
-
 .searchBar {
-    display: flex;
-    align-items: center;
-    position: relative;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .searchBar input {
-    width: 60rem;
-    height: 3rem;
-    border: 0.1rem solid #e2e2e2e4;
-    border-radius: 3rem;
-    background-color: #e2e2e2e4;
-    padding-left: 5rem;
-    transition: all 0.3s;
+  width: 60rem;
+  height: 3rem;
+  border: 0.1rem solid #e2e2e2e4;
+  border-radius: 3rem;
+  background-color: #e2e2e2e4;
+  padding-left: 5rem;
+  transition: all 0.3s;
 }
 
 .searchBar input:focus {
-    background-color: white;
-    border-color: #472967;
+  background-color: white;
+  border-color: #472967;
 }
 
 .searchBar i {
-    position: absolute;
-    font-size: 1.6rem;
-    left: 1.5rem;
-    color:#472967;
+  position: absolute;
+  font-size: 1.6rem;
+  left: 1.5rem;
+  color: #472967;
 }
 
 h2 {
   font-family: "Josefin Sans", sans-serif, cursive;
   font-weight: 50;
   font-size: 25px;
-  color:#EC6324;
+  color: #ec6324;
   padding: 20px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer {
+    padding-left: 10rem;
+    display: flex;
+    margin-top: 20rem;
 }
 
 </style>

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+// eslint-disable-next-line
 import loginGuard from "./loginGuard";
 
 const routes: Array<RouteRecordRaw> = [
@@ -16,7 +17,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/signup",
     name: "signup",
     component: () => import("@/views/SignupView.vue"),
-    // beforeEnter: [loginGuard],
   },
   {
     path: "/profile/:username",
@@ -31,12 +31,18 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile",
     name: "profile",
     component: () => import("@/views/MyProfileView.vue"),
-    // beforeEnter: [loginGuard],
+    beforeEnter: [loginGuard],
   },
   {
     path: "/settings",
     name: "settings",
     component: () => import("@/views/SettingsView.vue"),
+    beforeEnter: [loginGuard],
+  },
+  {
+    path: "/password-recovery",
+    name: "PasswordRecovery",
+    component: () => import("@/views/PasswordRecoveryView.vue"),
   },
 ];
 

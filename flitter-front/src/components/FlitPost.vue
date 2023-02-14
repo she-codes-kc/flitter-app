@@ -15,10 +15,10 @@
       >
       <div class="message">{{ post.text}}</div>
       <div class="meta">
-        
-        <div class="publishDate">{{ post.creation }}</div>
-        <div class="kudos">{{ post.kudos?.size }}
+        <div class="publishDate" :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')">{{ moment(post.date).fromNow() }}</div>
+        <div class="kudos">{{ post.kudos.length }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
       </div>
     </div>
@@ -28,6 +28,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { Flit } from "@/models/flit";
+import moment from 'moment';
 
 export default defineComponent({
   props: {
@@ -36,6 +37,7 @@ export default defineComponent({
       required: true,
     },
   },
+  methods: {moment}
 });
 </script>
 
@@ -81,6 +83,7 @@ export default defineComponent({
 .kudos {
   margin: 0 10px;
   color:#472967;
+  size: 18px;
 }
 
 .message {
@@ -90,11 +93,18 @@ export default defineComponent({
 .publishDate {
   color:#EC6324;
   font-style: italic;
+  padding-top: 12px;
 }
 
 .profile {
   display: flex;
   align-items: start;
   margin-bottom: 10px;
+}
+
+i {
+  color:#472967;
+  size: 18px;
+  margin: 10px 10px;
 }
 </style>

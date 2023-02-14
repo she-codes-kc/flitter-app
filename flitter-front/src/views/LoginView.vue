@@ -1,37 +1,77 @@
 <!--Pantalla Iniciar sesión-->
-<!-- <script lang="ts"></script>
+
 
 <template>
-  <div>
-    <form>
-      <label for="user">Usuario:</label>
-      <input type="text" id="user" name="user" /><br /><br />
-      <label for="password">Contraseña:</label>
-      <input type="text" id="password" name="password" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-
-  <button>LogIn</button>
-</template> -->
-
-<template>
-  <form class="login">
+  <form class="login" on>
     <div class="tagline"><h2>¿Ya tienes una cuenta en Flitter?</h2></div>
     <div class="inputEmail">
       <label for="username">Usuario/email</label>
-      <input id="username" type="text" placeholder="juan@mail.com" />
+      <input v-model="email" id="username" type="text" placeholder="juan@mail.com" />
     </div>
     <div class="inputPassword">
       <label for="password">Contraseña</label>
-      <input id="password" type="password" placeholder="********" />
+      <input v-model="password" id="password" type="password" placeholder="Password" @keyup.enter="handleLogin"
+            :maxlength="15"/>
     </div>
-    <button>Iniciar sesión</button>
+    <button @click="handleLogin" type="button">Iniciar sesión</button>
     <div class="forgotPassword">
-      <a href="#/password">¿Olvidaste la contraseña?</a>
+      <router-link to="/password-recovery">¿Olvidaste la contraseña?</router-link>
     </div>
   </form>
 </template>
+
+<script lang="ts">
+import VueSimpleAlert from "vue3-simple-alert-next";
+import { defineComponent} from "vue";
+
+
+//Código de: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+const validateEmail = (email: string) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+export default defineComponent({
+  data() {
+    return {
+      email: '',
+      password: '',
+      loading: false,
+      error: '',
+    }
+  },
+  methods: {
+    handleLogin() {
+      this.error = "";
+      if (!this.email || !validateEmail(this.email)) {
+        VueSimpleAlert.alert("Email Inválido", undefined, 'error');
+        return;
+      }
+      if (!this.password) {
+        VueSimpleAlert.alert("Contraseña Inválida", undefined, 'error');
+        return;
+      }
+      this.loading = true;
+      this.$store
+        .dispatch("user/login", { email: this.email, password: this.password }) // llama a la accion login de user
+        .then(() => VueSimpleAlert.alert("Bienvenido/a nuevamente!", undefined, 'success'))
+        .then(() => this.$router.push({ name: "home" }))
+        .catch((error: any) => {
+          if (error.response?.status === 401) {
+            VueSimpleAlert.alert("Email o contraseña inválida", undefined, 'error');
+          } else {
+            VueSimpleAlert.alert(error.message, undefined, 'error');
+          }
+        })
+        .finally(() => (this.loading = false));
+    },
+  },
+});
+</script>
+
 
 <style scoped>
 .login {
@@ -70,17 +110,16 @@ h2 {
   border-color: #472967;
 }
 
-
 img {
   margin: 20px;
 }
 
-a{
+a {
   font-family: "Josefin Sans", sans-serif,cursive;
   font-size: 20px;
 }
 
-.tagline{
+.tagline {
   color:#EC6324;
 }
 </style>

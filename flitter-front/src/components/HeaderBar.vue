@@ -12,21 +12,19 @@
       </router-link>
     </div>
     <div v-if="loggedIn"> 
-    <LoggedIn/> 
+      <LoggedIn/> 
     </div> 
-
     <div v-else> 
-    <LoggedOut />
+      <LoggedOut />
     </div> 
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import LoggedOut from "./LoggedOut.vue";
 import LoggedIn from "./LoggedIn.vue";
-import router from "@/router";
-import { RouterLink } from "vue-router";
+
 
 export default defineComponent({
   name: "HeaderBar",
@@ -34,16 +32,11 @@ export default defineComponent({
       LoggedOut,
       LoggedIn,
     },
-    setup() {
-        let loggedIn = ref<boolean>(false) 
-        const token = localStorage.getItem('accessToken')
-        if(token) {
-            loggedIn = ref<boolean>(true)
-        }
-        return {
-            loggedIn,
-        }
-    },
+    computed: {
+      loggedIn() {
+        return this.$store.getters["user/isLoggedIn"];
+      }
+    }
 });
 </script>
 
@@ -58,7 +51,8 @@ export default defineComponent({
   gap: 10px;
   padding: 5px;
   margin: 5px 0;
-  box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #d2d2d2;
 }
 
 .logo {
@@ -70,6 +64,7 @@ export default defineComponent({
   justify-content: center;
   font-size: 20px;
   line-height: 0px;
+  padding-left: 7rem;
 }
 
 h2 {

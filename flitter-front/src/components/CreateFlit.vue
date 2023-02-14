@@ -5,11 +5,11 @@
         type="text" placeholder="¿Qué estás pensando?" style="width: 100%"/>
       <button @click="createFlit">¡Flit!</button>
     </div>
-    <div v-if="created">Flit Creado!</div>
 </template>
   
 <script lang="ts">
-import FlitService from "@/Services/FlitService";
+import FlitService from "@/services/FlitService";
+import VueSimpleAlert from "vue3-simple-alert-next";
 import { defineComponent } from "vue";
   
 export default defineComponent({
@@ -17,12 +17,18 @@ export default defineComponent({
     return {
         newFlit: "",
         created: false,
+        // date: Date.getday() // ????
     }
    },
    methods: {
     async createFlit() {
-        const flit = await FlitService.createFlit(this.newFlit);
-        this.created = true;
+        // Success and error flits alerts
+        try {
+            await FlitService.createFlit(this.newFlit);
+            VueSimpleAlert.alert("Tu flit ha sido publicado",undefined, "success");
+        } catch (error) {
+            VueSimpleAlert.alert("No has podido flittear, inténtalo de nuevo",undefined, "error");
+        }        
     }
    }
 });

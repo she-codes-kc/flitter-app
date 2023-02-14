@@ -2,26 +2,24 @@
 <template>
   <div class="links">
     <router-link to="/profile">Mi perfil</router-link> |
-    <router-link to="/home"   @click="logOut">Cerrar sesión</router-link>
+    <router-link to="/" @click="logout">Cerrar sesión</router-link>
   </div> 
 </template>
 
 <script lang="ts">
-import router from "../router";
 import { defineComponent } from 'vue';
-import { RouterLink } from 'vue-router';
+import VueSimpleAlert from 'vue3-simple-alert-next';
+
 
 export default defineComponent({
   name: 'LoggedIn',
-  setup() {
-      const logOut = () => {
-              localStorage.removeItem('accessToken')
-              router.push({ name: 'home' })
-          }
-
-      return {
-          logOut
-      }
+  methods: {
+    logout() {
+      this.$store.dispatch('user/logout');
+      VueSimpleAlert.alert('Nos vemos pronto!', undefined, 'info').then(() => {
+        this.$router.push({})
+      })
+    }
   }
 })
 </script>

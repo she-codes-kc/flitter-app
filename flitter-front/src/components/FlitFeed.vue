@@ -1,29 +1,16 @@
 <!--Página principal/feed-->
 <template>
-    <!-- <h2>Últimas tendencias</h2> -->
-    <div v-for="post in posts" :key="post.id">
-      <FlitPost :post="post" />
+    <div v-for="post in posts" :key="post._id">
+      <FlitPost :post="post"/>
     </div>
-<!--Pie de página con inicio de seión o registro-->
- <footer class="loadMore">
-      <!-- <img alt="Load Rocket" src="../assets/logo.png" /> -->
-      <p>
-        <a href="/login">Inicia sesión</a> o <a href="/signup">regístrate</a> ¡para poder crear tus propios flits!
-      </p>
-    
- </footer>
-
-<!-- Si estás logueado, salen botones de página -->
     <div class="pages" v-if="loggedIn">
-      <div class="previous-page">
-        <!-- AGREGAR ICONO FLECHA IZQUIERDA// <svg class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16"></svg> -->
+      <div class="previous-page" @click="$emit('previousPage')">
       </div>
-      <img alt="Load Rocket" src="" />
-      <div class="next-page">
-        <!-- AGREGAR ÍCONO FLECHA DERECHA // <svg class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16"></svg> -->
+      <img alt="Load Rocket"/>
+      <div class="next-page" @click="$emit('nextPage')">
       </div>
-    </div>
-
+  </div>
+   
 </template>
   
 <script lang="ts">
@@ -86,4 +73,7 @@ a {
   text-decoration: underline;
 }
 
+i {
+  color:#472967;
+}
 </style>

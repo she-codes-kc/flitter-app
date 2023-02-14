@@ -1,17 +1,13 @@
 <template>
-    <div class="headerPictureName">
-    <h1>{{ user.username }}</h1>
-    <!-- <img
-      class="headerRocket"
-      alt="Header Rocket"
-      src=""
-    /> -->
-    </div>
     <div class="wrapper">
-        <div class="avatar">
-            <img :src="user.avatar" :alt="user.username">
-        </div>
-        <div class="username">{{ user.username }}</div>
+        <div>
+      <img
+        class="headerRocket"
+        alt="Header Rocket"
+        src="../assets/usuario1.jpg"
+      />
+    </div>
+        <div class="username">@CatalinaCastellanos</div>
         <div class="follow">
             <div class="followers">
                 <div class="number">{{ user.followers.length }}</div>
@@ -21,9 +17,6 @@
                 <div class="number">{{ user.following.length }}</div> 
                 Seguidos
             </div>
-        </div>
-        <div class="buttons">
-            <button><a href="#/login">Inicia sesión para seguir</a></button>
         </div>
     </div>
 </template>
@@ -50,7 +43,7 @@ export default defineComponent({
     "a b"
     "c d";
     grid-template-columns: minmax(100px, max-content) 1fr;
-    column-gap: 20px;
+    column-gap: 40px;
 }
 
 .avatar {
@@ -59,15 +52,21 @@ export default defineComponent({
 }
 
 img {
-    width: 100px;
+  grid-area: a;
+  width: 100px;
+  border-radius: 100%;
+}
+.headerRocket {
+  grid-area: a;
 }
 
 .username {
-    grid-area: c;
+    grid-area: b;
     font-weight: bold;
     font-size: larger;
-    color: #5060a4;
+    color: #472967;
     padding-top: 5px;
+    margin-bottom: 5rem;
 }
 
 .follow {
@@ -93,10 +92,9 @@ img {
     column-gap: 5px;
 }
 .edit-button, .newFlit-button {
-    /* display: none; */
     width: 100px;
     color: white;
-    background-color:#5060a4;
+    background-color:#472967;
     border: none;
     border-radius: 5px;
 }

@@ -1,5 +1,4 @@
-
-import AuthService from "@/Services/AuthService";
+import AuthService from "@/services/AuthService";
 import type { Module } from "vuex";
 
 interface IUserState {
@@ -18,7 +17,6 @@ export const user: Module<IUserState, unknown> = {
   actions: {
     async login({ commit }, { email, password }: LoginFields) {
       console.log("[action] Loggin in");
-      console.log({ email, password });
 
       try {
         const token = await AuthService.login(email, password);
@@ -38,7 +36,7 @@ export const user: Module<IUserState, unknown> = {
     loginSucceed(state: IUserState, token: string) {
       console.log("[mutation] Login succeed");
       state.accessToken = token;
-      sessionStorage.setItem("accessToken", token);
+      sessionStorage.setItem("accessToken", token); // lo guarda en el session storage
     },
     loginFailed() {
       console.log("[mutation] Login failed");

@@ -35,6 +35,7 @@ async function initFlits() {
 
     const users = await User.find({})
 
+
     const randomUsers = (users, n) => users.sort(() => Math.random() - Math.random()).slice(0, n)
 
     const findUser = async (username) => await User.findOne({username: username}).exec()

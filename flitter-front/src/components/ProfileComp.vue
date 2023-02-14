@@ -1,19 +1,13 @@
-<!--Mi perfil-->
+<!--Perfil privado-->
 <template>
-  <div class="headerPictureName">
-    <h1>{{ user.name }}</h1>
-    <!-- <img
-      class="headerRocket"
-      alt="Header Rocket"
-      src=""
-    />  -->
-  </div>
   <div class="wrapper">
-    
-    <div class="avatar">
-      <img :src="user.image" :alt="user.name" />
+    <div>
+      <img
+        class="headerRocket"
+        alt="Header Rocket"
+        src="../assets/usuario1.jpg"
+      />
     </div>
-    
     <div class="username">{{ user.name }}</div>
     <div class="follow">
       <div class="followers">
@@ -25,14 +19,14 @@
         Seguidos
       </div>
     </div>
-  <div v-show="myProfile">
+    <div v-show="myProfile">
       <div class="buttons">
       <button class="edit-button">
         <router-link to="/settings">Editar perfil</router-link>
       </button>
+    </div>
   </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -63,20 +57,19 @@ export default defineComponent({
   column-gap: 20px;
 }
 
-.avatar {
-  grid-area: a;
-  width: max-content;
-}
-
 img {
+  grid-area: a;
   width: 100px;
+  border-radius: 100%;
 }
-
+.headerRocket {
+  grid-area: a;
+}
 .username {
   grid-area: c;
   font-weight: bold;
   font-size: larger;
-  color: #5060a4;
+  color: #472967;
   padding-top: 5px;
 }
 
