@@ -1,6 +1,5 @@
-<!--Pantalla buscar usuario-->
 <template>
-    <SearchBar/>
+    <SearchBar />
 </template>
 
 <script lang="ts">
@@ -16,4 +15,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 </style>

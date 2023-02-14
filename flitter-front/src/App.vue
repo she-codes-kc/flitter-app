@@ -1,5 +1,5 @@
 <template>
-  <HeaderBar /> 
+  <HeaderBar />
   <div class="wrapper"><router-view /></div>
 </template>
 
@@ -21,7 +21,7 @@ export default defineComponent({
 }
 
 #app {
-  font-family:'Josefin Sans', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #000;
@@ -55,7 +55,7 @@ button {
 }
 
 button:hover {
-  background-color:#573877;
+  background-color: #573877;
   cursor: pointer;
 }
 
@@ -83,12 +83,12 @@ a {
 }
 
 a:hover {
-  color:#573877;
+  color: #573877;
 }
 
 label {
   font-size: 20px;
-  color:#472967;
+  color: #472967;
   font-family: 'Josefin Sans', sans-serif, cursive;
   font-weight: lighter;
   display: block;

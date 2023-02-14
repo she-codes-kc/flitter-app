@@ -3,7 +3,7 @@
   <div class="links">
     <router-link to="/login">Iniciar sesión</router-link> |
     <router-link to="/signup">Regístrate</router-link>
-  </div> 
+  </div>
 </template>
 
 <script lang="ts">

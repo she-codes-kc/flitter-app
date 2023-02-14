@@ -69,9 +69,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 h2 {
-  color:#EC6324;
+  color: #EC6324;
   font-size: 24px;
   display: flex;
   margin-left: 1rem;

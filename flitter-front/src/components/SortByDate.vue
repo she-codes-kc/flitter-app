@@ -17,14 +17,12 @@ export default defineComponent({
         const selection = 'new'
         return {
             selection,
-            sort: (selection: string) => {}
+            sort: (selection: string) => { }
         }
     }
 })
 </script>
 
 <style scoped>
-/* button {
-    color: white;
-} */
+
 </style>

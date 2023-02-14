@@ -1,7 +1,8 @@
-<!--Pantalla recuperar contraseña-->
 <template>
   <form class="recovery">
-    <div class="tagline"><h2>¿No recuerdas tu contraseña?</h2></div>
+    <div class="tagline">
+      <h2>¿No recuerdas tu contraseña?</h2>
+    </div>
     <div class="inputEmail">
       <label for="email">Email</label>
       <input id="email" type="text" placeholder="juan@mail.com" />
@@ -49,18 +50,17 @@ img {
 }
 
 h2 {
-  color:#EC6324;
-  font-family: "Josefin Sans", sans-serif,cursive;
+  color: #EC6324;
+  font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 24px;
   margin-bottom: 40px;
 }
 
-a{
-  font-family: "Josefin Sans", sans-serif,cursive;
+a {
+  font-family: "Josefin Sans", sans-serif, cursive;
   font-size: 20px;
   margin-bottom: 40px;
-  color:#472967;
+  color: #472967;
   text-align: center;
-
 }
 </style>
