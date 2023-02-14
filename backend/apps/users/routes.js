@@ -1,8 +1,6 @@
 'use strict';
 
 const express = require('express');
-const createError = require('http-errors');
-
 const authMiddleware = require('../../lib/authMiddleware')
 
 // Models
@@ -46,15 +44,7 @@ router.put('/:id', async (req, res, next) => {
 // delete a user
 router.delete('/:id', async (req, res, next) => {
     try {
-        const id = req.params.id;
-
-        const user = await User.findById(id);
-
-        if (!user) {
-            return next(createError(404));
-        }
-
-        await User.deleteOne({ _id: id, });
+        await deleteUser(req.params.id, next);
 
         res.json();
 
@@ -62,17 +52,6 @@ router.delete('/:id', async (req, res, next) => {
         next(err);
     }
 });
-
-// router.delete('/:id', async (req, res, next) => {
-//     try {
-//         await deleteUser(req.params.id);
-
-//         res.json();
-
-//     } catch (err) {
-//         next(err);
-//     }
-// });
 
 module.exports = router;
 

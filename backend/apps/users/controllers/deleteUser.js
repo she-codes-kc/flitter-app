@@ -1,8 +1,10 @@
 'use strict';
 
+const createError = require('http-errors');
+
 const User = require('../../../models/User');
 
-const deleteUser = async (id) => {
+const deleteUser = async (id, next) => {
 
     const user = await User.findById(id);
 
