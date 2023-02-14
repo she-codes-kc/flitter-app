@@ -25,13 +25,15 @@ const getFlits = async (query) => {
         filter.text = new RegExp('^' + text, 'i');
     };
 
-    if (author) { // /api/flits?author=<@username>
-        filter.author = new RegExp('^' + author, 'i');
-    };
-
     if (date) { // /api/flits?date=<00/00/0000>
         filter.date = date;
     }
+
+    // const filterAuthor = {};
+
+    // if (author) { // /api/flits?author=<@username>
+    //     filterAuthor.username = author;
+    // };
 
     return await Flit.array(filter, skip, limit, fields, sort);
 }

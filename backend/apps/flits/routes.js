@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const createError = require('http-errors');
 const router = express.Router();
 
 const authMiddleware = require('../../lib/authMiddleware')
@@ -57,19 +56,7 @@ router.put('/:id', authMiddleware, async (req, res, next) => {
 // create a flit
 router.post('/', authMiddleware, async (req, res, next) => {
     try {
-        const text = req.body.text;
-
-        const author = req.currentUser;
-
-        const flit = new Flit({
-            text,
-            image: null,
-            author,
-            date: new Date(),
-            kudos: [],
-        });
-
-        const flitSaved = await flit.save();
+        const flitSaved = await createFlit(req.body.text, req.currentUser);
 
         res.json(flitSaved);
     } catch(err) {
@@ -77,47 +64,16 @@ router.post('/', authMiddleware, async (req, res, next) => {
     }
 });
 
-// router.post('/', authMiddleware, async (req, res, next) => {
-//     try {
-//         const flitSaved = await createFlit(req.body.text, req.currentUser);
-
-//         res.json(flitSaved);
-
-//     } catch(err) {
-//         next(err);
-//     }
-// });
-
 // DELETE /api/flits/(id)
 // delete a flit
 router.delete('/:id', authMiddleware, async (req, res, next) => {
     try {
-        const id = req.params.id;
-
-        const flit = await Flit.findById(id);
-
-        if (!flit) {
-            return next(createError(404));
-        }
-
-        await Flit.deleteOne({ _id: id, });
+        await deleteFlit(req.params.id, next);
 
         res.json();
-
     } catch (err) {
         next(err);
     }
 });
-
-// router.delete('/:id', async (req, res, next) => {
-//     try {
-//        await deleteFlit(req.params.id);
-
-//         res.json();
-
-//     } catch (err) {
-//         next(err);
-//     }
-// });
 
 module.exports = router;
