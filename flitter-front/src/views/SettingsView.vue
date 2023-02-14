@@ -32,6 +32,7 @@
   border:1px solid rgb(243, 239, 239);
   border-radius: 1rem;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 70px;
 }
   
 h2 {

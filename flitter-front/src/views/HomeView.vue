@@ -33,7 +33,9 @@
       <button @click="page++">Siguiente</button>
       <button v-show="page > 1" @click="page--">Anterior</button>
     </div>
-  </div>
+    </div>
+    <footer class="footer">
+    </footer>
 </template>
 
 <script lang="ts">
@@ -156,4 +158,11 @@ h2 {
   align-items: center;
   justify-content: space-between;
 }
+
+.footer {
+    padding-left: 10rem;
+    display: flex;
+    margin-top: 20rem;
+}
+
 </style>

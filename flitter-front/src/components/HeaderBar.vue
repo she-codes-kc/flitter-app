@@ -64,6 +64,7 @@ export default defineComponent({
   justify-content: center;
   font-size: 20px;
   line-height: 0px;
+  padding-left: 7rem;
 }
 
 h2 {

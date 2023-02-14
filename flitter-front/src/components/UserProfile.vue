@@ -1,9 +1,13 @@
 <template>
     <div class="wrapper">
-        <div class="avatar">
-            <img :src="user.profilePic" :alt="user.username">
-        </div>
-        <div class="username">{{ user.username }}</div>
+        <div>
+      <img
+        class="headerRocket"
+        alt="Header Rocket"
+        src="../assets/usuario1.jpg"
+      />
+    </div>
+        <div class="username">@CatalinaCastellanos</div>
         <div class="follow">
             <div class="followers">
                 <div class="number">{{ user.followers.length }}</div>
@@ -39,7 +43,7 @@ export default defineComponent({
     "a b"
     "c d";
     grid-template-columns: minmax(100px, max-content) 1fr;
-    column-gap: 20px;
+    column-gap: 40px;
 }
 
 .avatar {
@@ -48,15 +52,21 @@ export default defineComponent({
 }
 
 img {
-    width: 100px;
+  grid-area: a;
+  width: 100px;
+  border-radius: 100%;
+}
+.headerRocket {
+  grid-area: a;
 }
 
 .username {
-    grid-area: c;
+    grid-area: b;
     font-weight: bold;
     font-size: larger;
     color: #472967;
     padding-top: 5px;
+    margin-bottom: 5rem;
 }
 
 .follow {
