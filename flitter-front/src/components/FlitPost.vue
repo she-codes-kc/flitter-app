@@ -1,12 +1,7 @@
 <template>
   <div class="profile">
     <div class="logo">
-      <img
-        class="roundimg"
-        alt="Flitter logo"
-        src="../assets/usuario1.jpg"
-        width="40"
-      />
+      <img class="roundimg" alt="Flitter logo" src="../assets/usuario1.jpg" width="40" />
     </div>
     <div class="flit">
       <router-link :to="`/profile/${post.author.username}`">
@@ -14,21 +9,14 @@
       </router-link>
       <div class="message">{{ post.text }}</div>
       <div class="meta">
-        <div
-          class="publishDate"
-          :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')"
-        >
+        <div class="publishDate" :title="moment(post.date).format('MMMM DD YYYY, hh:mm:ss')">
           {{ moment(post.date).fromNow() }}
         </div>
         <div class="kudos">
           {{ post.kudos.length }}
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
-          <i
-            v-show="myUsername === post.author.username"
-            class="fa fa-trash delete"
-            aria-hidden="true"
-            @click="deleteFlit"
-          ></i>
+          <i v-show="myUsername === post.author.username" class="fa fa-trash delete" aria-hidden="true"
+            @click="deleteFlit"></i>
         </div>
       </div>
     </div>
@@ -130,7 +118,7 @@ export default defineComponent({
 .publishDate {
   color: #ec6324;
   font-style: italic;
-  padding-top: 12px;
+  padding-top: 2px;
 }
 
 .profile {

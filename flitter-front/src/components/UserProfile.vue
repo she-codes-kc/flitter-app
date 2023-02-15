@@ -1,11 +1,7 @@
 <template>
   <div class="wrapper">
     <div>
-      <img
-        class="headerRocket"
-        alt="Header Rocket"
-        src="../assets/usuario1.jpg"
-      />
+      <img class="headerRocket" alt="Header Rocket" src="../assets/usuario1.jpg" />
     </div>
     <div class="username">{{ user.username }}</div>
     <div class="follow">

@@ -1,11 +1,6 @@
 <template>
   <div class="createFlit">
-    <input
-      v-model="newFlit"
-      type="text"
-      placeholder="¿Qué estás pensando?"
-      style="width: 100%"
-    />
+    <input v-model="newFlit" type="text" placeholder="¿Qué estás pensando?" style="width: 100%" />
     <button @click="createFlit">¡Flit!</button>
   </div>
 </template>
