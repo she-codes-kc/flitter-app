@@ -40,31 +40,31 @@ Está estructurado y ejecutado a través de las siguientes herramientas:
 ## Backend
 ### Ejecución y configuración:
 
-##### MongoDB:
+#### MongoDB:
 Para que la API funcione es necesario tener instalado MongoDB. Una vez hecho esto, ejecutar el servidor de MongoDB en local:
 
 `./bin/mongod --dbpath ./data`
 
-##### Instalar dependencias:
+#### Instalar dependencias:
 
  `npm install`
 
-###### Inicializar base de datos:
+#### Inicializar base de datos:
 
-a traves de: `npm run init-db`.
+`npm run init-db`.
 
-###### Ejecutar la app en producción:
+#### Ejecutar la app en producción:
 
 `npm start`
 
 se ejecutará en http://localhost:3000/
 
-###### Ejecutar la app en desarrollo:
+#### Ejecutar la app en desarrollo:
 
 `npm run dev`
 ### Documentación de API
 
-##### Usuario
+#### Usuario
 
 [POST]`http://localhost:3000/api/auth/login`: para hacer log in
 
@@ -76,7 +76,7 @@ se ejecutará en http://localhost:3000/
 
 [DELETE] `http://localhost:3000/api/users/{id}`: para eliminar un perfil de usuario
 
-##### Flits
+#### Flits
 
 [GET] `http://localhost:3000/api/flits`: para obtener el listado de flits
 
