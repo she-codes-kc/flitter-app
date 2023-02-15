@@ -6,7 +6,11 @@
       <input type="text" placeholder="Buscá en Flitter lo que quieras" style="width: 100%" v-model="search"
         @keyup.enter="onSearch" :status="searchStatus" />
     </div>
-    <CreateFlit v-if="isLoggedIn" />
+    <div class="flittear" v-if="isLoggedIn">
+      <h2 class="text-flittear">¡Empieza a flittear!</h2>
+      <img class="img-flit" src="../assets/logo2.png" alt="">
+    </div>
+    <CreateFlit v-if="isLoggedIn" class="creat-flit" />
     <div>
       <h2>Últimas tendencias</h2>
       <h3 v-if="loading">Cargando...</h3>
@@ -20,7 +24,7 @@
     </div>
     <div class="pagination">
       <button @click="page++">Siguiente</button>
-      <button v-show="page > 1" @click="page--">Anterior</button>
+      <button v-show="page > 1" @click="page--" class="left-button">Anterior</button>
     </div>
     <footer class="footer">
       <div class="footer-img-text">
@@ -37,7 +41,6 @@ import FlitFeed from "@/components/FlitFeed.vue";
 import CreateFlit from "@/components/CreateFlit.vue";
 import { Flit } from "../models/flit";
 import FlitService from "@/services/FlitService";
-//import CreateFlit from '@/components/CreateFlit.vue';
 
 interface Data {
   search: string;
@@ -119,12 +122,36 @@ export default defineComponent({
 img {
   width: 10%;
   display: flex;
+  margin: 20px;
+  margin-bottom: 10px;
 }
 
 .footer-img-text {
   display: flex;
   align-items: center;
 
+}
+
+.flittear {
+  padding-left: 12rem;
+  display: flex;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.img-flit {
+  width: 10%;
+  display: flex;
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.text-flittear {
+  font-family: "Josefin Sans", sans-serif, cursive;
+  font-size: 20px;
+  font-weight: bold;
+  color: #472967;
+  padding: 10px;
 }
 
 .searchBar input {
@@ -185,5 +212,13 @@ h3 {
   color: #472967;
   padding: 15px;
   font-weight: 40;
+}
+
+.left-button {
+  margin-left: 30px;
+}
+
+.creat-flit {
+  margin-top: 10px;
 }
 </style>

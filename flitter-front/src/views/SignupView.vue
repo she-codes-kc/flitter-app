@@ -88,44 +88,19 @@ function onClick() {
     </div>
     <div class="inputLastName">
       <label for="lastName">Apellido</label>
-      <input
-        v-model="lastName"
-        id="lastName"
-        type="text"
-        placeholder="Gonzalez"
-        required
-      />
+      <input v-model="lastName" id="lastName" type="text" placeholder="Gonzalez" required />
     </div>
     <div class="inputUsername">
       <label for="username">Usuario</label>
-      <input
-        v-model="username"
-        id="username"
-        type="text"
-        placeholder="JuanGonzalez"
-        pattern="[A-Za-z]{}"
-        required
-      />
+      <input v-model="username" id="username" type="text" placeholder="JuanGonzalez" pattern="[A-Za-z]{}" required />
     </div>
     <div class="inputEmail">
       <label for="email">Email</label>
-      <input
-        v-model="email"
-        id="email"
-        type="text"
-        placeholder="juan@mail.com"
-        required
-      />
+      <input v-model="email" id="email" type="text" placeholder="juan@mail.com" required />
     </div>
     <div class="inputPassword">
       <label for="password">Contraseña</label>
-      <input
-        v-model="password"
-        id="password"
-        type="password"
-        placeholder="*********"
-        required
-      />
+      <input v-model="password" id="password" type="password" placeholder="*********" required />
     </div>
     <button type="button" @click="onClick">Registrarme</button>
   </form>
@@ -153,6 +128,7 @@ h2 {
   width: 100%;
   margin-bottom: 40px;
 }
+
 .inputEmail input,
 .inputUsername input,
 .inputName input,
